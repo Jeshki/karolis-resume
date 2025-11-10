@@ -10,43 +10,65 @@ export function PortfolioSection() {
 
   const projects = [
     {
-      title: t('Shopify E-komercijos Parduotuvė', 'Shopify E-commerce Store'),
+      title: t('Dusofi svetainė', 'Dusofi website'),
       description: t(
-        'Pilnavertė Shopify parduotuvė kosmetikos prekėms su custom tema, mokėjimų integracija ir SEO optimizavimu. Naudotas Liquid, Tailwind CSS ir Figma dizainas.',
-        'Full-featured Shopify store for cosmetics with custom theme, payment integration, and SEO optimization. Used Liquid, Tailwind CSS, and Figma design.'
+        'Ši svetainė sukurta siekiant pasidalinti nesenstančia išmintimi – žodžiais',
+        'This website was created from a desire to share timeless wisdom — words that inspire, encourage reflection, and offer new perspectives.'
       ),
-      image: '/project-shopify.jpg', // Įkelk nuotrauką į public/
-      technologies: ['Shopify', 'Liquid', 'Tailwind CSS', 'Figma'],
-      liveLink: 'https://example-shopify.com',
-      githubLink: 'https://github.com/jogy/shopify-store',
+      image: '/dusofi.png',
+      // ČIA BUVO KLAIDA: trūko `technologies` masyvo
+      technologies: ['React', 'Tailwind CSS', 'Framer Motion'], // <-- PRIDĖKITE TINKAMAS
+      liveLink: 'https://www.dusofi.lt',
+      githubLink: 'https://github.com/Jeshki/dusofi-full',
     },
+{
+      title: t('JM Dekoras', 'JM Dekoras'),
+      description: t(
+        'Svetainė, skirta švenčių planavimui, dekoravimui ir unikalioms žvakėms.',
+        'A website for event planning, decoration, and unique candles.'
+      ),
+      image: '/jmdekoras.png', // <-- SVARBU: Įkelkite šį failą į public/jm-dekoras.jpg
+      technologies: ['Shopify'], // Atspėjau technologijas pagal jūsų įgūdžius
+      liveLink: 'https://www.jmdekoras.lt',
+    },
+
     {
-      title: t('UX/UI Dizaino Prototipas', 'UX/UI Design Prototype'),
+      title: t('BSO Svetainė', 'BSO Website'),
       description: t(
-        'Modernus mobilios app prototipas su interaktyviais elementais, sukurtas Figma ir perkeliamas į React komponentus. Fokusas į vartotojo patirtį ir prieinamumą.',
-        'Modern mobile app prototype with interactive elements, built in Figma and ported to React components. Focus on user experience and accessibility.'
+        'Verslo svetainė (webdemo), sukurta naudojant WordPress ir Elementor.',
+        'Business website (webdemo), built with WordPress and Elementor.'
       ),
-      image: '/project-ui.jpg',
-      technologies: ['Figma', 'React', 'TypeScript', 'Framer Motion'],
-      liveLink: 'https://example-ui-prototype.com',
-      githubLink: 'https://github.com/jogy/ui-prototype',
+      image: '/bso.png', // <-- SVARBU: Įkelkite šį failą į public/bso-svetaine.jpg
+      technologies: ['WordPress', 'Elementor', 'PHP'], // Atspėjau technologijas
+      liveLink: 'https://bso.webdemo.lt',
     },
-    {
-      title: t('Next.js Personalio Svetainė', 'Next.js Personal Website'),
+
+   {
+      title: t('Papildų Sala', 'Supplement Island'),
       description: t(
-        'Ši resume svetainė – mano naujausias projektas su Next.js, Tailwind, animacijomis ir EmailJS integracija. Pilnai responsyvi, su tamsia/šviesa tema.',
-        'This resume site – my latest project with Next.js, Tailwind, animations, and EmailJS integration. Fully responsive with dark/light theme.'
+        'Elektroninė parduotuvė, prekiaujanti maisto papildais. Sukurta su WordPress ir WooCommerce.',
+        'An e-commerce store selling food supplements. Built with WordPress and WooCommerce.'
       ),
-      image: '/project-resume.jpg',
-      technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
-      liveLink: 'https://www.jogy.lt', // Tavo sena svetainė
-      githubLink: 'https://github.com/jogy/my-resume-site',
+      image: '/papildusala.png', // <-- SVARBU: Įkelkite šį failą į public/papildu-sala.jpg
+      technologies: ['WordPress', 'WooCommerce', 'PHP'], // Atspėjau technologijas
+      liveLink: 'https://papildusala.lt/',
     },
-    // Pridėk daugiau: pvz., { title: 'Logotipo Dizainas', ... }
+
+    
+      {
+      title: t('Čiužinių Sala', 'Mattress Island'),
+      description: t(
+        'Elektroninė parduotuvė, prekiaujanti čiužiniais ir lovomis. Sukurta su WordPress ir WooCommerce.',
+        'An e-commerce store selling mattresses and beds. Built with WordPress and WooCommerce.'
+      ),
+      image: '/ciuziniusala.png', // <-- SVARBU: Įkelkite šį failą į public/ciuziniu-sala.jpg
+      technologies: ['WordPress', 'WooCommerce', 'PHP'], // Atspėjau technologijas
+      liveLink: 'https://ciuziniusala.lt/',
+    },
   ];
 
   return (
-    <section id="portfolio" className="py-20 px-4 bg-white dark:bg-gray-900">
+    <section id="portfolio" className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +81,7 @@ export function PortfolioSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
+          className="text-gray-600 mb-12 max-w-2xl mx-auto"
         >
           {t(
             'Mano naujausi projektai – nuo e-komercijos iki UX/UI prototipų.',
@@ -75,7 +97,7 @@ export function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -90,8 +112,9 @@ export function PortfolioSection() {
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-xl mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">{project.description}</p>
+                <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
+                  {/* Ši vieta nebeveiks, jei `technologies` neegzistuos */}
                   {project.technologies.map((tech) => (
                     <span key={tech} className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
                       {tech}
@@ -102,10 +125,11 @@ export function PortfolioSection() {
                   <a
                     href={project.liveLink}
                     target="_blank"
-                    className="flex-1 bg-primary text-white py-2 px-4 rounded text-center hover:bg-blue-700 transition flex items-center justify-center gap-1"
+                    className="flex-1 bg-black text-white py-2 px-4 rounded text-center transition flex items-center justify-center gap-1"
                   >
                     <IconExternalLink size={16} /> {t('Demo', 'Demo')}
                   </a>
+                  {project.githubLink && (
                   <a
                     href={project.githubLink}
                     target="_blank"
@@ -113,6 +137,7 @@ export function PortfolioSection() {
                   >
                     <IconCode size={20} />
                   </a>
+                  )}
                 </div>
               </div>
             </motion.div>

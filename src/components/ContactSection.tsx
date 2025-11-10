@@ -18,14 +18,14 @@ export function ContactSection() {
     try {
       await emailjs.send(
         'service_192u0r9',
-        'YOUR_TEMPLATE_ID',   // ← Pakeisk
+        'template_u2g1ok7',
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        'ubLfcy2BLMSoiD07t',
-            );
+        'ubLfcy2BLMSoiD07t'
+      );
       setStatus('sent');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -34,7 +34,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 px-4 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export function ContactSection() {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
             />
             <input
               type="email"
@@ -66,7 +66,7 @@ export function ContactSection() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
             />
             <textarea
               placeholder={t('Žinutė', 'Message')}
@@ -74,14 +74,14 @@ export function ContactSection() {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               required
               rows={5}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
             />
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              disabled={status === 'sending'}
-              className="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 disabled:opacity-70"
+              disabled={status === 'sending'} // PATAISYMAS: Pakeista neteisinga hover:black klasė
+              className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 disabled:opacity-70 transition-colors"
             >
               {status === 'sending' ? t('Siunčiama...', 'Sending...') : t('Siųsti', 'Send')}
               <IconSend size={18} />
@@ -96,8 +96,8 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             className="flex flex-col justify-center space-y-6"
           >
-            <a href="mailto:karolis@example.com" className="flex items-center gap-3 text-lg hover:text-primary transition">
-              <IconMail size={24} /> karolis@example.com
+            <a href="mailto:karoliscibiras@gmail.com" className="flex items-center gap-3 text-lg hover:text-primary transition">
+              <IconMail size={24} /> karoliscibiras@gmail.com
             </a>
             <a href="https://linkedin.com/in/karolis-cibiras" target="_blank" className="flex items-center gap-3 text-lg hover:text-primary transition">
               <IconBrandLinkedin size={24} /> LinkedIn

@@ -2,25 +2,28 @@
 
 import { motion } from 'framer-motion';
 import { IconSchool, IconCode, IconDeviceLaptop } from '@tabler/icons-react';
+import { useLanguage } from 'src/contexts/LanguageContext';
 
 export function EducationSection() {
+  const { t } = useLanguage();
+
   const education = [
     {
-      degree: "Verslo vadybos ir analitikos bakalauras",
-      school: "ISM vadybos ir ekonomikos universitetas",
+      degree: t("Verslo vadybos ir analitikos bakalauras", "Bachelor of Business Management and Analytics"),
+      school: t("ISM vadybos ir ekonomikos universitetas", "ISM University of Management and Economics"),
       year: "2015",
       icon: <IconSchool size={24} />
     },
     {
-      degree: "Front-end programavimas",
-      school: "„Baltijos technologijų institutas” (BIT)",
+      degree: t("Front-end programavimas", "Front-end Programming"),
+      school: t("„Baltijos technologijų institutas” (BIT)", "Baltic Institute of Technology (BIT)"),
       year: "2021",
       icon: <IconCode size={24} />
     },
     {
       degree: "Front-End Developer",
       school: "www.codecademy.com",
-      year: "Šiuo metu",
+      year: t("Šiuo metu", "Currently"),
       icon: <IconDeviceLaptop size={24} />
     }
   ];
@@ -33,7 +36,7 @@ export function EducationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-3xl md:text-4xl font-bold text-center mb-12"
         >
-          Išsilavinimas
+          {t('Išsilavinimas', 'Education')}
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -43,7 +46,7 @@ export function EducationSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-all"
+              className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-all"
             >
               <div className="p-3 bg-primary/10 rounded-xl text-primary w-fit mx-auto mb-4">
                 {edu.icon}
