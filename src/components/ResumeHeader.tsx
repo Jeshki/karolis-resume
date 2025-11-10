@@ -48,15 +48,21 @@ export function ResumeHeader() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
+           {/* 
+             SVARBU: Įsitikinkite, kad jūsų projekto 'public' aplanke yra šie du failai:
+             1. karolis-cibiras-cv.pdf
+             2. karolis-cibiras-cv-en.pdf
+             Failų pavadinimai turi būti parašyti mažosiomis raidėmis, kad veiktų Vercel platformoje.
+           */}
            <a 
-             href="/Karolis-Cibiras-CV.pdf"  
+             href="/karolis-cibiras-cv.pdf"  
              download 
              className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
            >
              <IconFileDownload size={18} /> {t('Atsisiųsti CV (LT)', 'Download CV (LT)')}
            </a>
            <a 
-             href="/Karolis-Cibiras-CV-EN.pdf" 
+             href="/karolis-cibiras-cv-en.pdf" 
              download
              className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
            >
