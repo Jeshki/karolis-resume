@@ -50,14 +50,14 @@ export function ResumeHeader() {
           {/* PATAISYMAS: Atnaujinti CV atsisiuntimo mygtukai, kad būtų tiesioginės nuorodos */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
             <a 
-              href="/Karolis Čibiras–CV.pdf" 
+              href="/Karolis-Čibiras–CV.pdf" 
               download 
               className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
             >
               <IconFileDownload size={18} /> {t('Atsisiųsti CV (LT)', 'Download CV (LT)')}
             </a>
             <a 
-              href="/Karolis Čibiras–CV-EN.pdf" 
+              href="/Karolis-Čibiras–CV-EN.pdf" 
               download
               className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
             >
