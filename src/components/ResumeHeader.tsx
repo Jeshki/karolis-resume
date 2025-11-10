@@ -55,14 +55,14 @@ export function ResumeHeader() {
              Failų pavadinimai turi būti parašyti mažosiomis raidėmis, kad veiktų Vercel platformoje.
            */}
            <a 
-             href="/karolis-cibiras-cv.pdf"  
+             href="/karolis-cibiras–cv.pdf"  
              download 
              className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
            >
              <IconFileDownload size={18} /> {t('Atsisiųsti CV (LT)', 'Download CV (LT)')}
            </a>
            <a 
-             href="/karolis-cibiras-cv-en.pdf" 
+             href="/karolis-cibiras–cv-en.pdf" 
              download
              className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
            >
