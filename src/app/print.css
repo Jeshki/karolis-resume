@@ -1,0 +1,9 @@
+@media print {
+  @page { margin: 1cm; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .print\\:hidden { display: none !important; }
+  nav, .print\\:hidden, button, [class*="fixed"] { display: none !important; }
+  section { page-break-inside: avoid; margin-bottom: 2cm; }
+  h1, h2, h3 { color: #1f2937 !important; }
+  .bg-primary { background-color: #3b82f6 !important; color: white !important; }
+}
