@@ -72,7 +72,7 @@ export function PortfolioSection() {
         'Moderni ir interaktyvi CV svetainė, skirta pristatyti Dovilės profesinę patirtį.',
         'A modern and interactive resume website built to showcase Dovilės professional experience.',
       ),
-      image: '/doviles.png', // <-- SVARBU: Įkelkite šį failą į public/ciuziniu-sala.jpg
+      image: '/doviles.png', 
       technologies: ['React', 'Tailwind CSS', 'Framer Motion'], // Atspėjau technologijas
       liveLink: 'https://doviles-resume.vercel.app//',
     },
