@@ -91,33 +91,8 @@ export function SkillsSection() {
           </div>
         </div>
 
-        {/* Languages */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <IconLanguage className="text-primary" /> {t('Užsienio kalbos', 'Languages')}
-          </h3>
-          <div className="space-y-4">
-            {languages.map((lang, i) => (
-              <div key={i}>
-                <div className="flex justify-between mb-1">
-                  <span className="font-medium">{lang.name}</span>
-                  <span className="text-sm text-gray-500">{lang.level}</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${lang.percent}%` }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    className="bg-primary h-full rounded-full"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Strengths & Other Skills */}
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
           <div>
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
               <IconMoodSmile className="text-primary" /> {t('Stiprybės', 'Strengths')}
@@ -154,6 +129,27 @@ export function SkillsSection() {
                 </motion.li>
               ))}
             </ul>
+            
+            {/* Languages moved here */}
+            <div className="mt-16">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <IconLanguage className="text-primary" /> {t('Užsienio kalbos', 'Languages')}
+              </h3>
+              <div className="space-y-4">
+                {languages.map((lang, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex justify-between items-center border-b border-gray-200 pb-2"
+                  >
+                      <span className="font-medium">{lang.name}</span>
+                      <span className="text-sm text-gray-500">{lang.level}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

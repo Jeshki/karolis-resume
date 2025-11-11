@@ -127,7 +127,7 @@ export function Navbar() {
                     height={15}
                     className="h-auto w-5 rounded-sm grayscale"
                   />
-                  {t('Pakeisti į anglų', 'Switch to Lithuanian')}
+                  {language === 'lt' ? t('Pakeisti į anglų', 'Switch to English') : t('Pakeisti į lietuvių', 'Switch to Lithuanian')}
                 </button>
                 
                 {/* 4. PAŠALINTAS TEMOS MYGTUKAS (MOBILUS) */}
