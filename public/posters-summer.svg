@@ -1,0 +1,21 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#FCA5A5" />
+      <stop offset="100%" stop-color="#A78BFA" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" rx="48" fill="url(#sunset)" />
+  <circle cx="1040" cy="220" r="140" fill="#FEF3C7" opacity="0.8" />
+  <circle cx="180" cy="320" r="220" fill="#FCD34D" opacity="0.35" />
+  <circle cx="360" cy="420" r="140" fill="#FECACA" opacity="0.45" />
+  <rect x="120" y="1080" width="960" height="280" rx="32" fill="#0F172A" opacity="0.9" />
+  <text x="160" y="1180" fill="#F8FAFC" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="96" font-weight="700">Vasaros</text>
+  <text x="160" y="1270" fill="#F8FAFC" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="96" font-weight="700">renginių serija</text>
+  <text x="160" y="1350" fill="#E2E8F0" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="36" font-weight="500">Gyva muzika · Gatvės menas · Maisto furgonai</text>
+  <text x="160" y="1420" fill="#CBD5E1" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="30">Vilnius · Liepos 20–22 d.</text>
+  <path d="M200 760C340 660 600 620 760 640C900 656 1040 712 1040 712" stroke="#0F172A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" />
+  <path d="M240 820C340 760 540 740 720 760C920 784 1020 840 1020 840" stroke="#0F172A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" />
+  <path d="M180 900C340 840 600 820 820 840C980 860 1080 900 1080 900" stroke="#0F172A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" />
+</svg>

@@ -1,0 +1,12 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="64" fill="#0F172A" />
+  <circle cx="280" cy="300" r="200" fill="#1E293B" />
+  <circle cx="920" cy="620" r="240" fill="#111827" />
+  <path d="M320 640C420 520 520 460 620 460C740 460 820 520 880 620" stroke="#38BDF8" stroke-width="32" stroke-linecap="round" />
+  <path d="M360 640C460 540 560 500 660 500C760 500 820 540 880 620" stroke="#FBBF24" stroke-width="20" stroke-linecap="round" />
+  <rect x="520" y="220" width="160" height="440" rx="80" fill="#111827" stroke="#E2E8F0" stroke-width="12" />
+  <path d="M520 280C520 210 620 210 620 280V620" stroke="#38BDF8" stroke-width="20" stroke-linecap="round" />
+  <path d="M680 280C680 210 780 210 780 280V620" stroke="#FBBF24" stroke-width="20" stroke-linecap="round" />
+  <circle cx="600" cy="540" r="56" fill="#111827" stroke="#E2E8F0" stroke-width="12" />
+  <text x="480" y="780" fill="#E2E8F0" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="64" font-weight="700">MONO STUDIO</text>
+</svg>

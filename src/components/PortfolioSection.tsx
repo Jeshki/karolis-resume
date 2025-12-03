@@ -78,6 +78,49 @@ export function PortfolioSection() {
     },
   ];
 
+  const designPieces = [
+    {
+      title: t('Vasaros renginių plakatas', 'Summer events poster'),
+      description: t(
+        'Spalvingas renginių plakatas, sukurtas išryškinti vasaros atmosferą ir pritraukti miesto gyventojus.',
+        'A vibrant event poster crafted to highlight the summer mood and attract city crowds.'
+      ),
+      image: '/posters-summer.svg',
+      technologies: ['Poster design', 'Gradient art'],
+      liveLink: '/posters-summer.svg',
+    },
+    {
+      title: t('Tech konferencijos plakatas', 'Tech conference poster'),
+      description: t(
+        'Minimalistinis, technologijomis įkvėptas plakatas konferencijai apie dirbtinį intelektą.',
+        'A minimalist, tech-inspired poster for an artificial intelligence conference.'
+      ),
+      image: '/posters-tech.svg',
+      technologies: ['Poster design', 'Futuristic UI'],
+      liveLink: '/posters-tech.svg',
+    },
+    {
+      title: t('Minimalus monogramos logotipas', 'Minimal monogram logo'),
+      description: t(
+        'Švarus monogramos ženklas studijai, kurio konstrukcijoje susilieja geometrija ir spalvų kontrastai.',
+        'A clean monogram mark for a studio that blends geometry with bold color contrast.'
+      ),
+      image: '/logo-monogram.svg',
+      technologies: ['Logo design', 'Branding'],
+      liveLink: '/logo-monogram.svg',
+    },
+    {
+      title: t('Kavos studijos ženklas', 'Coffee studio mark'),
+      description: t(
+        'Šiltas, rankų darbo logotipas kavos studijai, primenantis kavos puodelio garus.',
+        'A warm, handcrafted logo for a coffee studio that echoes the steam from a cup.'
+      ),
+      image: '/logo-coffee.svg',
+      technologies: ['Logo design', 'Illustration'],
+      liveLink: '/logo-coffee.svg',
+    },
+  ];
+
   return (
     <section id="portfolio" className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto text-center">
@@ -154,6 +197,66 @@ export function PortfolioSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-left mt-20"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-3 text-center">
+            {t('Posteriai ir logotipai', 'Posters and logos')}
+          </h3>
+          <p className="text-gray-600 mb-10 max-w-3xl mx-auto text-center">
+            {t(
+              'Kūrybiniai spaudos ir vizualinės tapatybės darbai, kurie padeda išryškinti prekės ženklo charakterį.',
+              'Creative print and visual identity pieces that help bring a brand’s personality to life.'
+            )}
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {designPieces.map((piece, i) => (
+              <motion.div
+                key={piece.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group"
+              >
+                <div className="relative h-52 overflow-hidden">
+                  <Image
+                    src={piece.image}
+                    alt={piece.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                  <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <IconEye size={28} className="text-white" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h4 className="font-bold text-lg mb-2">{piece.title}</h4>
+                  <p className="text-gray-600 mb-4 text-sm">{piece.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {piece.technologies.map((tech) => (
+                      <span key={tech} className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    <a
+                      href={piece.liveLink}
+                      target="_blank"
+                      className="flex-1 bg-black text-white py-2 px-4 rounded text-center transition flex items-center justify-center gap-1"
+                    >
+                      <IconExternalLink size={16} /> {t('Peržiūrėti', 'View')}
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
