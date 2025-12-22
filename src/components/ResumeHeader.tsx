@@ -48,27 +48,15 @@ export function ResumeHeader() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
-           {/* 
-             SVARBU: Įsitikinkite, kad jūsų projekto 'public' aplanke yra šie du failai:
-             1. karolis-cibiras-cv.pdf
-             2. karolis-cibiras-cv-en.pdf
-             Failų pavadinimai turi būti parašyti mažosiomis raidėmis, kad veiktų Vercel platformoje.
-           */}
-           <a 
-             href="/karolis-cibiras–cv.pdf"  
-             download 
-             className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
-           >
-             <IconFileDownload size={18} /> {t('Atsisiųsti CV (LT)', 'Download CV (LT)')}
-           </a>
-           <a 
-             href="/karolis-cibiras–cv-en.pdf" 
-             download
-             className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
-           >
-             <IconFileDownload size={18} /> {t('Atsisiųsti CV (EN)', 'Download CV (EN)')}
-           </a>
-         </div>
+          {/* SVARBU: paliktas vienas CV failas public/ Karolio-CV-EN.pdf */}
+          <a 
+            href="/Karolio-CV-EN.pdf" 
+            download
+            className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors"
+          >
+            <IconFileDownload size={18} /> {t('Atsisi?sti CV (EN)', 'Download CV (EN)')}
+          </a>
+        </div>
         </div>
 
         {/* Apie mane ir Stiprybės */}
