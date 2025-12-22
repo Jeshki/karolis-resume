@@ -40,7 +40,8 @@ export function HeroSection() {
             src="/karolis.jpg" // Įsitikinkite, kad įkėlėte nuotrauką į `public/karolis.jpg`
             alt={t('Karolis Čibiras - profilio nuotrauka', 'Karolis Čibiras - profile picture')}
             fill
-            className="rounded-full object-cover shadow-xl border-4 border-white"
+            className="rounded-full object-cover object-[70%_50%] shadow-xl border-4 border-white"
+
             priority
           />
         </motion.div>
@@ -115,3 +116,4 @@ export function HeroSection() {
     </motion.section>
   );
 }
+

@@ -67,9 +67,10 @@ export function Navbar() {
                 <Image
                   src={language === 'lt' ? flagGB : flagLT}
                   alt={t('Pakeisti kalbą', 'Switch language')}
-                  width={24}
-                  height={18}
-                  className="h-auto w-6 rounded-sm grayscale hover:grayscale-0 transition-all"
+                  width={28}
+                  height={20}
+                  className="h-5 w-7 rounded-sm"
+
                 />
               </button>
 
@@ -123,9 +124,10 @@ export function Navbar() {
                   <Image
                     src={language === 'lt' ? flagGB : flagLT}
                     alt={t('Pakeisti kalbą', 'Switch language')}
-                    width={20}
-                    height={15}
-                    className="h-auto w-5 rounded-sm grayscale"
+                    width={24}
+                    height={16}
+                    className="h-4 w-6 rounded-sm"
+
                   />
                   {language === 'lt' ? t('Pakeisti į anglų', 'Switch to English') : t('Pakeisti į lietuvių', 'Switch to Lithuanian')}
                 </button>
@@ -141,3 +143,4 @@ export function Navbar() {
     </motion.nav>
   );
 }
+
