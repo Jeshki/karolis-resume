@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
-import { IconBriefcase, IconPhone, IconCode } from '@tabler/icons-react'; 
+import { IconBriefcase, IconPhone, IconCode } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 
 export function ExperienceSection() {
@@ -9,40 +9,50 @@ export function ExperienceSection() {
 
   const experiences = [
     {
-      title: t("Programuotojas", "Developer"),
-      company: "www.bithub.lt",
-      period: t("2024-09 – Dabar", "2024-09 – Present"),
+      title: t('Freelance Web kūrėjas / Programuotojas', 'Freelance Web Developer / Programmer'),
+      company: t('Individuali veikla', 'Self-Employed'),
+      period: t('2025-11 – dabar', 'Nov 2025 – Present'),
       icon: <IconCode size={24} />,
       tasks: [
-        t("Web svetainių kūrimas ir priežiūra.", "Website development and maintenance."),
-        t("Darbas su WordPress, WooCommerce, Elementor ir PHP technologijomis.", "Working with WordPress, WooCommerce, Elementor, and PHP technologies.")
+        t('Modernių web svetainių ir e-parduotuvių kūrimas nuo nulio', 'Building modern websites and e-commerce stores from scratch'),
+        t('React, Next.js, headless sprendimai, custom WordPress', 'React, Next.js, headless, custom WordPress'),
+        t('Aukščiausio lygio UI/UX ir dizaino sistema', 'High-end UI/UX and design systems'),
+        t('DI integracija visuose etapuose', 'AI integration at every stage'),
       ],
-      skills: t("WordPress, WooCommerce, Elementor, PHP", "WordPress, WooCommerce, Elementor, PHP")
+      skills: 'React • Next.js • TypeScript • Python • Tailwind • Node.js • AI Tools',
     },
     {
-      title: t("Vadybininkas", "Manager"),
-      company: t("UAB „Medikatus” (prekyba kosmetinėmis priemonėmis)", "UAB 'Medikatus' (cosmetics trade)"),
-      period: "2008 – 2024-02",
+      title: t('Web kūrėjas', 'Web Developer'),
+      company: 'Bithub.lt',
+      period: t('2025-09 – 2025-11', 'Sep 2025 – Nov 2025'),
+      icon: <IconCode size={24} />,
+      tasks: [
+        t('Web svetainių ir e-parduotuvių kūrimas bei priežiūra', 'Development and maintenance of websites and e-shops'),
+        t('Dizaino sprendimai, logotipai, vizualinis identitetas', 'Design, logos, visual identity'),
+        t('WordPress, WooCommerce, Elementor, PHP', 'WordPress, WooCommerce, Elementor, PHP'),
+        t('DI įrankiai procesų ir kodo optimizavimui', 'AI tools for code & process optimization'),
+      ],
+      skills: 'WordPress • WooCommerce • PHP • Figma • AI Tools',
+    },
+    {
+      title: t('E-komercijos vadovas / IT specialistas', 'E-commerce Manager / IT Specialist'),
+      company: 'UAB „Medikatus“',
+      period: t('2008 – 2024-02', '2008 – Feb 2024'),
       icon: <IconBriefcase size={24} />,
       tasks: [
-        t("Bendravimas su užsienio šalių partneriais, tiekėjais.", "Communication with foreign partners and suppliers."),
-        t("Elektroninės parduotuvės IT priežiūra, administravimas, įmonės svetainės SEO optimizavimas.", "E-shop IT maintenance, administration, company website SEO optimization."),
-        t("Pardavimų planavimas ir įmonės strategijos kūrimas.", "Sales planning and company strategy development."),
-        t("Pirminė finansinė apskaita, darbas kasos aparatu, pagalba buhalteriui.", "Primary financial accounting, cash register operation, assistance to the accountant."),
-        t("Prekių pristatymas didmenininkams ir sandėlio priežiūra.", "Goods delivery to wholesalers and warehouse maintenance.")
+        t('16 metų e-parduotuvės plėtra, SEO, analitika', '16 years of e-shop development, SEO, analytics'),
+        t('Tiekėjų derybos, komandos valdymas', 'Supplier negotiations and team management'),
       ],
-      skills: t("organizaciniai, vadybiniai, komunikaciniai, planavimo, derybų vedimo, finansinės apskaitos, konfliktų sprendimo", "organizational, management, communication, planning, negotiation, financial accounting, conflict resolution")
     },
     {
-      title: t("Klientų aptarnavimo konsultantas", "Customer Service Consultant"),
-      company: t("UAB „Lintel“ (specializuotos informacijos paslaugos)", "UAB 'Lintel' (specialized information services)"),
-      period: "2006 – 2007",
+      title: t('Klientų aptarnavimo konsultantas (IT)', 'IT Customer Support Consultant'),
+      company: 'UAB „Lintel“',
+      period: t('2006 – 2007', '2006 – 2007'),
       icon: <IconPhone size={24} />,
       tasks: [
-        t("Profesionalus klientų konsultavimas ir techninė pagalba telefonu IT srityje.", "Professional customer consultation and technical support by phone in the IT field.")
+        t('Techninė pagalba telefonu IT klausimais', 'Technical phone support on IT issues'),
       ],
-      skills: t("komandinio darbo, problemų sprendimo, informacijos paieškos, komunikaciniai", "teamwork, problem-solving, information retrieval, communication")
-    }
+    },
   ];
 
   return (
@@ -51,8 +61,9 @@ export function ExperienceSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full"
         >
+          <IconBriefcase size={26} className="text-primary" />
           {t('Darbo patirtis', 'Work Experience')}
         </motion.h2>
 
@@ -83,9 +94,11 @@ export function ExperienceSection() {
                     ))}
                   </ul>
 
-                  <p className="text-sm italic text-gray-500">
-                    <strong>{t('Pagrindiniai įgūdžiai:', 'Key skills:')}</strong> {exp.skills}
-                  </p>
+                  {exp.skills ? (
+                    <p className="text-sm italic text-gray-500">
+                      <strong>{t('Technologijos:', 'Tech:')}</strong> {exp.skills}
+                    </p>
+                  ) : null}
                 </div>
               </div>
             </motion.div>

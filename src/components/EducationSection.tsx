@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { IconSchool, IconCode, IconDeviceLaptop } from '@tabler/icons-react';
@@ -9,23 +9,23 @@ export function EducationSection() {
 
   const education = [
     {
-      degree: t("Verslo vadybos ir analitikos bakalauras", "Bachelor of Business Management and Analytics"),
-      school: t("ISM vadybos ir ekonomikos universitetas", "ISM University of Management and Economics"),
-      year: "2015",
-      icon: <IconSchool size={24} />
+      degree: 'Front-End Developer',
+      school: 'Codecademy',
+      year: t('2025 (vykdoma)', '2025 (in progress)'),
+      icon: <IconDeviceLaptop size={24} />,
     },
     {
-      degree: t("Front-end programavimas", "Front-end Programming"),
-      school: t("„Baltijos technologijų institutas” (BIT)", "Baltic Institute of Technology (BIT)"),
-      year: "2021",
-      icon: <IconCode size={24} />
+      degree: t('Front-End programavimas', 'Front-End Programming'),
+      school: t('Baltijos technologijų institutas', 'Baltic Institute of Technology'),
+      year: '2021',
+      icon: <IconCode size={24} />,
     },
     {
-      degree: "Front-End Developer",
-      school: "www.codecademy.com",
-      year: t("Šiuo metu", "Currently"),
-      icon: <IconDeviceLaptop size={24} />
-    }
+      degree: t('Verslo vadyba ir analitika', 'Business Management and Analytics'),
+      school: t('ISM Vadybos ir ekonomikos universitetas', 'ISM University of Management and Economics'),
+      year: '2015',
+      icon: <IconSchool size={24} />,
+    },
   ];
 
   return (
@@ -34,8 +34,9 @@ export function EducationSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full"
         >
+          <IconSchool size={26} className="text-primary" />
           {t('Išsilavinimas', 'Education')}
         </motion.h2>
 

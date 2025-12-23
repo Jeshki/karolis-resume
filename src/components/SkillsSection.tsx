@@ -1,63 +1,38 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
-// PATAISYMAS ČIA: Pakeista 'IconBrandShopify' į 'IconBuildingStore'
-import { 
-  IconLanguage, IconDeviceDesktop, IconBrandFigma, IconTools, IconMoodSmile, 
-  IconSteeringWheel, IconBrain, IconBrandTypescript, IconBrandJavascript, 
-  IconBrandHtml5, IconBrandSass, IconBrandTailwind, IconBrandBootstrap, 
-  IconBrandGit, IconBrandReact, IconBrandRedux, IconBrandNextjs, 
-  IconBrandPython, IconBrandPhp, IconBrandWordpress, IconShoppingCart, IconLayoutCollage,
-  IconBuildingStore // <-- Pakeista ikona
-} from '@tabler/icons-react';
+import { IconTools } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 
 export function SkillsSection() {
   const { t } = useLanguage();
 
-  const techSkills = [
-    { name: "Figma", icon: <IconBrandFigma size={16} /> },
-    { name: "TypeScript", icon: <IconBrandTypescript size={16} /> },
-    { name: "JavaScript", icon: <IconBrandJavascript size={16} /> },
-    { name: "React (JSX)", icon: <IconBrandReact size={16} /> },
-    { name: "HTML5", icon: <IconBrandHtml5 size={16} /> },
-    { name: "Sass", icon: <IconBrandSass size={16} /> },
-    { name: "Tailwind CSS", icon: <IconBrandTailwind size={16} /> },
-    { name: "Bootstrap", icon: <IconBrandBootstrap size={16} /> },
-    { name: "Git", icon: <IconBrandGit size={16} /> },
-    { name: "Redux", icon: <IconBrandRedux size={16} /> },
-    { name: "Next.js", icon: <IconBrandNextjs size={16} /> },
-    { name: "Python", icon: <IconBrandPython size={16} /> },
-    { name: "PHP", icon: <IconBrandPhp size={16} /> },
-    { name: "WordPress", icon: <IconBrandWordpress size={16} /> },
-    { name: "WooCommerce", icon: <IconShoppingCart size={16} /> },
-    { name: "Elementor", icon: <IconLayoutCollage size={16} /> },
-    // PATAISYMAS ČIA: Pakeista ikona
-    { name: "Shopify", icon: <IconBuildingStore size={16} /> }, 
+  const tools = [
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/python.svg' },
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/react.svg' },
+    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/nextdotjs.svg' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/typescript.svg' },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/javascript.svg' },
+    { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/tailwindcss.svg' },
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/nodedotjs.svg' },
+    { name: 'WordPress', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/wordpress.svg' },
+    { name: 'WooCommerce', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/woocommerce.svg' },
+    { name: 'PHP', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/php.svg' },
+    { name: 'Elementor', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/elementor.svg' },
+    { name: 'Shopify', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/shopify.svg' },
+    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/figma.svg' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/git.svg' },
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/github.svg' },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/docker.svg' },
+    { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/vercel.svg' },
+    { name: 'Netlify', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/netlify.svg' },
+    { name: 'ChatGPT / GPT', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/openai.svg' },
+    { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/anthropic.svg' },
+    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/mysql.svg' },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/postgresql.svg' },
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/mongodb.svg' },
+    { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/prisma.svg' },
   ];
-
-  const languages = [
-    { name: t("Anglų k.", "English"), level: t("įgudęs", "Proficient"), percent: 90 },
-    { name: t("Rusų k.", "Russian"), level: t("pažengęs", "Advanced"), percent: 70 }
-  ];
-
-  const strengths = [
-    { name: t("Komunikabilumas", "Communication"), icon: <IconMoodSmile /> },
-    { name: t("Sprendimų paieška", "Solution-seeking"), icon: <IconBrain /> },
-    { name: t("IT išmanymas", "IT Literacy"), icon: <IconDeviceDesktop /> },
-    { name: t("Atsparumas stresui", "Stress Resistance"), icon: <IconMoodSmile /> },
-    { name: t("Saviugda ir tobulėjimas", "Self-development"), icon: <IconBrain /> },
-    { name: t("Kantrybė", "Patience"), icon: <IconMoodSmile /> },
-    { name: t("Pozityvumas", "Positivity"), icon: <IconMoodSmile /> },
-  ];
-
-  const otherSkills = [
-    { name: t("MS Office (Word, Excel) – profesionalus", "MS Office (Word, Excel) – Professional"), icon: <IconTools /> },
-    { name: t("Apskaitos pr. „Būtent“ – įgudęs", "Accounting prg. 'Būtent' – Proficient"), icon: <IconTools /> },
-    { name: t("Grafikos dizainas (Canva, Illustrator) – profesionalus", "Graphic Design (Canva, Illustrator) – Professional"), icon: <IconTools /> },
-    { name: t("B kategorijos vairuotojo pažymėjimas", "B Category Driver's License"), icon: <IconSteeringWheel /> },
-  ];
-
 
   return (
     <section className="py-20 px-4 bg-gray-50">
@@ -65,92 +40,35 @@ export function SkillsSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full"
         >
-          {t('Įgūdžiai ir Stiprybės', 'Skills & Strengths')}
+          <IconTools size={26} className="text-primary" />
+          {t('Technologijos ir įrankiai', 'Technologies & Tools')}
         </motion.h2>
 
-        {/* Tech Skills */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <IconBrandFigma className="text-primary" /> {t('Programavimas ir Web Technologijos', 'Programming & Web Technologies')}
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {techSkills.map((skill, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
-              >
-                {skill.icon}
-                {skill.name}
-              </motion.span>
-            ))}
-          </div>
+        <div className="mb-8 flex items-center justify-center gap-2 text-primary">
+          <IconTools size={22} />
+          <span className="font-semibold">{t('Pilnas tech stack', 'Full tech stack')}</span>
         </div>
 
-        {/* Strengths & Other Skills */}
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
-          <div>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <IconMoodSmile className="text-primary" /> {t('Stiprybės', 'Strengths')}
-            </h3>
-            <ul className="space-y-3">
-              {strengths.map((skill, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 text-gray-700"
-                >
-                  <span className="text-primary p-1 bg-primary/10 rounded-full">{skill.icon}</span> {skill.name}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <IconDeviceDesktop className="text-primary" /> {t('Kiti įgūdžiai', 'Other Skills')}
-            </h3>
-            <ul className="space-y-3">
-              {otherSkills.map((skill, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 text-gray-700"
-                >
-                  <span className="text-primary p-1 bg-primary/10 rounded-full">{skill.icon}</span> {skill.name}
-                </motion.li>
-              ))}
-            </ul>
-            
-            {/* Languages moved here */}
-            <div className="mt-16">
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <IconLanguage className="text-primary" /> {t('Užsienio kalbos', 'Languages')}
-              </h3>
-              <div className="space-y-4">
-                {languages.map((lang, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex justify-between items-center border-b border-gray-200 pb-2"
-                  >
-                      <span className="font-medium">{lang.name}</span>
-                      <span className="text-sm text-gray-500">{lang.level}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {tools.map((tool, i) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.04 }}
+              className="bg-white rounded-xl shadow-sm border border-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 flex items-center justify-center gap-3"
+            >
+              <img
+                src={tool.icon}
+                alt={tool.name}
+                className="h-5 w-5 brightness-0 opacity-80"
+                loading="lazy"
+              />
+              <span>{tool.name}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -8,6 +8,12 @@ import {
   IconCode,
   IconExternalLink,
   IconEye,
+  IconLayoutGrid,
+  IconPhoto,
+  IconPalette,
+  IconVideo,
+  IconSparkles,
+  IconTag,
 } from '@tabler/icons-react';
 import Image from 'next/image';
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -86,7 +92,7 @@ export function PortfolioSection() {
       liveLink: 'https://papildusala.lt/',
     },
     {
-      title: t('Čiu?inių Sala', 'Mattress Island'),
+      title: t('Čiužinių Sala', 'Mattress Island'),
       description: t(
         'Elektroninė parduotuvė, prekiaujanti čiu?iniais ir lovomis. Sukurta su WordPress ir WooCommerce.',
         'An e-commerce store selling mattresses and beds. Built with WordPress and WooCommerce.'
@@ -144,8 +150,9 @@ export function PortfolioSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold mb-4"
+          className="text-3xl md:text-4xl font-bold mb-4 inline-flex items-center gap-2 justify-center w-full"
         >
+          <IconLayoutGrid size={26} className="text-primary" />
           {t('Portfolio', 'Portfolio')}
         </motion.h2>
         <motion.p
@@ -183,11 +190,15 @@ export function PortfolioSection() {
                 </div>
               </div>
               <div className="p-6 text-left">
-                <h3 className="font-bold text-xl mb-2">{project.title}</h3>
+                <h3 className="font-bold text-xl mb-2 inline-flex items-center gap-2">
+                  <IconSparkles size={16} className="text-primary" />
+                  {project.title}
+                </h3>
                 <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
-                    <span key={tech} className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                    <span key={tech} className="px-2 py-1 bg-primary/10 text-primary text-xs rounded inline-flex items-center gap-1">
+                      <IconTag size={12} />
                       {tech}
                     </span>
                   ))}
@@ -224,7 +235,8 @@ export function PortfolioSection() {
         >
           <div className="flex items-end justify-between gap-6 mb-8">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold">
+              <h3 className="text-2xl md:text-3xl font-bold inline-flex items-center gap-2">
+                <IconPhoto size={22} className="text-primary" />
                 {t('Baneriai', 'Banners')}
               </h3>
               <p className="text-gray-600 mt-2">
@@ -278,7 +290,8 @@ export function PortfolioSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-left mt-20"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-3 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold mb-3 text-center inline-flex items-center gap-2 justify-center w-full">
+            <IconPalette size={22} className="text-primary" />
             {t('Logotipai', 'Logos')}
           </h3>
           <p className="text-gray-600 mb-10 max-w-3xl mx-auto text-center">
@@ -312,7 +325,8 @@ export function PortfolioSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-left mt-20"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-3 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold mb-3 text-center inline-flex items-center gap-2 justify-center w-full">
+            <IconVideo size={22} className="text-primary" />
             {t('Video darbai', 'Video pieces')}
           </h3>
           <p className="text-gray-600 mb-10 max-w-3xl mx-auto text-center">

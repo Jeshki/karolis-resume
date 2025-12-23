@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { IconMail, IconBrandLinkedin, IconBrandGithub, IconSend } from '@tabler/icons-react';
+import { IconMail, IconBrandLinkedin, IconBrandGithub, IconSend, IconMessageCircle, IconUser, IconAt, IconMessage } from '@tabler/icons-react';
 import emailjs from '@emailjs/browser';
 import { useLanguage } from 'src/contexts/LanguageContext';
 
@@ -39,8 +39,9 @@ export function ContactSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-8"
+          className="text-3xl md:text-4xl font-bold text-center mb-8 inline-flex items-center gap-2 justify-center w-full"
         >
+          <IconMessageCircle size={26} className="text-primary" />
           {t('Susisiekime', 'Get in Touch')}
         </motion.h2>
 
@@ -52,30 +53,39 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             className="space-y-4"
           >
-            <input
-              type="text"
-              placeholder={t('Vardas', 'Name')}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
-            />
-            <input
-              type="email"
-              placeholder={t('El. paštas', 'Email')}
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
-            />
-            <textarea
-              placeholder={t('Žinutė', 'Message')}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              required
-              rows={5}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
-            />
+            <div className="relative">
+              <IconUser size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder={t('Vardas', 'Name')}
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+                className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
+              />
+            </div>
+            <div className="relative">
+              <IconAt size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type="email"
+                placeholder={t('El. paštas', 'Email')}
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+                className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
+              />
+            </div>
+            <div className="relative">
+              <IconMessage size={18} className="absolute left-4 top-4 text-gray-400" />
+              <textarea
+                placeholder={t('Žinutė', 'Message')}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+                rows={5}
+                className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
+              />
+            </div>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

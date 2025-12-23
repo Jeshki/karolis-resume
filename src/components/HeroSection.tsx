@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useLanguage } from 'src/contexts/LanguageContext';
 // Importuojame reikalingas ikonas
-import { IconPhone, IconMail, IconMapPin, IconCode, IconDeviceDesktop, IconUsers, IconBrain } from '@tabler/icons-react';
+import { IconPhone, IconMail, IconMapPin, IconCode, IconDeviceDesktop, IconUsers, IconBrain, IconSparkles, IconStar } from '@tabler/icons-react';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -65,9 +65,10 @@ export function HeroSection() {
 
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="text-2xl md:text-3xl font-medium text-black mb-6"
+            className="text-2xl md:text-3xl font-medium text-black mb-6 inline-flex items-center gap-2 justify-center md:justify-start"
           >
-            {t('Front-End Developer - Dizaineris', 'Front-End Developer - Designer')}
+            <IconSparkles size={20} className="text-primary" />
+            {t('Front-End & Full-Stack Web kūrėjas', 'Front-End & Full-Stack Web Developer')}
           </motion.h2>
 
           {/* Kontaktai */}
@@ -97,6 +98,10 @@ export function HeroSection() {
           </motion.p>
 
           {/* Stiprybės */}
+          <div className="mb-3 text-sm font-semibold text-primary inline-flex items-center gap-2">
+            <IconStar size={18} />
+            {t('Stiprybės', 'Strengths')}
+          </div>
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             className="flex flex-wrap gap-3 justify-center md:justify-start"

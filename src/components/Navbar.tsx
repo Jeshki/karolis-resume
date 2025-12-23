@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 // import { useTheme } from 'next-themes'; // <-- 1. PAŠALINTA
-import { IconMenu2, IconX } from '@tabler/icons-react'; // Pašalinta IconSun, IconMoon
+import { IconMenu2, IconX, IconUser, IconBriefcase, IconLayoutGrid, IconMail } from '@tabler/icons-react'; // Pašalinta IconSun, IconMoon
 import { useLanguage } from 'src/contexts/LanguageContext';
 import Image from 'next/image';
 
@@ -42,16 +42,20 @@ export function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="/" className="hover:text-primary transition">
+          <Link href="/" className="hover:text-primary transition flex items-center gap-2">
+            <IconUser size={16} className="text-primary" />
             {t('Apie mane', 'About')}
           </Link>
-          <Link href="/resume" className="hover:text-primary transition">
+          <Link href="/resume" className="hover:text-primary transition flex items-center gap-2">
+            <IconBriefcase size={16} className="text-primary" />
             {t('Resume', 'Experience')}
           </Link>
-          <Link href="/portfolio" className="hover:text-primary transition">
+          <Link href="/portfolio" className="hover:text-primary transition flex items-center gap-2">
+            <IconLayoutGrid size={16} className="text-primary" />
             Portfolio
           </Link>
-          <Link href="/kontaktai" className="hover:text-primary transition">
+          <Link href="/kontaktai" className="hover:text-primary transition flex items-center gap-2">
+            <IconMail size={16} className="text-primary" />
             {t('Kontaktai', 'Contact')}
           </Link>
 
@@ -104,10 +108,30 @@ export function Navbar() {
             className="md:hidden bg-white border-t border-gray-200" // Pašalintos dark: klasės
           >
             <div className="px-4 pt-2 pb-4 space-y-2">
-              <Link href="/" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>{t('Apie mane', 'About')}</Link>
-              <Link href="/resume" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>{t('Resume', 'Experience')}</Link>
-              <Link href="/portfolio" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>Portfolio</Link>
-              <Link href="/kontaktai" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>{t('Kontaktai', 'Contact')}</Link>
+              <Link href="/" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>
+                <span className="flex items-center gap-2">
+                  <IconUser size={16} className="text-primary" />
+                  {t('Apie mane', 'About')}
+                </span>
+              </Link>
+              <Link href="/resume" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>
+                <span className="flex items-center gap-2">
+                  <IconBriefcase size={16} className="text-primary" />
+                  {t('Resume', 'Experience')}
+                </span>
+              </Link>
+              <Link href="/portfolio" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>
+                <span className="flex items-center gap-2">
+                  <IconLayoutGrid size={16} className="text-primary" />
+                  Portfolio
+                </span>
+              </Link>
+              <Link href="/kontaktai" className="block py-2 hover:text-primary" onClick={() => setIsOpen(false)}>
+                <span className="flex items-center gap-2">
+                  <IconMail size={16} className="text-primary" />
+                  {t('Kontaktai', 'Contact')}
+                </span>
+              </Link>
             </div>
 
             {isMounted && (

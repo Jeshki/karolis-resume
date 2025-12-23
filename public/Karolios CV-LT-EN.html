@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <title>Karolis Čibiras – CV (English / Lietuvių)</title>
+  <meta name="author" content="Karolis Čibiras">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --accent: #631d1f;
+      --accent-light: #8b2b2e;
+      --gray: #555;
+      --light: #f8f8f8;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      line-height: 1.52;
+      font-size: 10.3pt;
+      padding: 13mm 15mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+    }
+    .page-break { page-break-before: always; }
+    .language-header {
+      text-align: center;
+      font-size: 20pt;
+      font-weight: 900;
+      color: var(--accent);
+      margin: 10pt 0 35pt;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .header { text-align:center; padding-bottom:22pt; border-bottom:5pt solid var(--accent); margin-bottom:22pt; }
+    .photo img { width:150pt; height:150pt; border-radius:50%; object-fit:cover; border:6pt solid white; box-shadow:0 8pt 24pt rgba(0,0,0,0.2); margin-bottom:14pt; }
+    h1 { font-size:29pt; font-weight:900; margin:0; letter-spacing:-1.2px; text-transform:uppercase; }
+    .position { font-size:14.2pt; font-weight:700; color:var(--accent); margin:10pt 0 16pt; }
+    .contact { display:flex; flex-wrap:wrap; justify-content:center; gap:22pt; font-size:10.2pt; font-weight:500; color:#333; margin-top:10pt; }
+    .contact div { display:flex; align-items:center; gap:8pt; }
+
+    /* Bendros ikonų klasės (Material Symbols – kontaktams ir headingams) */
+    .icon {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      text-transform: none;
+      white-space: nowrap;
+      word-wrap: normal;
+      font-size: 24pt;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* Kontaktų ikonėlės (17pt) */
+    .contact .icon {
+      font-size: 17pt;
+      width: 17pt;
+      height: 17pt;
+    }
+    
+    h2 {
+      font-size:13.6pt; font-weight:800; text-transform:uppercase; letter-spacing:1.2px;
+      color:var(--accent); border-bottom:2pt solid var(--accent); padding-bottom:6pt;
+      margin:28pt 0 14pt; display:flex; align-items:center; gap:12pt;
+    }
+    /* Antraščių ikonėlės (21pt) */
+    h2 .icon { 
+      font-size: 21pt;
+      width: 21pt;
+      height: 21pt;
+    }
+
+    .job { margin-bottom:22pt; page-break-inside:avoid; }
+    .job-header { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10pt; margin-bottom:8pt; }
+    .job-title { font-weight:800; font-size:12pt; }
+    .company { font-weight:700; color:var(--accent-light); font-size:11.2pt; }
+    .date { font-size:10pt; font-weight:700; color:var(--accent); white-space:nowrap; }
+    .skills-used { font-size:9.6pt; color:var(--gray); font-style:italic; margin-top:8pt; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 11pt 13pt;
+      margin-top: 12pt;
+    }
+    .skill-item {
+      display: flex;
+      align-items: center;
+      font-size: 10pt;
+      font-weight: 600;
+      background: var(--light);
+      padding: 8pt 11pt;
+      border-radius: 9px;
+      box-shadow: 0 2pt 7pt rgba(0,0,0,0.07);
+      transition: all 0.2s;
+    }
+    .skill-item img {
+      display: inline-block;
+      width: 20pt;
+      height: 20pt;
+      margin-right: 9pt;
+      object-fit: contain;
+      /* Juodos, neutralios ikonos PDF'ui */
+      filter: brightness(0%);
+    }
+
+    .columns { columns:2; column-gap:28pt; margin-top:10pt; }
+    .columns li { margin-bottom:9pt; break-inside:avoid; font-weight:500; }
+    ul { padding-left:20pt; }
+    li { margin-bottom:6pt; }
+
+    @media print {
+      body { padding:10mm 12mm; font-size:9.9pt; }
+      .skill-item { background:none; box-shadow:none; padding:5pt 0; }
+      .skill-item img {
+        width: 18pt;
+        height: 18pt;
+        margin-right: 7pt;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="language-header">Curriculum Vitae – English</div>
+
+<div class="header">
+  <div class="photo"><img src="karolis.jpg" alt="Karolis Čibiras"></div>
+  <h1>Karolis Čibiras</h1>
+  <p class="position">Front-End &amp; Full-Stack Web Developer</p>
+  <div class="contact">
+    <div><span class="icon">mail</span> karoliscibiras@gmail.com</div>
+    <div><span class="icon">phone</span> +370 603 02903</div>
+    <div><span class="icon">location_on</span> Kaunas, Lithuania</div>
+    <div><span class="icon">language</span> www.karoliscibiras.lt</div>
+  </div>
+</div>
+
+<h2><span class="icon">person</span> About Me</h2>
+<p>Front-End / Full-Stack Developer & Designer with <strong>18+ years of experience</strong>. Building modern websites and e-commerce platforms using React, Next.js, WordPress, WooCommerce, and Shopify. Actively integrating AI tools throughout the entire development process.</p>
+
+<h2><span class="icon">security</span> Core Competencies</h2>
+<ul class="columns">
+  <li>React, Next.js, TypeScript</li>
+  <li>Python &amp; Node.js Back-End</li>
+  <li>WordPress + WooCommerce + Elementor</li>
+  <li>Custom PHP Solutions</li>
+  <li>UI/UX Design &amp; Figma</li>
+  <li>Artificial Intelligence Tools</li>
+  <li>Headless &amp; Modern Stack</li>
+  <li>SEO &amp; Performance Optimization</li>
+</ul>
+
+<h2><span class="icon">work</span> Work Experience</h2>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Freelance Web Developer / Programmer</div>
+      <div class="company">Self-Employed</div>
+    </div>
+    <div class="date">Nov 2025 – Present</div>
+  </div>
+  <ul>
+    <li>Building modern websites and e-commerce stores from scratch</li>
+    <li>React, Next.js, headless, custom WordPress</li>
+    <li>High-end UI/UX and design systems</li>
+    <li>AI integration at every stage</li>
+  </ul>
+  <p class="skills-used"><strong>Tech:</strong> React · Next.js · TypeScript · Python · Tailwind · Node.js · AI Tools</p>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Web Developer</div>
+      <div class="company">Bithub.lt</div>
+    </div>
+    <div class="date">Sep 2025 – Nov 2025</div>
+  </div>
+  <ul>
+    <li>Development and maintenance of websites and e-shops</li>
+    <li>Design, logos, visual identity</li>
+    <li>WordPress, WooCommerce, Elementor, PHP</li>
+    <li>AI tools for code &amp; process optimization</li>
+  </ul>
+  <p class="skills-used"><strong>Tech:</strong> WordPress · WooCommerce · PHP · Figma · AI Tools</p>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">E-commerce Manager / IT Specialist</div>
+      <div class="company">UAB „Medikatus“</div>
+    </div>
+    <div class="date">2008 – Feb 2024</div>
+  </div>
+  <ul>
+    <li>16 years of e-shop development, SEO, analytics</li>
+    <li>Supplier negotiations and team management</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">IT Customer Support Consultant</div>
+      <div class="company">UAB „Lintel“</div>
+    </div>
+    <div class="date">2006 – 2007</div>
+  </div>
+  <ul>
+    <li>Technical phone support on IT issues</li>
+  </ul>
+</div>
+
+<h2><span class="icon">build</span> Technologies &amp; Tools</h2>
+<div class="skills-grid">
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/python.svg" alt="Python">Python</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/react.svg" alt="React">React</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/nextdotjs.svg" alt="Next.js">Next.js</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/typescript.svg" alt="TypeScript">TypeScript</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/javascript.svg" alt="JavaScript">JavaScript</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/tailwindcss.svg" alt="Tailwind CSS">Tailwind CSS</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/nodedotjs.svg" alt="Node.js">Node.js</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/wordpress.svg" alt="WordPress">WordPress</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/woocommerce.svg" alt="WooCommerce">WooCommerce</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/php.svg" alt="PHP">PHP</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/elementor.svg" alt="Elementor">Elementor</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/shopify.svg" alt="Shopify">Shopify</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/figma.svg" alt="Figma">Figma</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/git.svg" alt="Git">Git</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/github.svg" alt="GitHub">GitHub</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/docker.svg" alt="Docker">Docker</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/vercel.svg" alt="Vercel">Vercel</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/netlify.svg" alt="Netlify">Netlify</div>
+  <!-- AI -->
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/openai.svg" alt="ChatGPT">ChatGPT / GPT</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/anthropic.svg" alt="Claude">Claude</div>
+  <!-- Databases -->
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/mysql.svg" alt="MySQL">MySQL</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/postgresql.svg" alt="PostgreSQL">PostgreSQL</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/mongodb.svg" alt="MongoDB">MongoDB</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/prisma.svg" alt="Prisma">Prisma</div>
+</div>
+
+<h2><span class="icon">school</span> Education</h2>
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Front-End Developer</div>
+      <div class="company">Codecademy</div>
+    </div>
+    <div class="date">2025 (in progress)</div>
+  </div>
+</div>
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Front-End Programming</div>
+      <div class="company">Baltic Institute of Technology</div>
+    </div>
+    <div class="date">2021</div>
+  </div>
+</div>
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Business Management and Analytics</div>
+      <div class="company">ISM University of Management and Economics</div>
+    </div>
+    <div class="date">2015</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+<div class="language-header">Gyvenimo aprašymas – Lietuvių kalba</div>
+
+<div class="header">
+  <div class="photo"><img src="karolis.jpg" alt="Karolis Čibiras"></div>
+  <h1>Karolis Čibiras</h1>
+  <p class="position">Front-End &amp; Full-Stack Web Kūrėjas</p>
+  <div class="contact">
+    <div><span class="icon">mail</span> karoliscibiras@gmail.com</div>
+    <div><span class="icon">phone</span> +370 603 02903</div>
+    <div><span class="icon">location_on</span> Kaunas, Lietuva</div>
+    <div><span class="icon">language</span> www.karoliscibiras.lt</div>
+  </div>
+</div>
+
+<h2><span class="icon">person</span> Apie mane</h2>
+<p>Front-End / Full-Stack programuotojas ir dizaineris su <strong>18+ met? patirtimi</strong>. Kuriu ?iuolaikines svetaines ir el. parduotuves naudojant React, Next.js, WordPress, WooCommerce bei Shopify. Aktyviai naudoju dirbtin? intelekt? visose k?rimo stadijose.</p>
+
+<h2><span class="icon">security</span> Pagrindinės kompetencijos</h2>
+<ul class="columns">
+  <li>React, Next.js, TypeScript</li>
+  <li>Python &amp; Node.js back-end</li>
+  <li>WordPress + WooCommerce + Elementor</li>
+  <li>PHP individualūs sprendimai</li>
+  <li>UI/UX dizainas ir Figma</li>
+  <li>Dirbtinio intelekto įrankiai</li>
+  <li>Headless ir modernus stack’as</li>
+  <li>SEO bei performanso optimizacija</li>
+</ul>
+
+<h2><span class="icon">work</span> Darbo patirtis</h2>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Freelance Web kūrėjas / Programuotojas</div>
+      <div class="company">Individuali veikla</div>
+    </div>
+    <div class="date">2025-11 – dabar</div>
+  </div>
+  <ul>
+    <li>Modernių web svetainių ir e-parduotuvių kūrimas nuo nulio</li>
+    <li>React, Next.js, headless sprendimai, custom WordPress</li>
+    <li>Aukščiausio lygio UI/UX ir dizaino sistema</li>
+    <li>DI integracija visuose etapuose</li>
+  </ul>
+  <p class="skills-used"><strong>Technologijos:</strong> React · Next.js · TypeScript · Python · Tailwind · Node.js · AI Tools</p>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Web kūrėjas</div>
+      <div class="company">Bithub.lt</div>
+    </div>
+    <div class="date">2025-09 – 2025-11</div>
+  </div>
+  <ul>
+    <li>Web svetainių ir e-parduotuvių kūrimas bei priežiūra</li>
+    <li>Dizaino sprendimai, logotipai, vizualinis identitetas</li>
+    <li>WordPress, WooCommerce, Elementor, PHP</li>
+    <li>DI įrankiai procesų ir kodo optimizavimui</li>
+  </ul>
+  <p class="skills-used"><strong>Technologijos:</strong> WordPress · WooCommerce · PHP · Figma · AI Tools</p>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">E-komercijos vadovas / IT specialistas</div>
+      <div class="company">UAB „Medikatus“</div>
+    </div>
+    <div class="date">2008 – 2024-02</div>
+  </div>
+  <ul>
+    <li>16 metų e-parduotuvės plėtra, SEO, analitika</li>
+    <li>Tiekėjų derybos, komandos valdymas</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Klientų aptarnavimo konsultantas (IT)</div>
+      <div class="company">UAB „Lintel“</div>
+    </div>
+    <div class="date">2006 – 2007</div>
+  </div>
+  <ul>
+    <li>Techninė pagalba telefonu IT klausimais</li>
+  </ul>
+</div>
+
+<h2><span class="icon">build</span> Technologijos ir įrankiai</h2>
+<div class="skills-grid">
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/python.svg" alt="Python">Python</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/react.svg" alt="React">React</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/nextdotjs.svg" alt="Next.js">Next.js</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/typescript.svg" alt="TypeScript">TypeScript</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/javascript.svg" alt="JavaScript">JavaScript</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/tailwindcss.svg" alt="Tailwind CSS">Tailwind CSS</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/nodedotjs.svg" alt="Node.js">Node.js</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/wordpress.svg" alt="WordPress">WordPress</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/woocommerce.svg" alt="WooCommerce">WooCommerce</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/php.svg" alt="PHP">PHP</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/elementor.svg" alt="Elementor">Elementor</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/shopify.svg" alt="Shopify">Shopify</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/figma.svg" alt="Figma">Figma</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/git.svg" alt="Git">Git</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/github.svg" alt="GitHub">GitHub</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/docker.svg" alt="Docker">Docker</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/vercel.svg" alt="Vercel">Vercel</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/netlify.svg" alt="Netlify">Netlify</div>
+  <!-- AI -->
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/openai.svg" alt="ChatGPT">ChatGPT / GPT</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/anthropic.svg" alt="Claude">Claude</div>
+  <!-- Duomenų bazės -->
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/mysql.svg" alt="MySQL">MySQL</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/postgresql.svg" alt="PostgreSQL">PostgreSQL</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/mongodb.svg" alt="MongoDB">MongoDB</div>
+  <div class="skill-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/prisma.svg" alt="Prisma">Prisma</div>
+</div>
+
+<h2><span class="icon">school</span> Išsilavinimas</h2>
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Front-End Developer</div>
+      <div class="company">Codecademy</div>
+    </div>
+    <div class="date">2025 (vykdoma)</div>
+  </div>
+</div>
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Front-End programavimas</div>
+      <div class="company">Baltijos technologijų institutas</div>
+    </div>
+    <div class="date">2021</div>
+  </div>
+</div>
+<div class="job">
+  <div class="job-header">
+    <div>
+      <div class="job-title">Verslo vadyba ir analitika</div>
+      <div class="company">ISM Vadybos ir ekonomikos universitetas</div>
+    </div>
+    <div class="date">2015</div>
+  </div>
+</div>
+
+</body>
+</html>

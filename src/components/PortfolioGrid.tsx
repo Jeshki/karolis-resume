@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { IconSparkles, IconTag, IconPhoto } from '@tabler/icons-react';
 
 const projects = [
   {
@@ -37,10 +38,13 @@ export function PortfolioGrid() {
           className="group block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all"
         >
           <div className="bg-gradient-to-br from-gray-200 to-gray-300 h-48 flex items-center justify-center">
-            <div className="bg-white/20 backdrop-blur-sm border-2 border-dashed border-white/40 rounded-xl w-24 h-24" />
+            <div className="bg-white/20 backdrop-blur-sm border-2 border-dashed border-white/40 rounded-xl w-24 h-24 flex items-center justify-center">
+              <IconPhoto size={28} className="text-white/80" />
+            </div>
           </div>
           <div className="p-6">
-            <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition">
+            <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition inline-flex items-center gap-2">
+              <IconSparkles size={16} className="text-primary" />
               {project.title}
             </h3>
             <p className="text-gray-600 mb-4 text-sm">
@@ -50,8 +54,9 @@ export function PortfolioGrid() {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full"
+                  className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full inline-flex items-center gap-1"
                 >
+                  <IconTag size={12} />
                   {tag}
                 </span>
               ))}

@@ -10,8 +10,8 @@ export default function ResumePage() {
     <>
       <ResumeHeader /> 
       <ExperienceSection />
-      <EducationSection />
       <SkillsSection />
+      <EducationSection />
     </>
   );
 }
