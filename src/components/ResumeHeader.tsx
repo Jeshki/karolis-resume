@@ -35,7 +35,7 @@ export function ResumeHeader() {
 
           <h1 className="text-4xl md:text-5xl font-bold mb-2">Karolis Čibiras</h1>
           <h2 className="text-2xl md:text-3xl font-medium text-primary mb-6">
-            {t('Front-End & Full-Stack Web kūrėjas', 'Front-End & Full-Stack Web Developer')}
+            {t('Full-Stack Kūrėjas', 'Full-Stack Developer')}
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6 text-gray-600">
             <span className="flex items-center gap-2 justify-center">
