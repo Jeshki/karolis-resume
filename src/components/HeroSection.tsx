@@ -68,7 +68,7 @@ export function HeroSection() {
             className="text-2xl md:text-3xl font-medium text-black mb-6 inline-flex items-center gap-2 justify-center md:justify-start"
           >
             <IconSparkles size={20} className="text-primary" />
-            {t('Front-End & Full-Stack Web kūrėjas', 'Front-End & Full-Stack Web Developer')}
+            {t('Full-Stack programuotojas ir dizaineris', 'Full-Stack Developer & Designer')}
           </motion.h2>
 
           {/* Kontaktai */}
@@ -92,8 +92,8 @@ export function HeroSection() {
             className="text-lg text-black max-w-lg mx-auto md:mx-0 mb-6"
           >
             {t(
-              'Esu patyręs Web Develop-eris, besispecializuojantis Front-End programavime ir UX/UI dizaine. Su 15 metų patirtimi šeimos versle, esu išsiugdęs stiprias verslumo ir problemų sprendimo savybes. Įgijau žinių ISM, baigiau Front-End studijas Bit Akademijoje, o šiuo metu tęsiu mokslus www.codecademy.com. Esu laisvai bendraujantis, pozityvus ir ryžtingas "kovotojas", nuolat siekiantis tobulumo ir inovacijų.',
-              "I am an experienced Web Developer specializing in Front-End programming and UX/UI design. With 15 years of experience in a family business, I have developed strong entrepreneurial and problem-solving skills. I gained knowledge at ISM, completed Front-End studies at Bit Academy, and am currently continuing my studies at www.codecademy.com. I am easy-going, positive, and a determined 'fighter', constantly striving for perfection and innovation."
+              'Esu Full-Stack programuotojas ir dizaineris, kuriantis modernias, greitas ir vartotojui patogias svetaines bei e. parduotuves. Dirbu su React, Next.js, TypeScript, WordPress ir UI/UX dizainu, o dirbtinio intelekto įrankius taikau visame kūrimo procese nuo idėjos iki paleidimo.',
+              'I am a Full-Stack Developer & Designer building modern, high-performance, user-friendly websites and e-commerce projects. I work with React, Next.js, TypeScript, WordPress, and UI/UX design, while integrating AI tools across the entire process from concept to launch.'
             )}
           </motion.p>
 
@@ -121,4 +121,3 @@ export function HeroSection() {
     </motion.section>
   );
 }
-

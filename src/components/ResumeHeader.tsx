@@ -35,7 +35,7 @@ export function ResumeHeader() {
 
           <h1 className="text-4xl md:text-5xl font-bold mb-2">Karolis Čibiras</h1>
           <h2 className="text-2xl md:text-3xl font-medium text-primary mb-6">
-            {t('Full-Stack Kūrėjas', 'Full-Stack Developer')}
+            {t('Full-Stack programuotojas ir dizaineris', 'Full-Stack Developer & Designer')}
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6 text-gray-600">
             <span className="flex items-center gap-2 justify-center">
@@ -74,8 +74,8 @@ export function ResumeHeader() {
             </h3>
             <p className="text-lg text-gray-700">
               {t(
-                'Front-End / Full-Stack programuotojas ir dizaineris su 18+ metų patirtimi. Kuriu šiuolaikines svetaines ir el. parduotuves naudojant React, Next.js, WordPress, WooCommerce bei Shopify. Aktyviai naudoju dirbtinį intelektą visose kūrimo stadijose.',
-                'Front-End / Full-Stack Developer & Designer with 18+ years of experience. Building modern websites and e-commerce platforms using React, Next.js, WordPress, WooCommerce, and Shopify. Actively integrating AI tools throughout the entire development process.'
+                'Full-Stack programuotojas ir dizaineris su 18+ metų patirtimi. Kuriu šiuolaikines svetaines ir el. parduotuves naudojant React, Next.js, WordPress, WooCommerce bei Shopify. Aktyviai naudoju dirbtinį intelektą visose kūrimo stadijose.',
+                'Full-Stack Developer & Designer with 18+ years of experience. Building modern websites and e-commerce platforms using React, Next.js, WordPress, WooCommerce, and Shopify. Actively integrating AI tools throughout the entire development process.'
               )}
             </p>
           </div>
