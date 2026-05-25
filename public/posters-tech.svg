@@ -1,0 +1,28 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1600" rx="48" fill="#0B1120" />
+  <g filter="url(#glow)">
+    <circle cx="260" cy="340" r="220" fill="#38BDF8" opacity="0.35" />
+    <circle cx="940" cy="420" r="240" fill="#A855F7" opacity="0.35" />
+    <circle cx="600" cy="1120" r="320" fill="#22D3EE" opacity="0.25" />
+  </g>
+  <rect x="160" y="460" width="880" height="780" rx="32" stroke="#CBD5E1" stroke-width="4" opacity="0.65" />
+  <rect x="220" y="520" width="760" height="320" rx="28" fill="#111827" stroke="#38BDF8" stroke-width="3" opacity="0.8" />
+  <rect x="220" y="900" width="320" height="220" rx="24" fill="#111827" stroke="#A855F7" stroke-width="3" opacity="0.85" />
+  <rect x="600" y="900" width="380" height="220" rx="24" fill="#111827" stroke="#22D3EE" stroke-width="3" opacity="0.85" />
+  <text x="200" y="360" fill="#E2E8F0" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="112" font-weight="800">TECH</text>
+  <text x="200" y="450" fill="#E2E8F0" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="68" font-weight="700">KONFERENCIJA</text>
+  <text x="260" y="650" fill="#38BDF8" font-family="'JetBrains Mono', 'Inter', monospace" font-size="32" font-weight="600">Serverless · AI · Web3 · Saugumas</text>
+  <text x="260" y="730" fill="#CBD5E1" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="24" opacity="0.9">Nacionalinis dirbtinio intelekto centras · Rugsėjo 12 d.</text>
+  <text x="640" y="1040" fill="#E2E8F0" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="42" font-weight="700">Keynote:</text>
+  <text x="640" y="1098" fill="#A855F7" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="32">„Inovacijos be triukšmo“</text>
+  <text x="640" y="1170" fill="#CBD5E1" font-family="'Inter', 'Helvetica', 'Arial', sans-serif" font-size="24" opacity="0.9">Dr. Gabrielė Jonaitytė · 10:00</text>
+  <defs>
+    <filter id="glow" x="-80" y="-80" width="1360" height="1760" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="90" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+</svg>

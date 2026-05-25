@@ -1,0 +1,8 @@
+@media print {
+  @page { 
+    size: auto;
+    /* Paliekame tik puslapio paraščių nustatymą */
+    margin: 1.5cm; 
+  }
+  
+}
