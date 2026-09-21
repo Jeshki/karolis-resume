@@ -4,15 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { IconMenu2, IconX, IconUser, IconBriefcase, IconLayoutGrid, IconMail } from '@tabler/icons-react';
+import { IconMenu2, IconX } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import Image from 'next/image';
 
 const links = [
-  { href: '/', icon: IconUser, lt: 'Apie mane', en: 'About' },
-  { href: '/resume', icon: IconBriefcase, lt: 'CV', en: 'Resume' },
-  { href: '/portfolio', icon: IconLayoutGrid, lt: 'Darbai', en: 'Work' },
-  { href: '/kontaktai', icon: IconMail, lt: 'Kontaktai', en: 'Contact' },
+  { href: '/', lt: 'Apie mane', en: 'About' },
+  { href: '/resume', lt: 'CV', en: 'Resume' },
+  { href: '/portfolio', lt: 'Darbai', en: 'Work' },
+  { href: '/kontaktai', lt: 'Kontaktai', en: 'Contact' },
 ] as const;
 
 export function Navbar() {
@@ -34,31 +34,27 @@ export function Navbar() {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="fixed top-0 w-full z-[70] border-b border-gray-200 bg-white backdrop-blur-xl"
     >
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-end items-center gap-2">
-        <div className="hidden md:flex items-center space-x-6">
+      <div className="relative max-w-7xl mx-auto px-4 py-4 flex justify-center items-center">
+        <div className="hidden md:flex items-center gap-10 text-lg tracking-wide">
           {links.map((link) => {
-            const Icon = link.icon;
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={active ? 'page' : undefined}
-                className={`hover:text-primary transition flex items-center gap-2 ${
-                  active ? 'font-semibold text-black' : 'text-gray-700'
+                className={`hover:text-black transition ${
+                  active ? 'text-black' : 'text-gray-600'
                 }`}
               >
-                <Icon size={16} className="text-primary" />
                 {t(link.lt, link.en)}
               </Link>
             );
           })}
 
-          <div className="w-px h-6 bg-gray-300" />
-
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1 hover:opacity-80 transition-opacity"
+            className="flex items-center hover:opacity-80 transition-opacity"
             aria-label={t('Pakeisti kalbą', 'Switch language')}
           >
             <Image
@@ -73,7 +69,7 @@ export function Navbar() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+          className="md:hidden absolute right-4 p-2 rounded-lg hover:bg-gray-100 transition"
           aria-expanded={isOpen}
           aria-label={isOpen ? t('Uždaryti meniu', 'Close menu') : t('Atidaryti meniu', 'Open menu')}
         >
@@ -90,34 +86,30 @@ export function Navbar() {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden bg-white border-t border-gray-200"
           >
-            <div className="px-4 pt-2 pb-4 space-y-2">
+            <div className="px-4 pt-3 pb-5 space-y-1 text-center text-lg tracking-wide">
               {links.map((link) => {
-                const Icon = link.icon;
                 const active = isActive(link.href);
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`block py-2 hover:text-primary ${active ? 'font-semibold' : ''}`}
+                    className={`block py-2 hover:text-black ${active ? 'text-black' : 'text-gray-600'}`}
                     onClick={() => setIsOpen(false)}
                     aria-current={active ? 'page' : undefined}
                   >
-                    <span className="flex items-center gap-2">
-                      <Icon size={16} className="text-primary" />
-                      {t(link.lt, link.en)}
-                    </span>
+                    {t(link.lt, link.en)}
                   </Link>
                 );
               })}
             </div>
 
-            <div className="border-t border-gray-200 px-4 py-4 flex justify-between items-center">
+            <div className="border-t border-gray-200 px-4 py-4 flex justify-center">
               <button
                 onClick={() => {
                   toggleLanguage();
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-2 text-sm"
+                className="flex items-center gap-2 text-base"
                 aria-label={t('Pakeisti kalbą', 'Switch language')}
               >
                 <Image
