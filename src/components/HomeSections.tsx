@@ -12,7 +12,7 @@ import {
   Quote,
   BadgeCheck,
 } from 'lucide-react';
-import { Browser, Storefront, PenNib, Headset } from '@phosphor-icons/react';
+import { Browser, Storefront, PenNib, Headset } from '@phosphor-icons/react/dist/ssr';
 import { IconBrandLinkedin } from '@tabler/icons-react';
 import { Reveal } from 'src/components/Reveal';
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -165,16 +165,16 @@ export function HomeSections() {
                   key={service.title}
                   whileHover={hoverLift}
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className="group h-full min-h-[240px] p-7 md:p-9 flex flex-col border border-white/12 hover:border-white/35 hover:bg-white/[0.03] transition-colors"
+                  className="group h-full p-7 md:p-8 flex flex-col border border-white/12 hover:border-white/35 hover:bg-white/[0.03] transition-colors"
                 >
-                  <div className="flex items-start justify-between gap-4 mb-10">
-                    <span className="text-[11px] tracking-[0.22em] text-white/40">{service.n}</span>
+                  <div className="flex items-center gap-4 mb-7">
                     <span
-                      className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 text-white group-hover:border-white/55 group-hover:bg-white group-hover:text-black transition-colors"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 text-white group-hover:border-white/55 group-hover:bg-white group-hover:text-black transition-colors"
                       aria-hidden
                     >
-                      <Icon size={28} weight="light" />
+                      <Icon size={26} weight="light" />
                     </span>
+                    <span className="text-[11px] tracking-[0.22em] text-white/40">{service.n}</span>
                   </div>
                   <h3 className="text-2xl tracking-wide mb-3">{service.title}</h3>
                   <p className="text-white/70 leading-relaxed mb-8 max-w-sm">{service.body}</p>
@@ -186,7 +186,7 @@ export function HomeSections() {
             })}
           </div>
 
-          <div className="mt-12 md:mt-14">
+          <div className="mt-12 md:mt-14 max-md:pb-16">
             <Link
               href="/kontaktai"
               className="inline-flex items-center gap-2 text-sm tracking-[0.14em] uppercase text-white/70 hover:text-white transition-colors"
