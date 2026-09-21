@@ -3,21 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import {
-  IconMail,
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconSend,
-  IconMessageCircle,
-  IconUser,
-  IconAt,
-  IconMessage,
-  IconPhone,
-  IconClock,
-  IconCheck,
-  IconAlertCircle,
-  IconListCheck,
-} from '@tabler/icons-react';
-import emailjs from '@emailjs/browser';
+  Mail,
+  Send,
+  MessageCircle,
+  User,
+  AtSign,
+  MessageSquare,
+  Phone,
+  Clock,
+  Check,
+  CircleAlert,
+  ListChecks,
+} from 'lucide-react';
+import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { SITE } from 'src/lib/site';
 import { Reveal } from 'src/components/Reveal';
@@ -29,20 +27,26 @@ export function ContactSection() {
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.privacy) return;
+    if (!formData.privacy) {
+      setStatus('error');
+      return;
+    }
     setStatus('sending');
 
     try {
-      await emailjs.send(
-        'service_192u0r9',
-        'template_u2g1ok7',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
           message: formData.message,
-        },
-        'ubLfcy2BLMSoiD07t'
-      );
+          privacy: formData.privacy,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('send_failed');
+      }
       setStatus('sent');
       setFormData({ name: '', email: '', message: '', privacy: false });
     } catch {
@@ -55,17 +59,17 @@ export function ContactSection() {
       <div className="max-w-5xl mx-auto">
         <Reveal>
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 inline-flex items-center gap-2 justify-center w-full">
-            <IconMessageCircle size={26} className="text-primary" />
+            <MessageCircle size={24} strokeWidth={1.5} />
             {t('Susisiekime', 'Get in Touch')}
           </h1>
           <p className="text-center text-gray-700 mb-10 max-w-xl mx-auto inline-flex flex-col sm:flex-row items-center justify-center gap-2 w-full">
             <span className="inline-flex items-center gap-2 font-medium">
-              <IconClock size={18} />
+              <Clock size={18} strokeWidth={1.5} />
               {t('Atsakau per 24 val.', 'I reply within 24 hours.')}
             </span>
             <span className="hidden sm:inline text-gray-300">·</span>
             <a href={SITE.phoneHref} className="inline-flex items-center gap-2 hover:underline underline-offset-4">
-              <IconPhone size={18} />
+              <Phone size={18} strokeWidth={1.5} />
               {SITE.phoneDisplay}
             </a>
           </p>
@@ -76,7 +80,7 @@ export function ContactSection() {
             {status === 'sent' ? (
               <div className="rounded-2xl border border-green-200 bg-green-50 p-6 text-green-900" role="status">
                 <p className="font-semibold inline-flex items-center gap-2 mb-2">
-                  <IconCheck size={20} />
+                  <Check size={20} strokeWidth={1.5} />
                   {t('Žinutė išsiųsta', 'Message sent')}
                 </p>
                 <p className="text-sm mb-4">
@@ -100,7 +104,7 @@ export function ContactSection() {
                     {t('Vardas', 'Name')} <span className="text-red-600">*</span>
                   </label>
                   <div className="relative">
-                    <IconUser size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <User size={18} strokeWidth={1.5} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       id="contact-name"
                       name="name"
@@ -119,7 +123,7 @@ export function ContactSection() {
                     {t('El. paštas', 'Email')} <span className="text-red-600">*</span>
                   </label>
                   <div className="relative">
-                    <IconAt size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <AtSign size={18} strokeWidth={1.5} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       id="contact-email"
                       name="email"
@@ -138,7 +142,7 @@ export function ContactSection() {
                     {t('Žinutė', 'Message')} <span className="text-red-600">*</span>
                   </label>
                   <div className="relative">
-                    <IconMessage size={18} className="absolute left-4 top-4 text-gray-400" />
+                    <MessageSquare size={18} strokeWidth={1.5} className="absolute left-4 top-4 text-gray-400" />
                     <textarea
                       id="contact-message"
                       name="message"
@@ -176,12 +180,16 @@ export function ContactSection() {
                   className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 disabled:opacity-70 transition-colors"
                 >
                   {status === 'sending' ? t('Siunčiama...', 'Sending...') : t('Siųsti', 'Send')}
-                  <IconSend size={18} />
+                  <Send size={18} strokeWidth={1.5} />
                 </button>
                 {status === 'error' ? (
                   <p className="text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm inline-flex items-center gap-2 w-full" role="alert">
-                    <IconAlertCircle size={18} />
-                    {t('Nepavyko išsiųsti. Bandykite dar kartą arba rašykite el. paštu.', 'Could not send. Try again or email me directly.')}
+                    <CircleAlert size={18} strokeWidth={1.5} className="shrink-0" />
+                    {t('Nepavyko išsiųsti. Bandykite dar kartą arba rašykite ', 'Could not send. Try again or email ')}
+                    <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>
+                      {SITE.email}
+                    </a>
+                    .
                   </p>
                 ) : null}
               </form>
@@ -197,12 +205,12 @@ export function ContactSection() {
                     href={`mailto:${SITE.email}`}
                     className="flex items-center gap-3 text-lg hover:text-primary transition"
                   >
-                    <IconMail size={22} /> {SITE.email}
+                    <Mail size={22} strokeWidth={1.5} /> {SITE.email}
                   </a>
                 </li>
                 <li>
                   <a href={SITE.phoneHref} className="flex items-center gap-3 text-lg hover:text-primary transition">
-                    <IconPhone size={22} /> {SITE.phoneDisplay}
+                    <Phone size={22} strokeWidth={1.5} /> {SITE.phoneDisplay}
                   </a>
                 </li>
                 <li>
@@ -212,7 +220,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-lg hover:text-primary transition"
                   >
-                    <IconBrandLinkedin size={22} /> LinkedIn
+                    <IconBrandLinkedin size={22} strokeWidth={1.5} /> LinkedIn
                   </a>
                 </li>
                 <li>
@@ -222,13 +230,13 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-lg hover:text-primary transition"
                   >
-                    <IconBrandGithub size={22} /> GitHub · {SITE.githubHandle}
+                    <IconBrandGithub size={22} strokeWidth={1.5} /> GitHub · {SITE.githubHandle}
                   </a>
                 </li>
               </ul>
               <div>
                 <h3 className="font-semibold mb-3 inline-flex items-center gap-2">
-                  <IconListCheck size={18} className="text-primary" />
+                  <ListChecks size={18} strokeWidth={1.5} />
                   {t('Kaip vyksta pirmas žingsnis', 'How the first step works')}
                 </h3>
                 <ol className="space-y-2 text-sm text-gray-700 list-decimal list-inside">

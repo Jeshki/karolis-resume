@@ -1,17 +1,10 @@
 ﻿'use client';
 
 import { useLanguage } from 'src/contexts/LanguageContext';
-import {
-  IconPhone,
-  IconMail,
-  IconMapPin,
-  IconFileDownload,
-  IconWorld,
-  IconUser,
-  IconListCheck,
-} from '@tabler/icons-react';
+import { Mail, Phone, MapPin, Download, Globe, User, ListChecks } from 'lucide-react';
 import Image from 'next/image';
 import { SITE } from 'src/lib/site';
+import { ABOUT_BIO } from 'src/lib/copy';
 
 export function ResumeHeader() {
   const { t } = useLanguage();
@@ -20,15 +13,15 @@ export function ResumeHeader() {
     t('React, Next.js, TypeScript', 'React, Next.js, TypeScript'),
     t('Python ir Node.js back-end', 'Python & Node.js Back-End'),
     t('WordPress + WooCommerce + Elementor', 'WordPress + WooCommerce + Elementor'),
+    t('Firebase, Neon ir PostgreSQL', 'Firebase, Neon and PostgreSQL'),
     t('Individualūs PHP sprendimai', 'Custom PHP Solutions'),
     t('UI/UX dizainas ir Figma', 'UI/UX Design & Figma'),
     t('Dirbtinio intelekto įrankiai', 'Artificial Intelligence Tools'),
-    t('Headless ir modernus stack', 'Headless & Modern Stack'),
-    t('SEO ir našumo optimizavimas', 'SEO & Performance Optimization'),
+    t('SEO, Stripe ir našumo optimizavimas', 'SEO, Stripe & performance'),
   ];
 
   return (
-    <section className="py-20 px-4">
+    <section className="pt-28 pb-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <div className="mb-6 flex justify-center">
@@ -37,7 +30,7 @@ export function ResumeHeader() {
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
               width={1024}
               height={1024}
-              className="w-56 h-auto md:w-64 shadow-lg"
+              className="w-56 h-auto md:w-64"
             />
           </div>
 
@@ -47,26 +40,26 @@ export function ResumeHeader() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6 text-gray-600">
             <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 justify-center hover:underline underline-offset-4">
-              <IconMail size={18} /> {SITE.email}
+              <Mail size={16} strokeWidth={1.5} /> {SITE.email}
             </a>
             <a href={SITE.phoneHref} className="flex items-center gap-2 justify-center hover:underline underline-offset-4">
-              <IconPhone size={18} /> {SITE.phoneDisplay}
+              <Phone size={16} strokeWidth={1.5} /> {SITE.phoneDisplay}
             </a>
             <span className="flex items-center gap-2 justify-center">
-              <IconMapPin size={18} /> {t(SITE.locationLt, SITE.locationEn)}
+              <MapPin size={16} strokeWidth={1.5} /> {t(SITE.locationLt, SITE.locationEn)}
             </span>
             <a href={SITE.url} className="flex items-center gap-2 justify-center hover:underline underline-offset-4">
-              <IconWorld size={18} /> karoliscibiras.lt
+              <Globe size={16} strokeWidth={1.5} /> karoliscibiras.lt
             </a>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
+          <div className="flex justify-center print:hidden">
             <a
               href={SITE.cvPath}
               download={SITE.cvFilename}
-              className="bg-black text-white py-2 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 text-sm bg-black text-white py-1.5 px-3.5 hover:bg-gray-800 transition-colors"
             >
-              <IconFileDownload size={18} /> {t('Atsisiųsti CV (EN)', 'Download CV (EN)')}
+              <Download size={14} strokeWidth={1.5} /> {t('Atsisiųsti CV', 'Download CV')}
             </a>
           </div>
         </div>
@@ -74,20 +67,15 @@ export function ResumeHeader() {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="text-2xl font-bold mb-4 inline-flex items-center gap-2">
-              <IconUser size={20} className="text-primary" />
+              <User size={18} strokeWidth={1.5} />
               {t('Apie mane', 'About Me')}
             </h2>
-            <p className="text-lg text-gray-700">
-              {t(
-                'Full-Stack programuotojas ir dizaineris su 18+ metų patirtimi. Kuriu šiuolaikines svetaines ir el. parduotuves naudojant React, Next.js, WordPress, WooCommerce bei Shopify. Aktyviai naudoju dirbtinį intelektą visose kūrimo stadijose. Projektai — fiksuota kaina, Kaunas / remote LT+EU.',
-                'Full-Stack Developer & Designer with 18+ years of experience. Building modern websites and e-commerce platforms using React, Next.js, WordPress, WooCommerce, and Shopify. Actively integrating AI tools throughout the entire development process. Projects are fixed-price, from Kaunas / remote LT+EU.'
-              )}
-            </p>
+            <p className="text-lg text-gray-700">{t(ABOUT_BIO.lt, ABOUT_BIO.en)}</p>
           </div>
 
           <div>
             <h2 className="text-2xl font-bold mb-4 inline-flex items-center gap-2">
-              <IconListCheck size={20} className="text-primary" />
+              <ListChecks size={18} strokeWidth={1.5} />
               {t('Pagrindinės kompetencijos', 'Core Competencies')}
             </h2>
             <ul className="grid gap-3 text-gray-700">

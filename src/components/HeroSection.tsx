@@ -2,20 +2,18 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { IconArrowRight } from '@tabler/icons-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { HomeSections } from 'src/components/HomeSections';
 import { Reveal } from 'src/components/Reveal';
+import { ABOUT_BIO, STRENGTHS } from 'src/lib/copy';
 
 export function HeroSection() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
 
-  const strengths = [
-    t('Front-End programavimas', 'Front-End Programming'),
-    t('Dizaino supratimas', 'Design Understanding'),
-    t('Verslo procesų patirtis', 'Business Process Experience'),
-    t('Nuolatinis mokymasis', 'Continuous Learning'),
-  ];
+  const strengths = STRENGTHS.map((item) => t(item.lt, item.en));
 
   return (
     <>
@@ -55,41 +53,43 @@ export function HeroSection() {
 
             <Reveal delay={0.08}>
               <p className="text-lg text-white/80 max-w-xl mx-auto md:mx-0 mb-8">
-                {t(
-                  'Full-stack programuotojas ir dizaineris iš Kauno, Lietuvos. Kuriu modernias, greitas svetaines ir e-parduotuves su React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind ir Figma. 18+ metų reali e-komercijos patirtis — UI/UX, SEO, našumas ir paleidimai. AI įrankius taikau visame procese — švaresniam ir greitesniam darbui. Atviras remote klientams visame pasaulyje.',
-                  'Full-stack developer & designer based in Kaunas, Lithuania. I build modern, fast websites and e-commerce stores with React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind and Figma. 18+ years of real e-commerce experience — UI/UX, SEO, performance and production launches. I apply AI tools end-to-end for cleaner, faster delivery. Open to remote clients worldwide.'
-                )}
+                {t(ABOUT_BIO.lt, ABOUT_BIO.en)}
               </p>
             </Reveal>
 
             <Reveal delay={0.12} className="flex flex-col sm:flex-row gap-3 items-center justify-center md:justify-start mb-8">
-              <Link
-                href="/portfolio"
-                className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 bg-white text-black py-3 px-6 rounded-lg font-medium hover:bg-white/85 transition-colors"
-              >
-                {t('Peržiūrėti darbus', 'View work')}
-                <IconArrowRight size={18} strokeWidth={1.5} />
-              </Link>
-              <Link
-                href="/kontaktai"
-                className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 border-2 border-white text-white py-3 px-6 rounded-lg font-medium hover:bg-white hover:text-black transition-colors"
-              >
-                {t('Gauti pasiūlymą', 'Get a quote')}
-              </Link>
+              <motion.div whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 bg-white text-black py-3 px-6 rounded-lg font-medium hover:bg-white/85 transition-colors"
+                >
+                  {t('Peržiūrėti darbus', 'View work')}
+                  <ArrowRight size={18} strokeWidth={1.5} />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
+                <Link
+                  href="/kontaktai"
+                  className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 border-2 border-white text-white py-3 px-6 rounded-lg font-medium hover:bg-white hover:text-black transition-colors"
+                >
+                  {t('Gauti pasiūlymą', 'Get a quote')}
+                </Link>
+              </motion.div>
             </Reveal>
 
             <Reveal delay={0.14}>
               <p className="mb-3 text-xs tracking-[0.18em] uppercase text-white/50">
                 {t('Stiprybės', 'Strengths')}
               </p>
-              <div className="flex flex-wrap gap-1.5 justify-center md:justify-start max-w-sm mx-auto md:mx-0">
+              <div className="flex flex-wrap gap-1.5 justify-center md:justify-start max-w-xl mx-auto md:mx-0">
                 {strengths.map((skill) => (
-                  <span
+                  <motion.span
                     key={skill}
+                    whileHover={reduceMotion ? undefined : { y: -1 }}
                     className="px-2.5 py-1 border border-white/25 text-xs tracking-wide text-white"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </Reveal>

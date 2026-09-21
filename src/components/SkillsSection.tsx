@@ -1,11 +1,13 @@
 ﻿'use client';
 
-import { IconTools } from '@tabler/icons-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Wrench } from 'lucide-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { Reveal } from 'src/components/Reveal';
 
 export function SkillsSection() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
 
   const tools = [
     { name: 'Python', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/python.svg' },
@@ -32,6 +34,11 @@ export function SkillsSection() {
     { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/postgresql.svg' },
     { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/mongodb.svg' },
     { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/prisma.svg' },
+    { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/firebase.svg' },
+    { name: 'Neon', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/neon.svg' },
+    { name: 'Stripe', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/stripe.svg' },
+    { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/graphql.svg' },
+    { name: 'Redis', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/redis.svg' },
   ];
 
   return (
@@ -39,30 +46,33 @@ export function SkillsSection() {
       <div className="max-w-7xl mx-auto">
         <Reveal>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full">
-            <IconTools size={26} className="text-primary" />
+            <Wrench size={22} strokeWidth={1.5} />
             {t('Technologijos ir įrankiai', 'Technologies & Tools')}
           </h2>
         </Reveal>
 
-        <div className="mb-8 flex items-center justify-center gap-2 text-primary">
-          <IconTools size={22} />
+        <div className="mb-8 flex items-center justify-center gap-2">
           <span className="font-semibold">{t('Pilnas tech stack', 'Full tech stack')}</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {tools.map((tool) => (
-            <div
+            <motion.div
               key={tool.name}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 flex items-center justify-center gap-3"
+              whileHover={reduceMotion ? undefined : { y: -2 }}
+              className="bg-white border border-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 flex items-center justify-center gap-3"
             >
               <img
                 src={tool.icon}
                 alt=""
                 className="h-5 w-5 brightness-0 opacity-80"
                 loading="lazy"
+                onError={(event) => {
+                  event.currentTarget.style.display = 'none';
+                }}
               />
               <span>{tool.name}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

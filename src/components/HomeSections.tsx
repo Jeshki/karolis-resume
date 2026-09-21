@@ -2,19 +2,21 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
-  IconArrowRight,
-  IconBrandLinkedin,
-  IconBuildingStore,
-  IconCheck,
-  IconDeviceDesktop,
-  IconHeadset,
-  IconLayout,
-  IconMessageCircle,
-  IconPalette,
-  IconRocket,
-  IconWorld,
-} from '@tabler/icons-react';
+  ArrowRight,
+  Monitor,
+  Store,
+  Palette,
+  Headset,
+  MessageCircle,
+  LayoutTemplate,
+  Globe,
+  Rocket,
+  Quote,
+  BadgeCheck,
+} from 'lucide-react';
+import { IconBrandLinkedin } from '@tabler/icons-react';
 import { Reveal } from 'src/components/Reveal';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { featuredProjects } from 'src/lib/projects';
@@ -24,10 +26,11 @@ const iconProps = { size: 24, strokeWidth: 1.5 } as const;
 
 export function HomeSections() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
 
   const services = [
     {
-      icon: <IconDeviceDesktop {...iconProps} />,
+      icon: Monitor,
       title: t('Svetainės', 'Websites'),
       body: t(
         'Next.js arba WordPress — struktūra, greitis, SEO.',
@@ -36,7 +39,7 @@ export function HomeSections() {
       meta: t('Fiksuota kaina · 2–6 sav.', 'Fixed price · 2–6 wks'),
     },
     {
-      icon: <IconBuildingStore {...iconProps} />,
+      icon: Store,
       title: t('E-parduotuvės', 'E-commerce'),
       body: t(
         'WooCommerce ir Shopify — katalogas ir mokėjimai.',
@@ -45,7 +48,7 @@ export function HomeSections() {
       meta: t('Fiksuota kaina · 3–8 sav.', 'Fixed price · 3–8 wks'),
     },
     {
-      icon: <IconPalette {...iconProps} />,
+      icon: Palette,
       title: t('UI / UX', 'UI / UX'),
       body: t(
         'Figma prototipai ir sąsajos, kurios padeda pirkti.',
@@ -54,7 +57,7 @@ export function HomeSections() {
       meta: t('Fiksuota kaina', 'Fixed price'),
     },
     {
-      icon: <IconHeadset {...iconProps} />,
+      icon: Headset,
       title: t('Palaikymas', 'Support'),
       body: t(
         'Atnaujinimai ir pataisymai veikiančioms svetainėms.',
@@ -67,7 +70,7 @@ export function HomeSections() {
   const steps = [
     {
       n: '01',
-      icon: <IconMessageCircle {...iconProps} />,
+      icon: MessageCircle,
       title: t('Briefing', 'Briefing'),
       body: t(
         'Tikslas, auditorija, terminas ir biudžetas. Po pokalbio — aiški apimtis, ne valandos.',
@@ -76,7 +79,7 @@ export function HomeSections() {
     },
     {
       n: '02',
-      icon: <IconLayout {...iconProps} />,
+      icon: LayoutTemplate,
       title: t('Dizainas', 'Design'),
       body: t(
         'Struktūra ir UI: kas turi būti pirmame ekrane, kaip atrodo kelias iki veiksmo.',
@@ -85,7 +88,7 @@ export function HomeSections() {
     },
     {
       n: '03',
-      icon: <IconWorld {...iconProps} />,
+      icon: Globe,
       title: t('Build', 'Build'),
       body: t(
         'React/Next, WordPress arba Shopify — parinktas stack’as pagal projekto poreikį, ne mados.',
@@ -94,7 +97,7 @@ export function HomeSections() {
     },
     {
       n: '04',
-      icon: <IconRocket {...iconProps} />,
+      icon: Rocket,
       title: t('Paleidimas', 'Launch'),
       body: t(
         'Domenas, forma, analitika, perdavimas. Palieku veikiantį produktą, ne „beveik baigta“.',
@@ -105,6 +108,7 @@ export function HomeSections() {
 
   const proof = [
     {
+      icon: Quote,
       title: t('Klientų atsiliepimai greitai', 'Client quotes coming soon'),
       body: t(
         'Renkame rašytines rekomendacijas. Kol kas socialinis įrodymas — vieši domenai ir LinkedIn.',
@@ -112,6 +116,7 @@ export function HomeSections() {
       ),
     },
     {
+      icon: IconBrandLinkedin,
       title: t('LinkedIn', 'LinkedIn'),
       body: t(
         'Patirtis e-komercijoje ir web kūrime — profilis atviras kontaktui ir rekomendacijoms.',
@@ -121,6 +126,7 @@ export function HomeSections() {
       cta: t('Atidaryti LinkedIn', 'Open LinkedIn'),
     },
     {
+      icon: BadgeCheck,
       title: t('Fiksuota kaina, Kaunas / remote', 'Fixed price, Kaunas / remote'),
       body: t(
         'Dirbu su LT ir ES klientais. Apimtis sutariama iš anksto — be staigmenų sąskaitoje.',
@@ -129,34 +135,47 @@ export function HomeSections() {
     },
   ];
 
+  const hoverLift = reduceMotion ? undefined : { y: -3 };
+
   return (
     <>
-      <section className="py-20 px-4 md:px-8 lg:px-10 bg-gray-50 scroll-mt-24" aria-labelledby="services-heading">
+      <section
+        className="py-20 px-4 md:px-8 lg:px-10 bg-[#030303] text-white scroll-mt-24"
+        aria-labelledby="services-heading"
+      >
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
-            <h2 id="services-heading" className="text-3xl md:text-4xl font-bold mb-3">
+            <h2 id="services-heading" className="text-3xl md:text-4xl font-bold mb-3 text-white">
               {t('Paslaugos', 'Services')}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-white/55 max-w-2xl mx-auto">
               {t(
                 'Fiksuota projekto kaina. Tipinė trukmė — orientyras, tiksli apimtis po briefing’o.',
                 'Fixed project price. Typical duration is a guide — exact scope after briefing.'
               )}
             </p>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((service) => (
-              <article key={service.title} className="h-full bg-black text-white p-7 flex flex-col">
-                <div className="mb-6 text-white" aria-hidden>
-                  {service.icon}
-                </div>
-                <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-6">{service.body}</p>
-                <p className="mt-auto text-[11px] uppercase tracking-[0.16em] text-white/50">
-                  {service.meta}
-                </p>
-              </article>
-            ))}
+          <div className="border border-white/15 divide-y lg:divide-y-0 lg:divide-x divide-white/15 grid sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <motion.article
+                  key={service.title}
+                  whileHover={hoverLift}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full p-8 flex flex-col bg-[#030303] hover:bg-white/[0.04]"
+                >
+                  <div className="mb-6 text-white" aria-hidden>
+                    <Icon {...iconProps} />
+                  </div>
+                  <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
+                  <p className="text-white/70 text-sm leading-relaxed mb-6">{service.body}</p>
+                  <p className="mt-auto text-[11px] uppercase tracking-[0.16em] text-white/45">
+                    {service.meta}
+                  </p>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -175,16 +194,24 @@ export function HomeSections() {
             </p>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {steps.map((step) => (
-              <article key={step.n} className="h-full border border-black/15 p-7 flex flex-col">
-                <p className="text-sm tracking-[0.24em] text-black mb-5">{step.n}</p>
-                <div className="text-black mb-5" aria-hidden>
-                  {step.icon}
-                </div>
-                <h3 className="text-xl mb-3">{step.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.body}</p>
-              </article>
-            ))}
+            {steps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <motion.article
+                  key={step.n}
+                  whileHover={hoverLift}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full border border-black/15 p-7 flex flex-col"
+                >
+                  <p className="text-sm tracking-[0.24em] text-black mb-5">{step.n}</p>
+                  <div className="text-black mb-5" aria-hidden>
+                    <Icon {...iconProps} />
+                  </div>
+                  <h3 className="text-xl mb-3">{step.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{step.body}</p>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -203,26 +230,34 @@ export function HomeSections() {
             </p>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-4">
-            {proof.map((item) => (
-              <article key={item.title} className="h-full bg-white border border-black/10 p-7 flex flex-col">
-                <div className="text-black mb-4" aria-hidden>
-                  {item.href ? <IconBrandLinkedin {...iconProps} /> : <IconCheck {...iconProps} />}
-                </div>
-                <h3 className="text-lg mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm flex-1 leading-relaxed">{item.body}</p>
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
-                  >
-                    {item.cta}
-                    <IconArrowRight size={16} strokeWidth={1.5} />
-                  </a>
-                ) : null}
-              </article>
-            ))}
+            {proof.map((item) => {
+              const Icon = item.icon;
+              return (
+                <motion.article
+                  key={item.title}
+                  whileHover={hoverLift}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full bg-white border border-black/10 p-7 flex flex-col"
+                >
+                  <div className="text-black mb-4" aria-hidden>
+                    <Icon {...iconProps} />
+                  </div>
+                  <h3 className="text-lg mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm flex-1 leading-relaxed">{item.body}</p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
+                    >
+                      {item.cta}
+                      <ArrowRight size={16} strokeWidth={1.5} />
+                    </a>
+                  ) : null}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -242,9 +277,11 @@ export function HomeSections() {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
             {featuredProjects.map((project) => (
-              <article
+              <motion.article
                 key={project.slug}
-                className="group h-full bg-white border border-black/15 flex flex-col transition-[border-color,transform] duration-200 hover:border-black hover:-translate-y-0.5"
+                whileHover={reduceMotion ? undefined : { y: -4 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="group h-full bg-white border border-black/15 flex flex-col hover:border-black"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                   <Image
@@ -271,10 +308,10 @@ export function HomeSections() {
                     className="inline-flex items-center gap-2 text-sm tracking-wide border-b border-black pb-0.5 w-fit hover:opacity-70 transition-opacity"
                   >
                     {t('Atidaryti', 'Open')}
-                    <IconArrowRight size={16} strokeWidth={1.5} />
+                    <ArrowRight size={16} strokeWidth={1.5} />
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
           <Reveal className="text-center mt-10">
@@ -283,7 +320,7 @@ export function HomeSections() {
               className="inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
             >
               {t('Visi darbai', 'All work')}
-              <IconArrowRight size={16} strokeWidth={1.5} />
+              <ArrowRight size={16} strokeWidth={1.5} />
             </Link>
           </Reveal>
         </div>
