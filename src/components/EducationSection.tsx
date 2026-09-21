@@ -1,8 +1,9 @@
 ﻿'use client';
 
-import { motion } from 'framer-motion';
-import { IconSchool, IconCode, IconDeviceLaptop } from '@tabler/icons-react';
+import Link from 'next/link';
+import { IconSchool, IconCode, IconDeviceLaptop, IconArrowRight } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
+import { Reveal } from 'src/components/Reveal';
 
 export function EducationSection() {
   const { t } = useLanguage();
@@ -31,33 +32,38 @@ export function EducationSection() {
   return (
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full"
-        >
-          <IconSchool size={26} className="text-primary" />
-          {t('Išsilavinimas', 'Education')}
-        </motion.h2>
+        <Reveal>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full">
+            <IconSchool size={26} className="text-primary" />
+            {t('Išsilavinimas', 'Education')}
+          </h2>
+        </Reveal>
 
         <div className="grid md:grid-cols-3 gap-8">
           {education.map((edu, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15 }}
-              className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-all"
-            >
-              <div className="p-3 bg-primary/10 rounded-xl text-primary w-fit mx-auto mb-4">
-                {edu.icon}
-              </div>
-              <h3 className="font-bold text-lg mb-2">{edu.degree}</h3>
-              <p className="text-primary">{edu.school}</p>
-              <p className="text-sm text-gray-500 mt-2">{edu.year}</p>
-            </motion.div>
+            <Reveal key={edu.school} delay={i * 0.05} className="h-full">
+              <article className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow h-full">
+                <div className="p-3 bg-primary/10 rounded-xl text-primary w-fit mx-auto mb-4">{edu.icon}</div>
+                <h3 className="font-bold text-lg mb-2">{edu.degree}</h3>
+                <p className="text-primary">{edu.school}</p>
+                <p className="text-sm text-gray-500 mt-2">{edu.year}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-14 text-center">
+          <p className="text-gray-700 mb-4">
+            {t('Turite projektą? Parašykite — atsakau per 24 val.', 'Have a project? Write — I reply within 24 hours.')}
+          </p>
+          <Link
+            href="/kontaktai"
+            className="inline-flex items-center justify-center gap-2 bg-black text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+          >
+            {t('Pakalbėkime', "Let's talk")}
+            <IconArrowRight size={18} />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

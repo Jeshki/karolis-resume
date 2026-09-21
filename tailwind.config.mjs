@@ -5,7 +5,7 @@ const config = {
   theme: {
     extend: {
       colors: {
-        primary: '#3B82F6', 
+        primary: '#111827', 
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],

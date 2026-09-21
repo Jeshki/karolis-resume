@@ -8,7 +8,7 @@ export function ScrollProgressBar() {
   });
 
   return (
-    <motion.div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-40 origin-left">
+    <motion.div className="fixed top-0 left-0 w-full h-0.5 bg-transparent z-[60] origin-left pointer-events-none">
       <motion.div
         style={{ scaleX: scrollYProgress }}
         className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary via-blue-600 to-purple-600"

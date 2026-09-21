@@ -1,49 +1,73 @@
-'use client';
-
-import { motion, AnimatePresence } from 'framer-motion';
-// import { ThemeProvider } from 'next-themes'; // <-- 1. PAŠALINTA
-import { Montserrat } from 'next/font/google'; 
-import { usePathname } from 'next/navigation';
-import { LanguageProvider } from 'src/contexts/LanguageContext';
-import { Navbar } from 'src/components/Navbar';
-import { ScrollProgressBar } from 'src/components/ScrollProgressBar';
-import { Footer } from 'src/components/Footer';
-import { FloatingContact } from 'src/components/FloatingContact';
+import type { Metadata } from 'next';
+import { Montserrat } from 'next/font/google';
+import { Providers } from 'src/components/Providers';
+import { createMetadata } from 'src/lib/metadata';
+import { SITE } from 'src/lib/site';
 import './globals.css';
 import './print.css';
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
+  display: 'swap',
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+const homeMeta = createMetadata({
+  title: 'Karolis Čibiras — Full-Stack programuotojas ir dizaineris | Kaunas',
+  description:
+    'Freelance web kūrėjas Kaune: React, Next.js, WordPress/WooCommerce ir Shopify. Svetainės ir e-parduotuvės fiksuota kaina — LT ir ES klientams.',
+  path: '/',
+  absolute: true,
+});
 
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
+  ...homeMeta,
+  title: {
+    default: 'Karolis Čibiras — Full-Stack programuotojas ir dizaineris | Kaunas',
+    template: '%s | Karolis Čibiras',
+  },
+  robots: { index: true, follow: true },
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  keywords: [
+    'Karolis Čibiras',
+    'web programuotojas Kaunas',
+    'Next.js',
+    'React',
+    'WordPress',
+    'Shopify',
+    'freelance',
+    'e-parduotuvė',
+  ],
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  url: SITE.url,
+  email: SITE.email,
+  telephone: SITE.phoneHref.replace('tel:', ''),
+  jobTitle: 'Full-Stack programuotojas ir dizaineris',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kaunas',
+    addressCountry: 'LT',
+  },
+  sameAs: [SITE.github, SITE.linkedin],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="lt" suppressHydrationWarning>
-      {/* 2. PATAISYTA: Pašalintos 'dark:' klasės */}
-      <body className={`${montserrat.variable} font-sans bg-white text-gray-900 transition-colors`}>
-        {/* 3. PAŠALINTAS ThemeProvider apgaubimas */}
-        <LanguageProvider>
-          <Navbar />
-          <ScrollProgressBar />
-          <AnimatePresence mode="popLayout">
-            <motion.main
-              key={pathname}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="min-h-screen"
-            >
-              {children}
-            </motion.main>
-          </AnimatePresence>
-          <Footer />
-          <FloatingContact />
-        </LanguageProvider>
+    <html lang="lt" suppressHydrationWarning className={montserrat.variable}>
+      <body className="font-sans bg-white text-gray-900 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

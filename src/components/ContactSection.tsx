@@ -1,18 +1,35 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { IconMail, IconBrandLinkedin, IconBrandGithub, IconSend, IconMessageCircle, IconUser, IconAt, IconMessage } from '@tabler/icons-react';
+import Link from 'next/link';
+import {
+  IconMail,
+  IconBrandLinkedin,
+  IconBrandGithub,
+  IconSend,
+  IconMessageCircle,
+  IconUser,
+  IconAt,
+  IconMessage,
+  IconPhone,
+  IconClock,
+  IconCheck,
+  IconAlertCircle,
+  IconListCheck,
+} from '@tabler/icons-react';
 import emailjs from '@emailjs/browser';
 import { useLanguage } from 'src/contexts/LanguageContext';
+import { SITE } from 'src/lib/site';
+import { Reveal } from 'src/components/Reveal';
 
 export function ContactSection() {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', privacy: false });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.privacy) return;
     setStatus('sending');
 
     try {
@@ -27,95 +44,201 @@ export function ContactSection() {
         'ubLfcy2BLMSoiD07t'
       );
       setStatus('sent');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
+      setFormData({ name: '', email: '', message: '', privacy: false });
+    } catch {
       setStatus('error');
     }
   };
 
   return (
     <section id="contact" className="py-20 px-4 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-8 inline-flex items-center gap-2 justify-center w-full"
-        >
-          <IconMessageCircle size={26} className="text-primary" />
-          {t('Susisiekime', 'Get in Touch')}
-        </motion.h2>
+      <div className="max-w-5xl mx-auto">
+        <Reveal>
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 inline-flex items-center gap-2 justify-center w-full">
+            <IconMessageCircle size={26} className="text-primary" />
+            {t('Susisiekime', 'Get in Touch')}
+          </h1>
+          <p className="text-center text-gray-700 mb-10 max-w-xl mx-auto inline-flex flex-col sm:flex-row items-center justify-center gap-2 w-full">
+            <span className="inline-flex items-center gap-2 font-medium">
+              <IconClock size={18} />
+              {t('Atsakau per 24 val.', 'I reply within 24 hours.')}
+            </span>
+            <span className="hidden sm:inline text-gray-300">·</span>
+            <a href={SITE.phoneHref} className="inline-flex items-center gap-2 hover:underline underline-offset-4">
+              <IconPhone size={18} />
+              {SITE.phoneDisplay}
+            </a>
+          </p>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Form */}
-          <motion.form
-            onSubmit={sendEmail}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="space-y-4"
-          >
-            <div className="relative">
-              <IconUser size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder={t('Vardas', 'Name')}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-                className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
-              />
-            </div>
-            <div className="relative">
-              <IconAt size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input
-                type="email"
-                placeholder={t('El. paštas', 'Email')}
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
-              />
-            </div>
-            <div className="relative">
-              <IconMessage size={18} className="absolute left-4 top-4 text-gray-400" />
-              <textarea
-                placeholder={t('Žinutė', 'Message')}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-                rows={5}
-                className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
-              />
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              disabled={status === 'sending'} // PATAISYMAS: Pakeista neteisinga hover:black klasė
-              className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 disabled:opacity-70 transition-colors"
-            >
-              {status === 'sending' ? t('Siunčiama...', 'Sending...') : t('Siųsti', 'Send')}
-              <IconSend size={18} />
-            </motion.button>
-            {status === 'sent' && <p className="text-green-600 text-center">{t('Žinutė išsiųsta!', 'Message sent!')}</p>}
-            {status === 'error' && <p className="text-red-600 text-center">{t('Klaida. Bandykite dar kartą.', 'Error. Try again.')}</p>}
-          </motion.form>
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          <Reveal>
+            {status === 'sent' ? (
+              <div className="rounded-2xl border border-green-200 bg-green-50 p-6 text-green-900" role="status">
+                <p className="font-semibold inline-flex items-center gap-2 mb-2">
+                  <IconCheck size={20} />
+                  {t('Žinutė išsiųsta', 'Message sent')}
+                </p>
+                <p className="text-sm mb-4">
+                  {t(
+                    'Ačiū. Atsakysiu per 24 valandas šiuo el. paštu.',
+                    'Thanks. I will reply within 24 hours at this email.'
+                  )}
+                </p>
+                <button
+                  type="button"
+                  className="text-sm font-medium underline underline-offset-4"
+                  onClick={() => setStatus('idle')}
+                >
+                  {t('Siųsti kitą žinutę', 'Send another message')}
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={sendEmail} className="space-y-4" noValidate={false}>
+                <div>
+                  <label htmlFor="contact-name" className="block text-sm font-medium mb-1">
+                    {t('Vardas', 'Name')} <span className="text-red-600">*</span>
+                  </label>
+                  <div className="relative">
+                    <IconUser size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      placeholder={t('Jūsų vardas', 'Your name')}
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-sm font-medium mb-1">
+                    {t('El. paštas', 'Email')} <span className="text-red-600">*</span>
+                  </label>
+                  <div className="relative">
+                    <IconAt size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="vardas@imone.lt"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="contact-message" className="block text-sm font-medium mb-1">
+                    {t('Žinutė', 'Message')} <span className="text-red-600">*</span>
+                  </label>
+                  <div className="relative">
+                    <IconMessage size={18} className="absolute left-4 top-4 text-gray-400" />
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      autoComplete="off"
+                      placeholder={t('Trumpai apie projektą ir terminus', 'A short note about the project and timeline')}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
+                      rows={5}
+                      className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <input
+                    id="contact-privacy"
+                    name="privacy"
+                    type="checkbox"
+                    checked={formData.privacy}
+                    onChange={(e) => setFormData({ ...formData, privacy: e.target.checked })}
+                    required
+                    className="mt-1 h-4 w-4 accent-black"
+                  />
+                  <label htmlFor="contact-privacy" className="text-sm text-gray-700">
+                    {t('Sutinku, kad šie duomenys būtų naudojami atsakymui pagal', 'I agree that this data is used to reply, as described in the')}{' '}
+                    <Link href="/privatumas" className="underline underline-offset-4 font-medium">
+                      {t('privatumo politiką', 'privacy policy')}
+                    </Link>
+                    . <span className="text-red-600">*</span>
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 disabled:opacity-70 transition-colors"
+                >
+                  {status === 'sending' ? t('Siunčiama...', 'Sending...') : t('Siųsti', 'Send')}
+                  <IconSend size={18} />
+                </button>
+                {status === 'error' ? (
+                  <p className="text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm inline-flex items-center gap-2 w-full" role="alert">
+                    <IconAlertCircle size={18} />
+                    {t('Nepavyko išsiųsti. Bandykite dar kartą arba rašykite el. paštu.', 'Could not send. Try again or email me directly.')}
+                  </p>
+                ) : null}
+              </form>
+            )}
+          </Reveal>
 
-          {/* Links */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="flex flex-col justify-center space-y-6"
-          >
-            <a href="mailto:karoliscibiras@gmail.com" className="flex items-center gap-3 text-lg hover:text-primary transition">
-              <IconMail size={24} /> karoliscibiras@gmail.com
-            </a>
-            <a href="https://linkedin.com/in/karolis-cibiras" target="_blank" className="flex items-center gap-3 text-lg hover:text-primary transition">
-              <IconBrandLinkedin size={24} /> LinkedIn
-            </a>
-            <a href="https://github.com/jogy" target="_blank" className="flex items-center gap-3 text-lg hover:text-primary transition">
-              <IconBrandGithub size={24} /> GitHub
-            </a>
-          </motion.div>
+          <Reveal delay={0.08}>
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 h-full">
+              <h2 className="font-bold text-xl mb-4">{t('Kontaktai ir kanalai', 'Contact channels')}</h2>
+              <ul className="space-y-4 mb-8">
+                <li>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="flex items-center gap-3 text-lg hover:text-primary transition"
+                  >
+                    <IconMail size={22} /> {SITE.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={SITE.phoneHref} className="flex items-center gap-3 text-lg hover:text-primary transition">
+                    <IconPhone size={22} /> {SITE.phoneDisplay}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={SITE.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-lg hover:text-primary transition"
+                  >
+                    <IconBrandLinkedin size={22} /> LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={SITE.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-lg hover:text-primary transition"
+                  >
+                    <IconBrandGithub size={22} /> GitHub · {SITE.githubHandle}
+                  </a>
+                </li>
+              </ul>
+              <div>
+                <h3 className="font-semibold mb-3 inline-flex items-center gap-2">
+                  <IconListCheck size={18} className="text-primary" />
+                  {t('Kaip vyksta pirmas žingsnis', 'How the first step works')}
+                </h3>
+                <ol className="space-y-2 text-sm text-gray-700 list-decimal list-inside">
+                  <li>{t('Trumpas briefing’as (forma, el. paštas ar skambutis).', 'A short briefing (form, email, or call).')}</li>
+                  <li>{t('Pasiūlymas su fiksuota kaina ir terminu.', 'A quote with a fixed price and timeline.')}</li>
+                  <li>{t('Startas, kai apimtis sutarta.', 'Kickoff once the scope is agreed.')}</li>
+                </ol>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
