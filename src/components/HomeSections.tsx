@@ -5,10 +5,6 @@ import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowRight,
-  Monitor,
-  Store,
-  Palette,
-  Headset,
   MessageCircle,
   LayoutTemplate,
   Globe,
@@ -16,6 +12,7 @@ import {
   Quote,
   BadgeCheck,
 } from 'lucide-react';
+import { Browser, Storefront, PenNib, Headset } from '@phosphor-icons/react';
 import { IconBrandLinkedin } from '@tabler/icons-react';
 import { Reveal } from 'src/components/Reveal';
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -30,7 +27,8 @@ export function HomeSections() {
 
   const services = [
     {
-      icon: Monitor,
+      n: '01',
+      icon: Browser,
       title: t('Svetainės', 'Websites'),
       body: t(
         'Next.js arba WordPress — struktūra, greitis, SEO.',
@@ -39,7 +37,8 @@ export function HomeSections() {
       meta: t('Fiksuota kaina · 2–6 sav.', 'Fixed price · 2–6 wks'),
     },
     {
-      icon: Store,
+      n: '02',
+      icon: Storefront,
       title: t('E-parduotuvės', 'E-commerce'),
       body: t(
         'WooCommerce ir Shopify — katalogas ir mokėjimai.',
@@ -48,7 +47,8 @@ export function HomeSections() {
       meta: t('Fiksuota kaina · 3–8 sav.', 'Fixed price · 3–8 wks'),
     },
     {
-      icon: Palette,
+      n: '03',
+      icon: PenNib,
       title: t('UI / UX', 'UI / UX'),
       body: t(
         'Figma prototipai ir sąsajos, kurios padeda pirkti.',
@@ -57,6 +57,7 @@ export function HomeSections() {
       meta: t('Fiksuota kaina', 'Fixed price'),
     },
     {
+      n: '04',
       icon: Headset,
       title: t('Palaikymas', 'Support'),
       body: t(
@@ -140,42 +141,59 @@ export function HomeSections() {
   return (
     <>
       <section
-        className="py-20 px-4 md:px-8 lg:px-10 bg-[#030303] text-white scroll-mt-24"
+        className="py-24 px-4 md:px-8 lg:px-10 bg-[#030303] text-white scroll-mt-24"
         aria-labelledby="services-heading"
       >
         <div className="max-w-7xl mx-auto">
-          <Reveal className="text-center mb-12">
-            <h2 id="services-heading" className="text-3xl md:text-4xl font-bold mb-3 text-white">
+          <Reveal className="grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-4 md:gap-12 items-end mb-14 md:mb-16">
+            <h2 id="services-heading" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
               {t('Paslaugos', 'Services')}
             </h2>
-            <p className="text-white/55 max-w-2xl mx-auto">
+            <p className="text-white/55 md:text-lg max-w-xl md:justify-self-end md:text-right">
               {t(
                 'Fiksuota projekto kaina. Tipinė trukmė — orientyras, tiksli apimtis po briefing’o.',
                 'Fixed project price. Typical duration is a guide — exact scope after briefing.'
               )}
             </p>
           </Reveal>
-          <div className="border border-white/15 divide-y lg:divide-y-0 lg:divide-x divide-white/15 grid sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <motion.article
                   key={service.title}
                   whileHover={hoverLift}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-full p-8 flex flex-col bg-[#030303] hover:bg-white/[0.04]"
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  className="group h-full min-h-[240px] p-7 md:p-9 flex flex-col border border-white/12 hover:border-white/35 hover:bg-white/[0.03] transition-colors"
                 >
-                  <div className="mb-6 text-white" aria-hidden>
-                    <Icon {...iconProps} />
+                  <div className="flex items-start justify-between gap-4 mb-10">
+                    <span className="text-[11px] tracking-[0.22em] text-white/40">{service.n}</span>
+                    <span
+                      className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 text-white group-hover:border-white/55 group-hover:bg-white group-hover:text-black transition-colors"
+                      aria-hidden
+                    >
+                      <Icon size={28} weight="light" />
+                    </span>
                   </div>
-                  <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
-                  <p className="text-white/70 text-sm leading-relaxed mb-6">{service.body}</p>
-                  <p className="mt-auto text-[11px] uppercase tracking-[0.16em] text-white/45">
+                  <h3 className="text-2xl tracking-wide mb-3">{service.title}</h3>
+                  <p className="text-white/70 leading-relaxed mb-8 max-w-sm">{service.body}</p>
+                  <p className="mt-auto text-[11px] uppercase tracking-[0.16em] text-white/40">
                     {service.meta}
                   </p>
                 </motion.article>
               );
             })}
+          </div>
+
+          <div className="mt-12 md:mt-14">
+            <Link
+              href="/kontaktai"
+              className="inline-flex items-center gap-2 text-sm tracking-[0.14em] uppercase text-white/70 hover:text-white transition-colors"
+            >
+              {t('Gauti fiksuotą pasiūlymą', 'Get a fixed quote')}
+              <ArrowRight size={16} strokeWidth={1.5} />
+            </Link>
           </div>
         </div>
       </section>
