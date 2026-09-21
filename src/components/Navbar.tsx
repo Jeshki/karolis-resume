@@ -34,7 +34,7 @@ export function Navbar() {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="fixed top-0 w-full z-[70] border-b border-gray-200 bg-white backdrop-blur-xl"
     >
-      <div className="relative max-w-7xl mx-auto px-4 py-4 flex justify-center items-center">
+      <div className="relative max-w-7xl mx-auto px-4 py-4 flex justify-center items-center min-h-14">
         <div className="hidden md:flex items-center gap-10 text-lg tracking-wide">
           {links.map((link) => {
             const active = isActive(link.href);
@@ -51,7 +51,17 @@ export function Navbar() {
               </Link>
             );
           })}
+        </div>
 
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? t('Uždaryti meniu', 'Close menu') : t('Atidaryti meniu', 'Open menu')}
+          >
+            {isOpen ? <IconX size={24} strokeWidth={2} /> : <IconMenu2 size={24} strokeWidth={2} />}
+          </button>
           <button
             onClick={toggleLanguage}
             className="flex items-center hover:opacity-80 transition-opacity"
@@ -66,15 +76,6 @@ export function Navbar() {
             />
           </button>
         </div>
-
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden absolute right-4 p-2 rounded-lg hover:bg-gray-100 transition"
-          aria-expanded={isOpen}
-          aria-label={isOpen ? t('Uždaryti meniu', 'Close menu') : t('Atidaryti meniu', 'Open menu')}
-        >
-          {isOpen ? <IconX size={24} strokeWidth={2} /> : <IconMenu2 size={24} strokeWidth={2} />}
-        </button>
       </div>
 
       <AnimatePresence>
@@ -101,28 +102,6 @@ export function Navbar() {
                   </Link>
                 );
               })}
-            </div>
-
-            <div className="border-t border-gray-200 px-4 py-4 flex justify-center">
-              <button
-                onClick={() => {
-                  toggleLanguage();
-                  setIsOpen(false);
-                }}
-                className="flex items-center gap-2 text-base"
-                aria-label={t('Pakeisti kalbą', 'Switch language')}
-              >
-                <Image
-                  src={language === 'lt' ? flagGB : flagLT}
-                  alt={t('Pakeisti kalbą', 'Switch language')}
-                  width={24}
-                  height={16}
-                  className="h-4 w-6 rounded-sm"
-                />
-                {language === 'lt'
-                  ? t('Pakeisti į anglų', 'Switch to English')
-                  : t('Pakeisti į lietuvių', 'Switch to Lithuanian')}
-              </button>
             </div>
           </motion.div>
         )}
