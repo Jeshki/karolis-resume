@@ -234,13 +234,16 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section className="py-20 px-4 md:px-8 lg:px-10 bg-gray-50" aria-labelledby="proof-heading">
+      <section
+        className="py-20 px-4 md:px-8 lg:px-10 bg-[#030303] text-white scroll-mt-24"
+        aria-labelledby="proof-heading"
+      >
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
-            <h2 id="proof-heading" className="text-3xl md:text-4xl font-bold mb-3">
+            <h2 id="proof-heading" className="text-3xl md:text-4xl font-bold mb-3 text-white">
               {t('Atsiliepimai', 'Testimonials')}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-white/55 max-w-2xl mx-auto">
               {t(
                 'Klientų atsiliepimai greitai. Kol kas — vieši projektai ir LinkedIn.',
                 'Client testimonials coming soon. For now — live projects and LinkedIn.'
@@ -255,19 +258,19 @@ export function HomeSections() {
                   key={item.title}
                   whileHover={hoverLift}
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-full bg-white border border-black/10 p-7 flex flex-col"
+                  className="h-full border border-white/12 hover:border-white/35 hover:bg-white/[0.03] p-7 flex flex-col transition-colors"
                 >
-                  <div className="text-black mb-4" aria-hidden>
+                  <div className="text-white mb-4" aria-hidden>
                     <Icon {...iconProps} />
                   </div>
-                  <h3 className="text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm flex-1 leading-relaxed">{item.body}</p>
+                  <h3 className="text-lg mb-2 text-white">{item.title}</h3>
+                  <p className="text-white/70 text-sm flex-1 leading-relaxed">{item.body}</p>
                   {item.href ? (
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
+                      className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide text-white/80 hover:text-white hover:underline underline-offset-4"
                     >
                       {item.cta}
                       <ArrowRight size={16} strokeWidth={1.5} />
