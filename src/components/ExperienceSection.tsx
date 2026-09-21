@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { Briefcase, Code, Phone, ChartLine } from '@phosphor-icons/react/dist/ssr';
+import { Briefcase, ChartLine, Code, Headset } from '@phosphor-icons/react/dist/ssr';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { Reveal } from 'src/components/Reveal';
@@ -19,41 +19,40 @@ export function ExperienceSection() {
       icon: Code,
       tasks: [
         t(
-          'Fiksuotos kainos projektai LT/EU klientams — svetainės ir e-parduotuvės nuo briefing’o iki paleidimo',
-          'Fixed-price projects for LT/EU clients — sites and stores from briefing to launch'
+          'Modernių web svetainių ir e-parduotuvių kūrimas nuo nulio',
+          'Building modern websites and e-commerce stores from scratch'
         ),
         t(
-          'Live produktai viešuose domenuose: DAEI birža, Apolobook, Shopify ir WooCommerce parduotuvės',
-          'Live products on public domains: DAEI Exchange, Apolobook, Shopify and WooCommerce stores'
+          'React, Next.js, headless sprendimai, custom WordPress',
+          'React, Next.js, headless, custom WordPress'
         ),
-        t(
-          'React/Next.js, WordPress ir Shopify pagal projekto poreikį — ne stack’as dėl mados',
-          'React/Next.js, WordPress, or Shopify based on the project — not a stack for fashion'
-        ),
+        t('Aukščiausio lygio UI/UX ir dizaino sistema', 'High-end UI/UX and design systems'),
+        t('DI integracija visuose etapuose', 'AI integration at every stage'),
       ],
-      skills: 'React • Next.js • TypeScript • Python • Tailwind • Node.js • AI Tools',
+      skills: ['React', 'Next.js', 'TypeScript', 'Python', 'Tailwind', 'Node.js', 'AI Tools'],
     },
     {
       n: '02',
       title: t('Web kūrėjas', 'Web Developer'),
       company: 'Bithub.lt',
       period: t('2025-09 – 2025-11', 'Sep 2025 – Nov 2025'),
-      icon: Code,
+      icon: Briefcase,
       tasks: [
         t(
-          'Kūriau ir prižiūrėjau WordPress / WooCommerce svetaines ir e-parduotuves trumpame, intensyviame cikle',
-          'Built and maintained WordPress / WooCommerce sites and stores in a short, intense cycle'
+          'Web svetainių ir e-parduotuvių kūrimas bei priežiūra',
+          'Development and maintenance of websites and e-shops'
         ),
         t(
-          'Dizaino sprendimai — logotipai ir vizualinis identitetas, ne tik šablonų sujungimas',
-          'Design work — logos and visual identity, not only assembling templates'
+          'Dizaino sprendimai, logotipai, vizualinis identitetas',
+          'Design, logos, visual identity'
         ),
+        t('WordPress, WooCommerce, Elementor, PHP', 'WordPress, WooCommerce, Elementor, PHP'),
         t(
-          'PHP, Elementor ir DI įrankiai, kad pataisymai ir nauji puslapiai išeitų greičiau',
-          'PHP, Elementor, and AI tools so fixes and new pages shipped faster'
+          'DI įrankiai procesų ir kodo optimizavimui',
+          'AI tools for code & process optimization'
         ),
       ],
-      skills: 'WordPress • WooCommerce • PHP • Figma • AI Tools',
+      skills: ['WordPress', 'WooCommerce', 'PHP', 'Figma', 'AI Tools'],
     },
     {
       n: '03',
@@ -63,13 +62,10 @@ export function ExperienceSection() {
       icon: ChartLine,
       tasks: [
         t(
-          '16 metų e-parduotuvės augimas: asortimentas, SEO, analitika ir kasdienės operacijos',
-          '16 years growing an e-shop: assortment, SEO, analytics, and daily operations'
+          '16 metų e-parduotuvės plėtra, SEO, analitika',
+          '16 years of e-shop development, SEO, analytics'
         ),
-        t(
-          'Tiekėjų derybos ir komandos valdymas — rezultatas matomas pardavimuose, ne tik „IT palaikyme“',
-          'Supplier negotiations and team leadership — outcomes in sales, not only “IT support”'
-        ),
+        t('Tiekėjų derybos, komandos valdymas', 'Supplier negotiations and team management'),
       ],
     },
     {
@@ -77,11 +73,11 @@ export function ExperienceSection() {
       title: t('Klientų aptarnavimo konsultantas (IT)', 'IT Customer Support Consultant'),
       company: 'UAB „Lintel“',
       period: t('2006 – 2007', '2006 – 2007'),
-      icon: Phone,
+      icon: Headset,
       tasks: [
         t(
-          'Techninė pagalba telefonu — greitas problemos išsiaiškinimas ir konkretus sprendimas klientui',
-          'Phone technical support — diagnosing the issue quickly and giving the client a concrete fix'
+          'Techninė pagalba telefonu IT klausimais',
+          'Technical phone support on IT issues'
         ),
       ],
     },
@@ -91,7 +87,7 @@ export function ExperienceSection() {
     <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <Reveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full">
+          <h2 className="text-3xl md:text-4xl text-center mb-12 inline-flex items-center gap-2 justify-center w-full">
             <Briefcase size={26} weight="light" />
             {t('Darbo patirtis', 'Work Experience')}
           </h2>
@@ -107,18 +103,20 @@ export function ExperienceSection() {
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 className="h-full bg-white border border-black/10 hover:border-black/30 p-7 flex flex-col transition-colors"
               >
-                <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex items-start justify-between gap-3 mb-5">
                   <span className="inline-flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15">
                       <Icon size={22} weight="light" />
                     </span>
                     <span className="text-[11px] tracking-[0.2em] text-gray-400">{exp.n}</span>
                   </span>
-                  <p className="text-xs tracking-wide text-gray-500 text-right">{exp.period}</p>
+                  <p className="border border-black/10 px-2.5 py-1 text-[11px] tracking-[0.12em] uppercase text-gray-500">
+                    {exp.period}
+                  </p>
                 </div>
                 <h3 className="text-xl mb-1">{exp.title}</h3>
                 <p className="text-gray-700 mb-4">{exp.company}</p>
-                <ul className="space-y-2 mb-4 flex-1">
+                <ul className="space-y-2 mb-5 flex-1">
                   {exp.tasks.map((task) => (
                     <li key={task} className="text-gray-600 text-sm leading-relaxed pl-3 border-l border-black/15">
                       {task}
@@ -126,7 +124,16 @@ export function ExperienceSection() {
                   ))}
                 </ul>
                 {exp.skills ? (
-                  <p className="mt-auto text-xs tracking-wide text-gray-500">{exp.skills}</p>
+                  <div className="mt-auto flex flex-wrap gap-1.5">
+                    {exp.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="border border-black/10 px-2 py-0.5 text-[11px] tracking-wide text-gray-500"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 ) : null}
               </motion.article>
             );
