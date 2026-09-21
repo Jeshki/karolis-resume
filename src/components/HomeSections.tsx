@@ -131,7 +131,7 @@ export function HomeSections() {
 
   return (
     <>
-      <section className="py-20 px-4 bg-gray-50 scroll-mt-24" aria-labelledby="services-heading">
+      <section className="py-20 px-4 md:px-8 lg:px-10 bg-gray-50 scroll-mt-24" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="services-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -151,8 +151,8 @@ export function HomeSections() {
                   {service.icon}
                 </div>
                 <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed flex-1 mb-6">{service.body}</p>
-                <p className="text-[11px] uppercase tracking-[0.16em] text-white/50">
+                <p className="text-white/70 text-sm leading-relaxed mb-6">{service.body}</p>
+                <p className="mt-auto text-[11px] uppercase tracking-[0.16em] text-white/50">
                   {service.meta}
                 </p>
               </article>
@@ -161,7 +161,7 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section className="py-20 px-4 scroll-mt-24" aria-labelledby="process-heading">
+      <section className="py-20 px-4 md:px-8 lg:px-10 scroll-mt-24" aria-labelledby="process-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="process-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -177,7 +177,7 @@ export function HomeSections() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {steps.map((step) => (
               <article key={step.n} className="h-full border border-black/15 p-7 flex flex-col">
-                <p className="text-[11px] tracking-[0.22em] text-gray-400 mb-5">{step.n}</p>
+                <p className="text-sm tracking-[0.24em] text-black mb-5">{step.n}</p>
                 <div className="text-black mb-5" aria-hidden>
                   {step.icon}
                 </div>
@@ -189,7 +189,7 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-gray-50" aria-labelledby="proof-heading">
+      <section className="py-20 px-4 md:px-8 lg:px-10 bg-gray-50" aria-labelledby="proof-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="proof-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -227,7 +227,7 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section className="py-20 px-4 scroll-mt-24" aria-labelledby="featured-heading">
+      <section className="py-20 px-4 md:px-8 lg:px-10 scroll-mt-24" aria-labelledby="featured-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="featured-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -240,7 +240,7 @@ export function HomeSections() {
               )}
             </p>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
             {featuredProjects.map((project) => (
               <article
                 key={project.slug}
@@ -251,8 +251,9 @@ export function HomeSections() {
                     src={project.image}
                     alt={t(project.title.lt, project.title.en)}
                     fill
+                    quality={90}
                     className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 420px"
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-left">
