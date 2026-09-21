@@ -48,8 +48,8 @@ export function PrivacyContent() {
         <h2 className="text-xl font-bold mt-8 mb-3">{t('Saugojimas ir trečiosios šalys', 'Retention and processors')}</h2>
         <p className="text-gray-700 mb-4">
           {t(
-            'Formos laiškai siunčiami per EmailJS ir, jei reikia, Noundry Forms — abu perduoda žinutę į mano el. paštą. Saugau susirašinėjimą tiek, kiek reikia atsakymui ir sutarčiai (paprastai iki 12 mėn., nebent buhalterija ar teisė reikalauja ilgiau). Neperduodu duomenų rinkodarai.',
-            'Form messages are sent via EmailJS and, if needed, Noundry Forms — both deliver to my inbox. I keep correspondence as long as needed to reply and fulfil an agreement (typically up to 12 months, unless accounting or law requires longer). I do not sell data for marketing.'
+            'Formos laiškai siunčiami per EmailJS į mano Gmail. Jei ta paslauga neveikia, forma atidaro jūsų el. paštą su paruošta žinute. Saugau susirašinėjimą tiek, kiek reikia atsakymui ir sutarčiai (paprastai iki 12 mėn., nebent buhalterija ar teisė reikalauja ilgiau). Neperduodu duomenų rinkodarai.',
+            'Form messages are sent via EmailJS to my Gmail. If that service is down, the form opens your email app with a prepared message. I keep correspondence as long as needed to reply and fulfil an agreement (typically up to 12 months, unless accounting or law requires longer). I do not sell data for marketing.'
           )}
         </p>
 

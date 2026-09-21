@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import { SITE } from 'src/lib/site';
-import { deliverViaNoundry } from 'src/lib/email';
 
 const SERVICE_ID = process.env.EMAILJS_SERVICE_ID ?? 'service_192u0r9';
 const TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID ?? 'template_u2g1ok7';
 const PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY ?? 'ubLfcy2BLMSoiD07t';
 const PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY;
+const GMAIL_USER = process.env.GMAIL_USER ?? SITE.email;
+const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -41,6 +43,24 @@ async function deliverViaEmailJs(name: string, email: string, message: string) {
   return response.ok;
 }
 
+async function deliverViaGmailSmtp(name: string, email: string, message: string) {
+  if (!GMAIL_APP_PASSWORD) return false;
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+  });
+  await transporter.sendMail({
+    from: `"${SITE.name} svetainė" <${GMAIL_USER}>`,
+    to: SITE.email,
+    replyTo: email,
+    subject: `Užklausa iš ${name}`,
+    text: `${message}\n\n— ${name}\n${email}`,
+  });
+  return true;
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -66,15 +86,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
   } catch {
-    // Gmail OAuth on EmailJS is often disconnected; try Noundry next.
+    // Gmail OAuth on EmailJS is disconnected until reconnected in the dashboard.
   }
 
   try {
-    if (await deliverViaNoundry(name, email, message)) {
+    if (await deliverViaGmailSmtp(name, email, message)) {
       return NextResponse.json({ ok: true });
     }
   } catch {
-    // fall through
+    // missing or invalid app password
   }
 
   return NextResponse.json({ ok: false, error: 'delivery_failed' }, { status: 502 });

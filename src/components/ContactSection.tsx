@@ -18,7 +18,7 @@ import {
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { SITE } from 'src/lib/site';
-import { deliverViaNoundry, inquiryMailto } from 'src/lib/email';
+import { inquiryMailto } from 'src/lib/email';
 import { Reveal } from 'src/components/Reveal';
 
 export function ContactSection() {
@@ -62,16 +62,7 @@ export function ContactSection() {
         return;
       }
     } catch {
-      // try Noundry from the browser, then mailto
-    }
-
-    try {
-      if (await deliverViaNoundry(formData.name, formData.email, formData.message)) {
-        markSent();
-        return;
-      }
-    } catch {
-      // last resort: the visitor's own mail app
+      // EmailJS Gmail is disconnected; open the visitor's mail app instead.
     }
 
     setStatus('mailto');
@@ -129,8 +120,8 @@ export function ContactSection() {
                 </p>
                 <p className="text-sm text-gray-700 mb-4">
                   {t(
-                    'Jei langas neatsidarė, paspauskite mygtuką — laiškas bus užpildytas ir adresuotas ',
-                    'If a window did not open, tap the button — the email is filled in and addressed to '
+                    'Automatinis siuntimas šiuo metu neveikia. Paspauskite mygtuką — laiškas bus užpildytas ir adresuotas ',
+                    'Automatic sending is currently down. Tap the button — the email is filled in and addressed to '
                   )}
                   <a className="underline underline-offset-4 font-medium" href={`mailto:${SITE.email}`}>
                     {SITE.email}
