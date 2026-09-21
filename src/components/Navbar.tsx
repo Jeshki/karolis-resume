@@ -53,15 +53,16 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
-            aria-expanded={isOpen}
-            aria-label={isOpen ? t('Uždaryti meniu', 'Close menu') : t('Atidaryti meniu', 'Open menu')}
-          >
-            {isOpen ? <IconX size={24} strokeWidth={2} /> : <IconMenu2 size={24} strokeWidth={2} />}
-          </button>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+          aria-expanded={isOpen}
+          aria-label={isOpen ? t('Uždaryti meniu', 'Close menu') : t('Atidaryti meniu', 'Open menu')}
+        >
+          {isOpen ? <IconX size={24} strokeWidth={2} /> : <IconMenu2 size={24} strokeWidth={2} />}
+        </button>
+
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
           <button
             onClick={toggleLanguage}
             className="flex items-center hover:opacity-80 transition-opacity"

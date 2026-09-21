@@ -22,15 +22,24 @@ export function HeroSection() {
       <section id="about" className="relative pt-28 pb-16 px-4 bg-[#030303] text-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10 relative">
           <Reveal className="w-full max-w-xl mx-auto">
-            <Image
-              src="/karolis-studio.jpg"
-              alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
-              width={1024}
-              height={1024}
-              className="w-full h-auto"
-              priority
-              sizes="(max-width: 768px) 100vw, 576px"
-            />
+            <div className="relative">
+              <Image
+                src="/karolis-studio.jpg"
+                alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
+                width={1024}
+                height={1024}
+                className="w-full h-auto block"
+                priority
+                sizes="(max-width: 768px) 100vw, 576px"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-36"
+              >
+                <div className="absolute inset-0 backdrop-blur-[8px] [mask-image:linear-gradient(to_bottom,transparent,black_70%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_70%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-transparent" />
+              </div>
+            </div>
           </Reveal>
 
           <div className="text-center md:text-left">
@@ -53,17 +62,17 @@ export function HeroSection() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.12} className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-8 md:pr-0 pr-16">
+            <Reveal delay={0.12} className="flex flex-col sm:flex-row gap-3 items-center justify-center md:justify-start mb-8">
               <Link
                 href="/portfolio"
-                className="inline-flex items-center justify-center gap-2 bg-white text-black py-3 px-6 rounded-lg font-medium hover:bg-white/85 transition-colors"
+                className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 bg-white text-black py-3 px-6 rounded-lg font-medium hover:bg-white/85 transition-colors"
               >
                 {t('Peržiūrėti darbus', 'View work')}
                 <IconArrowRight size={18} strokeWidth={1.5} />
               </Link>
               <Link
                 href="/kontaktai"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white py-3 px-6 rounded-lg font-medium hover:bg-white hover:text-black transition-colors"
+                className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 border-2 border-white text-white py-3 px-6 rounded-lg font-medium hover:bg-white hover:text-black transition-colors"
               >
                 {t('Gauti pasiūlymą', 'Get a quote')}
               </Link>
