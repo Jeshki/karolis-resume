@@ -12,7 +12,7 @@ import {
   Quote,
   BadgeCheck,
 } from 'lucide-react';
-import { Browser, Storefront, PenNib, Headset } from '@phosphor-icons/react/dist/ssr';
+import { Browser, ShoppingBag, BezierCurve, Headset } from '@phosphor-icons/react/dist/ssr';
 import { IconBrandLinkedin } from '@tabler/icons-react';
 import { Reveal } from 'src/components/Reveal';
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -38,7 +38,7 @@ export function HomeSections() {
     },
     {
       n: '02',
-      icon: Storefront,
+      icon: ShoppingBag,
       title: t('E-parduotuvės', 'E-commerce'),
       body: t(
         'WooCommerce ir Shopify — katalogas ir mokėjimai.',
@@ -48,7 +48,7 @@ export function HomeSections() {
     },
     {
       n: '03',
-      icon: PenNib,
+      icon: BezierCurve,
       title: t('UI / UX', 'UI / UX'),
       body: t(
         'Figma prototipai ir sąsajos, kurios padeda pirkti.',
