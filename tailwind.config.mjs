@@ -10,6 +10,17 @@ const config = {
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],
       },
+      fontWeight: {
+        thin: '300',
+        extralight: '300',
+        light: '300',
+        normal: '300',
+        medium: '300',
+        semibold: '300',
+        bold: '300',
+        extrabold: '300',
+        black: '300',
+      },
     },
   },
   plugins: [],

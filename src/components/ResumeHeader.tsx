@@ -37,7 +37,7 @@ export function ResumeHeader() {
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
               width={120}
               height={120}
-              className="rounded-full object-cover border-4 border-primary shadow-lg"
+              className="rounded-full object-cover object-[center_32%] border border-black/10 shadow-lg"
             />
           </div>
 

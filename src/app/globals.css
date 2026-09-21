@@ -8,6 +8,15 @@
 
 @theme {
   --color-primary: #111827;
+  --font-weight-thin: 300;
+  --font-weight-extralight: 300;
+  --font-weight-light: 300;
+  --font-weight-normal: 300;
+  --font-weight-medium: 300;
+  --font-weight-semibold: 300;
+  --font-weight-bold: 300;
+  --font-weight-extrabold: 300;
+  --font-weight-black: 300;
 }
 
 html {
@@ -17,6 +26,11 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b, button, label, th {
+  font-weight: 300;
 }
 
 :focus-visible {

@@ -8,7 +8,7 @@ import './print.css';
 
 const montserrat = Montserrat({
   subsets: ['latin', 'latin-ext'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300'],
   variable: '--font-sans',
   display: 'swap',
 });
@@ -62,7 +62,7 @@ const jsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="lt" suppressHydrationWarning className={montserrat.variable}>
-      <body className="font-sans bg-white text-gray-900 antialiased">
+      <body className="font-sans font-light bg-white text-gray-900 antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

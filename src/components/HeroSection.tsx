@@ -40,7 +40,7 @@ export function HeroSection() {
               src="/karolis.jpg"
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
               fill
-              className="rounded-full object-cover object-[70%_50%] shadow-xl border-4 border-white"
+              className="rounded-full object-cover object-[center_32%] shadow-xl ring-1 ring-black/10"
               priority
               sizes="(max-width: 768px) 256px, 320px"
             />
