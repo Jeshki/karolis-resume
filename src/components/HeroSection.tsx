@@ -10,7 +10,6 @@ import {
   IconDeviceDesktop,
   IconUsers,
   IconBrain,
-  IconSparkles,
   IconStar,
   IconArrowRight,
 } from '@tabler/icons-react';
@@ -53,8 +52,7 @@ export function HeroSection() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <p className="text-2xl md:text-3xl font-medium text-black mb-6 inline-flex items-center gap-2 justify-center md:justify-start">
-                <IconSparkles size={20} className="text-primary" />
+              <p className="text-2xl md:text-3xl font-medium text-black mb-6">
                 {t('Full-Stack programuotojas ir dizaineris', 'Full-Stack Developer & Designer')}
               </p>
             </Reveal>
