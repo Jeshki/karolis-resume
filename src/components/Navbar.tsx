@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // import { useTheme } from 'next-themes'; // <-- 1. PAŠALINTA
 import { IconMenu2, IconX, IconUser, IconBriefcase, IconLayoutGrid, IconMail } from '@tabler/icons-react'; // Pašalinta IconSun, IconMoon
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -12,12 +12,6 @@ export function Navbar() {
   const { language, toggleLanguage, t } = useLanguage();
   // const { theme, setTheme } = useTheme(); // <-- 2. PAŠALINTA
   const [isOpen, setIsOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   const flagLT = "https://flagcdn.com/lt.svg";
   const flagGB = "https://flagcdn.com/gb.svg";
 
@@ -59,8 +53,6 @@ export function Navbar() {
             {t('Kontaktai', 'Contact')}
           </Link>
 
-          {isMounted && (
-            <>
               <div className="w-px h-6 bg-gray-300" /> {/* Pašalintos dark: klasės */}
               
               <button
@@ -80,8 +72,6 @@ export function Navbar() {
 
               {/* 3. PAŠALINTAS TEMOS MYGTUKAS */}
               {/* <button ... > ... </button> */}
-            </>
-          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -134,8 +124,7 @@ export function Navbar() {
               </Link>
             </div>
 
-            {isMounted && (
-              <div className="border-t border-gray-200 px-4 py-4 flex justify-between items-center">
+            <div className="border-t border-gray-200 px-4 py-4 flex justify-between items-center">
                 
                 <button
                   onClick={() => {
@@ -160,7 +149,6 @@ export function Navbar() {
                 {/* <button ... > ... </button> */}
 
               </div>
-            )}
           </motion.div>
         )}
       </AnimatePresence>

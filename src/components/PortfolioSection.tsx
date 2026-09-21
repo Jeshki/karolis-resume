@@ -101,6 +101,56 @@ export function PortfolioSection() {
 
   const projects = [
     {
+      title: t('DAEI birža', 'DAEI Exchange'),
+      description: t(
+        'DAEI apskaitos vienetų aukciono ir prekybos platforma — skaidri prekyba atsinaujinančios energijos vienetais, Baltpool partneris.',
+        'DAEI accounting unit auction and trading platform — transparent trading of renewable fuel units, a Baltpool partner.'
+      ),
+      image: '/daeibirza.png',
+      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      liveLink: 'https://www.daeibirza.lt',
+    },
+    {
+      title: t('Apolobook', 'Apolobook'),
+      description: t(
+        'Premium PDF el. knygų parduotuvė — momentinis atsisiuntimas, Stripe mokėjimai ir saugus atsiskaitymas.',
+        'Premium PDF e-book store — instant downloads, Stripe payments, and secure checkout.'
+      ),
+      image: '/apolobook.png',
+      technologies: ['Next.js', 'Stripe', 'Tailwind CSS'],
+      liveLink: 'https://www.apolobook.com',
+    },
+    {
+      title: t('Pilnasbusas', 'Pilnasbusas'),
+      description: t(
+        'Elektroninė parduotuvė su alyvuogių aliejumi, užkandžiais, kava, kosmetika ir namų prekėmis. Sukurta su Shopify.',
+        'An e-commerce store for olive oil, snacks, coffee, cosmetics, and home goods. Built with Shopify.'
+      ),
+      image: '/pilnasbusas.png',
+      technologies: ['Shopify'],
+      liveLink: 'https://www.pilnasbusas.lt',
+    },
+    {
+      title: t('Kefyro ūsai', 'Kefyro ūsai'),
+      description: t(
+        'Bariuko Palangoje svetainė su meniu, galerija, rezervacijomis ir Google atsiliepimais.',
+        'Website for a Palanga bar with menu, gallery, reservations, and Google reviews.'
+      ),
+      image: '/kefyrousai.png',
+      technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+      liveLink: 'https://kefyro-usai.vercel.app',
+    },
+    {
+      title: t('Evangelijos', 'Evangelijos'),
+      description: t(
+        'Gnostinių tekstų ir apokrifinių evangelijų biblioteka — Tomo, Marijos, Judo evangelijos ir Nag Hammadi rinkiniai.',
+        'A library of Gnostic texts and apocryphal gospels — Thomas, Mary, Judas, and Nag Hammadi collections.'
+      ),
+      image: '/evangelijos.png',
+      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      liveLink: 'https://www.evangelijos.com',
+    },
+    {
       title: t('Dusofi svetainė', 'Dusofi website'),
       description: t(
         'Ši svetainė sukurta siekiant pasidalinti nesenstančia išmintimi · įkvepiančiais žodžiais',
