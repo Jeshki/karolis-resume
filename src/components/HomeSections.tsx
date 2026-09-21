@@ -146,18 +146,16 @@ export function HomeSections() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((service) => (
-              <Reveal key={service.title} className="h-full">
-                <article className="h-full bg-black text-white p-7 flex flex-col">
-                  <div className="mb-6 text-white" aria-hidden>
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
-                  <p className="text-white/70 text-sm leading-relaxed flex-1 mb-6">{service.body}</p>
-                  <p className="text-[11px] uppercase tracking-[0.16em] text-white/50">
-                    {service.meta}
-                  </p>
-                </article>
-              </Reveal>
+              <article key={service.title} className="h-full bg-black text-white p-7 flex flex-col">
+                <div className="mb-6 text-white" aria-hidden>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed flex-1 mb-6">{service.body}</p>
+                <p className="text-[11px] uppercase tracking-[0.16em] text-white/50">
+                  {service.meta}
+                </p>
+              </article>
             ))}
           </div>
         </div>
@@ -178,16 +176,14 @@ export function HomeSections() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {steps.map((step) => (
-              <Reveal key={step.n} className="h-full">
-                <article className="h-full border border-black/15 p-7 flex flex-col">
-                  <p className="text-[11px] tracking-[0.22em] text-gray-400 mb-5">{step.n}</p>
-                  <div className="text-black mb-5" aria-hidden>
-                    {step.icon}
-                  </div>
-                  <h3 className="text-xl mb-3">{step.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{step.body}</p>
-                </article>
-              </Reveal>
+              <article key={step.n} className="h-full border border-black/15 p-7 flex flex-col">
+                <p className="text-[11px] tracking-[0.22em] text-gray-400 mb-5">{step.n}</p>
+                <div className="text-black mb-5" aria-hidden>
+                  {step.icon}
+                </div>
+                <h3 className="text-xl mb-3">{step.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{step.body}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -208,26 +204,24 @@ export function HomeSections() {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-4">
             {proof.map((item) => (
-              <Reveal key={item.title} className="h-full">
-                <article className="h-full bg-white border border-black/10 p-7 flex flex-col">
-                  <div className="text-black mb-4" aria-hidden>
-                    {item.href ? <IconBrandLinkedin {...iconProps} /> : <IconCheck {...iconProps} />}
-                  </div>
-                  <h3 className="text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm flex-1 leading-relaxed">{item.body}</p>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
-                    >
-                      {item.cta}
-                      <IconArrowRight size={16} strokeWidth={1.5} />
-                    </a>
-                  ) : null}
-                </article>
-              </Reveal>
+              <article key={item.title} className="h-full bg-white border border-black/10 p-7 flex flex-col">
+                <div className="text-black mb-4" aria-hidden>
+                  {item.href ? <IconBrandLinkedin {...iconProps} /> : <IconCheck {...iconProps} />}
+                </div>
+                <h3 className="text-lg mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm flex-1 leading-relaxed">{item.body}</p>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
+                  >
+                    {item.cta}
+                    <IconArrowRight size={16} strokeWidth={1.5} />
+                  </a>
+                ) : null}
+              </article>
             ))}
           </div>
         </div>
@@ -248,37 +242,38 @@ export function HomeSections() {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-5">
             {featuredProjects.map((project) => (
-              <Reveal key={project.slug} className="h-full">
-                <article className="group h-full bg-white border border-black/15 flex flex-col transition-[border-color,transform] duration-200 hover:border-black hover:-translate-y-0.5">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                    <Image
-                      src={project.image}
-                      alt={t(project.title.lt, project.title.en)}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-6 flex flex-col flex-1 text-left">
-                    <h3 className="text-2xl mb-2 tracking-tight">
-                      {t(project.title.lt, project.title.en)}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4 flex-1 leading-relaxed">
-                      {t(project.description.lt, project.description.en)}
-                    </p>
-                    <p className="text-[11px] tracking-wide text-gray-400 mb-5">
-                      {project.technologies.join(' · ')}
-                    </p>
-                    <Link
-                      href={`/portfolio/${project.slug}`}
-                      className="inline-flex items-center gap-2 text-sm tracking-wide border-b border-black pb-0.5 w-fit hover:opacity-70 transition-opacity"
-                    >
-                      {t('Atidaryti', 'Open')}
-                      <IconArrowRight size={16} strokeWidth={1.5} />
-                    </Link>
-                  </div>
-                </article>
-              </Reveal>
+              <article
+                key={project.slug}
+                className="group h-full bg-white border border-black/15 flex flex-col transition-[border-color,transform] duration-200 hover:border-black hover:-translate-y-0.5"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                  <Image
+                    src={project.image}
+                    alt={t(project.title.lt, project.title.en)}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1 text-left">
+                  <h3 className="text-2xl mb-2 tracking-tight">
+                    {t(project.title.lt, project.title.en)}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4 flex-1 leading-relaxed">
+                    {t(project.description.lt, project.description.en)}
+                  </p>
+                  <p className="text-[11px] tracking-wide text-gray-400 mb-5">
+                    {project.technologies.join(' · ')}
+                  </p>
+                  <Link
+                    href={`/portfolio/${project.slug}`}
+                    className="inline-flex items-center gap-2 text-sm tracking-wide border-b border-black pb-0.5 w-fit hover:opacity-70 transition-opacity"
+                  >
+                    {t('Atidaryti', 'Open')}
+                    <IconArrowRight size={16} strokeWidth={1.5} />
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
           <Reveal className="text-center mt-10">
