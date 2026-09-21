@@ -33,7 +33,7 @@ export function ResumeHeader() {
         <div className="text-center mb-12">
           <div className="mb-6 flex justify-center">
             <Image
-              src="/karolis.jpg"
+              src="/karolis-studio.jpg"
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
               width={120}
               height={120}

@@ -37,7 +37,7 @@ export function HeroSection() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10 relative">
           <Reveal className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
             <Image
-              src="/karolis.jpg"
+              src="/karolis-studio.jpg"
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
               fill
               className="rounded-full object-cover object-[center_32%] shadow-xl ring-1 ring-black/10"

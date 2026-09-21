@@ -10,7 +10,7 @@ export const SITE = {
   github: 'https://github.com/Jeshki',
   githubHandle: 'Jeshki',
   linkedin: 'https://www.linkedin.com/in/karolis-cibiras',
-  ogImage: '/karolis.jpg',
+  ogImage: '/karolis-studio.jpg',
   cvPath: '/Karolio-CV-EN.pdf',
   cvFilename: 'Karolis-Cibiras-CV-EN.pdf',
 } as const;
