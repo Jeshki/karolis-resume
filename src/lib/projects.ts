@@ -230,17 +230,6 @@ export const projects: PortfolioProject[] = [
     liveLink: 'https://papildusala.lt/',
   },
   {
-    slug: 'ciuziniusala',
-    title: { lt: 'Čiužinių Sala', en: 'Mattress Island' },
-    description: {
-      lt: 'Elektroninė parduotuvė, prekiaujanti čiužiniais ir lovomis. Sukurta su WordPress ir WooCommerce.',
-      en: 'An e-commerce store selling mattresses and beds. Built with WordPress and WooCommerce.',
-    },
-    image: '/ciuziniusala.png',
-    technologies: ['WordPress', 'WooCommerce', 'PHP'],
-    liveLink: 'https://ciuziniusala.lt/',
-  },
-  {
     slug: 'doviles-resume',
     title: { lt: 'Dovilės Resume', en: "Dovilė's Resume" },
     description: {
