@@ -16,10 +16,9 @@ import {
   ListChecks,
 } from 'lucide-react';
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
-import emailjs from '@emailjs/browser';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { SITE } from 'src/lib/site';
-import { EMAILJS, deliverViaNoundry, inquiryMailto } from 'src/lib/email';
+import { deliverViaNoundry, inquiryMailto } from 'src/lib/email';
 import { Reveal } from 'src/components/Reveal';
 
 export function ContactSection() {
@@ -35,32 +34,16 @@ export function ContactSection() {
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.privacy) {
+    const form = e.currentTarget as HTMLFormElement;
+    const privacyBox = form.elements.namedItem('privacy') as HTMLInputElement | null;
+    const privacy = privacyBox?.checked ?? formData.privacy;
+    if (!privacy) {
       setStatus('error');
       return;
     }
     setStatus('sending');
     const href = inquiryMailto(formData.name, formData.email, formData.message);
     setMailtoHref(href);
-
-    const params = {
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-      reply_to: formData.email,
-      to_email: SITE.email,
-      to_name: SITE.name,
-    };
-
-    try {
-      await emailjs.send(EMAILJS.serviceId, EMAILJS.templateId, params, {
-        publicKey: EMAILJS.publicKey,
-      });
-      markSent();
-      return;
-    } catch {
-      // Gmail in EmailJS may be disconnected; try the server route next.
-    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -70,8 +53,9 @@ export function ContactSection() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          privacy: formData.privacy,
+          privacy: true,
         }),
+        signal: AbortSignal.timeout(12_000),
       });
       if (response.ok) {
         markSent();
@@ -256,7 +240,10 @@ export function ContactSection() {
                 {status === 'error' ? (
                   <p className="text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm inline-flex items-center gap-2 w-full" role="alert">
                     <CircleAlert size={18} strokeWidth={1.5} className="shrink-0" />
-                    {t('Nepavyko išsiųsti. Bandykite dar kartą arba rašykite ', 'Could not send. Try again or email ')}
+                    {t(
+                      'Pažymėkite privatumo sutikimą. Jei forma vis tiek neveikia, rašykite ',
+                      'Please accept the privacy policy. If the form still fails, email '
+                    )}
                     <a className="underline underline-offset-4" href={`mailto:${SITE.email}`}>
                       {SITE.email}
                     </a>

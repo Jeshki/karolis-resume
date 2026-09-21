@@ -57,7 +57,7 @@ export async function POST(request: Request) {
   if (!payload.privacy) {
     return NextResponse.json({ ok: false, error: 'privacy_required' }, { status: 400 });
   }
-  if (name.length < 2 || !isEmail(email) || message.length < 10) {
+  if (name.length < 2 || !isEmail(email) || message.length < 1) {
     return NextResponse.json({ ok: false, error: 'invalid_fields' }, { status: 400 });
   }
 
