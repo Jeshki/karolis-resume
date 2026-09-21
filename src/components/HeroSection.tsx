@@ -35,14 +35,15 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10 relative">
-          <Reveal className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+          <Reveal className="w-full max-w-xl mx-auto">
             <Image
               src="/karolis-studio.jpg"
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
-              fill
-              className="rounded-full object-cover object-[center_32%] shadow-xl ring-1 ring-black/10"
+              width={1024}
+              height={1024}
+              className="w-full h-auto shadow-xl"
               priority
-              sizes="(max-width: 768px) 256px, 320px"
+              sizes="(max-width: 768px) 100vw, 576px"
             />
           </Reveal>
 
