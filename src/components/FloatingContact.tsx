@@ -17,7 +17,7 @@ export function FloatingContact() {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-center gap-3 print:hidden">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-center gap-3 print:hidden max-md:bottom-5">
       <AnimatePresence>
         {isOpen && (
           <motion.div className="flex flex-col items-center gap-3">

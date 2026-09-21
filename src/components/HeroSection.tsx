@@ -31,7 +31,7 @@ export function HeroSection() {
 
   return (
     <>
-      <section id="about" className="relative py-24 px-4 min-h-[100svh] flex items-center justify-center">
+      <section id="about" className="relative pt-28 pb-16 px-4">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10 relative">
@@ -85,7 +85,7 @@ export function HeroSection() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.12} className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-8">
+            <Reveal delay={0.12} className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-8 md:pr-0 pr-16">
               <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center gap-2 bg-black text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors"

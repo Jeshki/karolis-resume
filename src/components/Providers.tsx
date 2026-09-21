@@ -39,11 +39,11 @@ function AppShell({ children }: { children: React.ReactNode }) {
         <motion.main
           id="main-content"
           key={pathname}
-          initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={reduceMotion ? undefined : { opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-          className="min-h-screen"
+          transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
+          className="relative z-0 min-h-screen"
         >
           {children}
         </motion.main>

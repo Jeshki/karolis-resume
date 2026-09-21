@@ -32,7 +32,7 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="fixed top-0 w-full z-50 border-b border-gray-200 bg-white/95 backdrop-blur-xl supports-[backdrop-filter]:bg-white/90"
+      className="fixed top-0 w-full z-[70] border-b border-gray-200 bg-white backdrop-blur-xl"
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
