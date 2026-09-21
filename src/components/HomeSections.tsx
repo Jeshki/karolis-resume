@@ -7,14 +7,12 @@ import {
   IconBrandLinkedin,
   IconBuildingStore,
   IconCheck,
-  IconClock,
   IconDeviceDesktop,
   IconHeadset,
   IconLayout,
   IconMessageCircle,
   IconPalette,
   IconRocket,
-  IconSparkles,
   IconWorld,
 } from '@tabler/icons-react';
 import { Reveal } from 'src/components/Reveal';
@@ -22,43 +20,45 @@ import { useLanguage } from 'src/contexts/LanguageContext';
 import { featuredProjects } from 'src/lib/projects';
 import { SITE } from 'src/lib/site';
 
+const iconProps = { size: 24, strokeWidth: 1.5 } as const;
+
 export function HomeSections() {
   const { t } = useLanguage();
 
   const services = [
     {
-      icon: <IconDeviceDesktop size={24} />,
+      icon: <IconDeviceDesktop {...iconProps} />,
       title: t('Svetainės', 'Websites'),
       body: t(
-        'Įmonių ir produktų svetainės su Next.js arba WordPress. Aiški struktūra, greitis ir SEO pagrindai.',
-        'Company and product sites on Next.js or WordPress. Clear structure, speed, and SEO basics.'
+        'Next.js arba WordPress — struktūra, greitis, SEO.',
+        'Next.js or WordPress — structure, speed, SEO.'
       ),
-      meta: t('Tipiškai 2–6 sav. · fiksuota kaina', 'Typically 2–6 weeks · fixed price'),
+      meta: t('Fiksuota kaina · 2–6 sav.', 'Fixed price · 2–6 wks'),
     },
     {
-      icon: <IconBuildingStore size={24} />,
+      icon: <IconBuildingStore {...iconProps} />,
       title: t('E-parduotuvės', 'E-commerce'),
       body: t(
-        'WooCommerce ir Shopify parduotuvės: katalogas, mokėjimai, valdymas be kasdienio programuotojo.',
-        'WooCommerce and Shopify stores: catalog, payments, and day-to-day management without a developer.'
+        'WooCommerce ir Shopify — katalogas ir mokėjimai.',
+        'WooCommerce and Shopify — catalog and payments.'
       ),
-      meta: t('Tipiškai 3–8 sav. · fiksuota kaina', 'Typically 3–8 weeks · fixed price'),
+      meta: t('Fiksuota kaina · 3–8 sav.', 'Fixed price · 3–8 wks'),
     },
     {
-      icon: <IconPalette size={24} />,
+      icon: <IconPalette {...iconProps} />,
       title: t('UI / UX', 'UI / UX'),
       body: t(
-        'Figma prototipai, vizualas ir sąsajos, kurios padeda lankytojui greitai suprasti ir pirkti.',
-        'Figma prototypes, visuals, and interfaces that help visitors understand and buy faster.'
+        'Figma prototipai ir sąsajos, kurios padeda pirkti.',
+        'Figma prototypes and interfaces that help people buy.'
       ),
-      meta: t('Prieš build’ą arba atskirai · fiksuota kaina', 'Before build or standalone · fixed price'),
+      meta: t('Fiksuota kaina', 'Fixed price'),
     },
     {
-      icon: <IconHeadset size={24} />,
+      icon: <IconHeadset {...iconProps} />,
       title: t('Palaikymas', 'Support'),
       body: t(
-        'Atnaujinimai, pataisymai ir smulkūs plėtiniai jau veikiančioms svetainėms bei parduotuvėms.',
-        'Updates, fixes, and small extensions for sites and stores already in production.'
+        'Atnaujinimai ir pataisymai veikiančioms svetainėms.',
+        'Updates and fixes for sites already live.'
       ),
       meta: t('Mėnesinis arba pagal užduotį', 'Monthly or per task'),
     },
@@ -67,7 +67,7 @@ export function HomeSections() {
   const steps = [
     {
       n: '01',
-      icon: <IconMessageCircle size={22} />,
+      icon: <IconMessageCircle {...iconProps} />,
       title: t('Briefing', 'Briefing'),
       body: t(
         'Tikslas, auditorija, terminas ir biudžetas. Po pokalbio — aiški apimtis, ne valandos.',
@@ -76,7 +76,7 @@ export function HomeSections() {
     },
     {
       n: '02',
-      icon: <IconLayout size={22} />,
+      icon: <IconLayout {...iconProps} />,
       title: t('Dizainas', 'Design'),
       body: t(
         'Struktūra ir UI: kas turi būti pirmame ekrane, kaip atrodo kelias iki veiksmo.',
@@ -85,7 +85,7 @@ export function HomeSections() {
     },
     {
       n: '03',
-      icon: <IconWorld size={22} />,
+      icon: <IconWorld {...iconProps} />,
       title: t('Build', 'Build'),
       body: t(
         'React/Next, WordPress arba Shopify — parinktas stack’as pagal projekto poreikį, ne mados.',
@@ -94,7 +94,7 @@ export function HomeSections() {
     },
     {
       n: '04',
-      icon: <IconRocket size={22} />,
+      icon: <IconRocket {...iconProps} />,
       title: t('Paleidimas', 'Launch'),
       body: t(
         'Domenas, forma, analitika, perdavimas. Palieku veikiantį produktą, ne „beveik baigta“.',
@@ -144,17 +144,16 @@ export function HomeSections() {
               )}
             </p>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((service, i) => (
               <Reveal key={service.title} delay={i * 0.05} className="h-full">
-                <article className="h-full bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+                <article className="h-full bg-black text-white p-7 flex flex-col">
+                  <div className="mb-6 text-white" aria-hidden>
                     {service.icon}
                   </div>
-                  <h3 className="font-bold text-xl mb-2">{service.title}</h3>
-                  <p className="text-gray-600 text-sm flex-1 mb-4">{service.body}</p>
-                  <p className="text-sm font-medium inline-flex items-center gap-2 text-gray-800">
-                    <IconClock size={16} />
+                  <h3 className="text-xl tracking-wide mb-3">{service.title}</h3>
+                  <p className="text-white/70 text-sm leading-relaxed flex-1 mb-6">{service.body}</p>
+                  <p className="text-[11px] uppercase tracking-[0.16em] text-white/50">
                     {service.meta}
                   </p>
                 </article>
@@ -177,14 +176,16 @@ export function HomeSections() {
               )}
             </p>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {steps.map((step, i) => (
               <Reveal key={step.n} delay={i * 0.05} className="h-full">
-                <article className="h-full rounded-2xl border border-gray-200 p-6">
-                  <p className="text-sm font-bold text-gray-400 mb-3">{step.n}</p>
-                  <div className="text-primary mb-3">{step.icon}</div>
-                  <h3 className="font-bold text-xl mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm">{step.body}</p>
+                <article className="h-full border border-black/15 p-7 flex flex-col">
+                  <p className="text-xs tracking-[0.2em] text-gray-400 mb-5">{step.n}</p>
+                  <div className="text-black mb-5" aria-hidden>
+                    {step.icon}
+                  </div>
+                  <h3 className="text-xl mb-3">{step.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{step.body}</p>
                 </article>
               </Reveal>
             ))}
@@ -205,24 +206,24 @@ export function HomeSections() {
               )}
             </p>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4">
             {proof.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.05} className="h-full">
-                <article className="h-full bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
-                    {item.href ? <IconBrandLinkedin size={20} /> : <IconCheck size={20} />}
+                <article className="h-full bg-white border border-black/10 p-7 flex flex-col">
+                  <div className="text-black mb-4" aria-hidden>
+                    {item.href ? <IconBrandLinkedin {...iconProps} /> : <IconCheck {...iconProps} />}
                   </div>
-                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm flex-1">{item.body}</p>
+                  <h3 className="text-lg mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm flex-1 leading-relaxed">{item.body}</p>
                   {item.href ? (
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 font-medium hover:underline underline-offset-4"
+                      className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
                     >
                       {item.cta}
-                      <IconArrowRight size={16} />
+                      <IconArrowRight size={16} strokeWidth={1.5} />
                     </a>
                   ) : null}
                 </article>
@@ -235,8 +236,7 @@ export function HomeSections() {
       <section className="py-20 px-4" aria-labelledby="featured-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
-            <h2 id="featured-heading" className="text-3xl md:text-4xl font-bold mb-3 inline-flex items-center gap-2 justify-center">
-              <IconSparkles size={26} className="text-primary" />
+            <h2 id="featured-heading" className="text-3xl md:text-4xl font-bold mb-3">
               {t('Pasirinkti darbai', 'Selected work')}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -246,49 +246,36 @@ export function HomeSections() {
               )}
             </p>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {featuredProjects.map((project, i) => (
               <Reveal key={project.slug} delay={i * 0.06} className="h-full">
-                <article className="h-full bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col">
-                  <div className="relative h-48">
+                <article className="group h-full bg-white border border-black/15 flex flex-col transition-colors hover:border-black">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                     <Image
                       src={project.image}
                       alt={t(project.title.lt, project.title.en)}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-1 text-left">
-                    <h3 className="font-bold text-xl mb-2">{t(project.title.lt, project.title.en)}</h3>
-                    <p className="text-gray-600 text-sm mb-4 flex-1">
+                    <h3 className="text-2xl mb-2 tracking-tight">
+                      {t(project.title.lt, project.title.en)}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4 flex-1 leading-relaxed">
                       {t(project.description.lt, project.description.en)}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 mt-auto">
-                      <Link
-                        href={`/portfolio/${project.slug}`}
-                        className="flex-1 border-2 border-black text-center py-2 px-4 rounded font-medium hover:bg-black hover:text-white transition-colors"
-                      >
-                        {t('Case study', 'Case study')}
-                      </Link>
-                      {project.liveLink ? (
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 bg-black text-white text-center py-2 px-4 rounded font-medium hover:bg-gray-800 transition-colors"
-                        >
-                          Demo
-                        </a>
-                      ) : null}
-                    </div>
+                    <p className="text-[11px] tracking-wide text-gray-400 mb-5">
+                      {project.technologies.join(' · ')}
+                    </p>
+                    <Link
+                      href={`/portfolio/${project.slug}`}
+                      className="inline-flex items-center gap-2 text-sm tracking-wide border-b border-black pb-0.5 w-fit hover:opacity-70 transition-opacity"
+                    >
+                      {t('Atidaryti', 'Open')}
+                      <IconArrowRight size={16} strokeWidth={1.5} />
+                    </Link>
                   </div>
                 </article>
               </Reveal>
@@ -297,10 +284,10 @@ export function HomeSections() {
           <Reveal className="text-center mt-10">
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-2 font-medium hover:underline underline-offset-4"
+              className="inline-flex items-center gap-2 text-sm tracking-wide hover:underline underline-offset-4"
             >
               {t('Visi darbai', 'All work')}
-              <IconArrowRight size={18} />
+              <IconArrowRight size={16} strokeWidth={1.5} />
             </Link>
           </Reveal>
         </div>

@@ -6,11 +6,6 @@ import {
   IconPhone,
   IconMail,
   IconMapPin,
-  IconCode,
-  IconDeviceDesktop,
-  IconUsers,
-  IconBrain,
-  IconStar,
   IconArrowRight,
 } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -22,10 +17,10 @@ export function HeroSection() {
   const { t } = useLanguage();
 
   const strengths = [
-    { name: t('Front-End programavimas', 'Front-End Programming'), icon: <IconCode size={18} /> },
-    { name: t('Dizaino supratimas', 'Design Understanding'), icon: <IconDeviceDesktop size={18} /> },
-    { name: t('Verslo procesų patirtis', 'Business Process Experience'), icon: <IconBrain size={18} /> },
-    { name: t('Nuolatinis mokymasis', 'Continuous Learning'), icon: <IconUsers size={18} /> },
+    t('Front-End programavimas', 'Front-End Programming'),
+    t('Dizaino supratimas', 'Design Understanding'),
+    t('Verslo procesų patirtis', 'Business Process Experience'),
+    t('Nuolatinis mokymasis', 'Continuous Learning'),
   ];
 
   return (
@@ -101,18 +96,16 @@ export function HeroSection() {
             </Reveal>
 
             <Reveal delay={0.14}>
-              <div className="mb-3 text-sm font-semibold text-primary inline-flex items-center gap-2">
-                <IconStar size={18} />
+              <p className="mb-3 text-xs tracking-[0.18em] uppercase text-gray-500">
                 {t('Stiprybės', 'Strengths')}
-              </div>
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                 {strengths.map((skill) => (
                   <span
-                    key={skill.name}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                    key={skill}
+                    className="px-3 py-1.5 border border-black/20 text-sm text-gray-800"
                   >
-                    {skill.icon}
-                    {skill.name}
+                    {skill}
                   </span>
                 ))}
               </div>
