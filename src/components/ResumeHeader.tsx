@@ -20,57 +20,75 @@ export function ResumeHeader() {
     t('SEO, Stripe ir našumo optimizavimas', 'SEO, Stripe & performance'),
   ];
 
+  const contacts = [
+    { href: `mailto:${SITE.email}`, icon: Mail, label: SITE.email },
+    { href: SITE.phoneHref, icon: Phone, label: SITE.phoneDisplay },
+    { href: null, icon: MapPin, label: t(SITE.locationLt, SITE.locationEn) },
+    { href: SITE.url, icon: Globe, label: 'karoliscibiras.lt' },
+  ];
+
   return (
     <section className="pt-28 pb-16 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="mb-6 flex justify-center">
+        <div className="flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12 mb-14">
+          <div className="shrink-0 w-44 h-56 md:w-52 md:h-64 overflow-hidden rounded-[50%]">
             <Image
               src="/karolis-studio.jpg"
               alt={t('Karolis Čibiras — profilio nuotrauka', 'Karolis Čibiras — profile picture')}
               width={1024}
               height={1024}
-              className="w-56 h-auto md:w-64"
+              className="h-full w-full object-cover object-[center_20%]"
+              priority
             />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">Karolis Čibiras</h1>
-          <h2 className="text-2xl md:text-3xl font-medium text-primary mb-6">
-            {t('Full-Stack programuotojas ir dizaineris', 'Full-Stack Developer & Designer')}
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6 text-gray-600">
-            <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 justify-center hover:underline underline-offset-4">
-              <Mail size={16} strokeWidth={1.5} /> {SITE.email}
-            </a>
-            <a href={SITE.phoneHref} className="flex items-center gap-2 justify-center hover:underline underline-offset-4">
-              <Phone size={16} strokeWidth={1.5} /> {SITE.phoneDisplay}
-            </a>
-            <span className="flex items-center gap-2 justify-center">
-              <MapPin size={16} strokeWidth={1.5} /> {t(SITE.locationLt, SITE.locationEn)}
-            </span>
-            <a href={SITE.url} className="flex items-center gap-2 justify-center hover:underline underline-offset-4">
-              <Globe size={16} strokeWidth={1.5} /> karoliscibiras.lt
-            </a>
-          </div>
-
-          <div className="flex justify-center print:hidden">
-            <a
-              href={SITE.cvPath}
-              download={SITE.cvFilename}
-              className="inline-flex items-center justify-center gap-1.5 text-sm bg-black text-white py-1.5 px-3.5 hover:bg-gray-800 transition-colors"
-            >
-              <Download size={14} strokeWidth={1.5} /> {t('Atsisiųsti CV', 'Download CV')}
-            </a>
+          <div className="text-center md:text-left flex-1">
+            <h1 className="text-4xl md:text-5xl font-bold mb-2 tracking-tight">Karolis Čibiras</h1>
+            <h2 className="text-xl md:text-2xl text-gray-700 mb-6">
+              {t('Full-Stack programuotojas ir dizaineris', 'Full-Stack Developer & Designer')}
+            </h2>
+            <div className="flex flex-col sm:flex-wrap sm:flex-row gap-x-5 gap-y-2 justify-center md:justify-start mb-6 text-gray-600 text-sm">
+              {contacts.map((item) => {
+                const Icon = item.icon;
+                const inner = (
+                  <>
+                    <Icon size={16} strokeWidth={1.5} /> {item.label}
+                  </>
+                );
+                return item.href ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="inline-flex items-center gap-2 hover:underline underline-offset-4"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <span key={item.label} className="inline-flex items-center gap-2">
+                    {inner}
+                  </span>
+                );
+              })}
+            </div>
+            <div className="flex justify-center md:justify-start print:hidden">
+              <a
+                href={SITE.cvPath}
+                download={SITE.cvFilename}
+                className="inline-flex items-center justify-center gap-1.5 text-sm bg-black text-white py-1.5 px-3.5 hover:bg-gray-800 transition-colors"
+              >
+                <Download size={14} strokeWidth={1.5} /> {t('Atsisiųsti CV', 'Download CV')}
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <h2 className="text-2xl font-bold mb-4 inline-flex items-center gap-2">
               <User size={18} strokeWidth={1.5} />
               {t('Apie mane', 'About Me')}
             </h2>
-            <p className="text-lg text-gray-700">{t(ABOUT_BIO.lt, ABOUT_BIO.en)}</p>
+            <p className="text-lg text-gray-700 leading-relaxed">{t(ABOUT_BIO.lt, ABOUT_BIO.en)}</p>
           </div>
 
           <div>
@@ -78,11 +96,10 @@ export function ResumeHeader() {
               <ListChecks size={18} strokeWidth={1.5} />
               {t('Pagrindinės kompetencijos', 'Core Competencies')}
             </h2>
-            <ul className="grid gap-3 text-gray-700">
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-700">
               {coreCompetencies.map((skill) => (
-                <li key={skill} className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>{skill}</span>
+                <li key={skill} className="border-b border-black/10 pb-2">
+                  {skill}
                 </li>
               ))}
             </ul>

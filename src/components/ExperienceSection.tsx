@@ -1,18 +1,22 @@
 ﻿'use client';
 
-import { IconBriefcase, IconPhone, IconCode } from '@tabler/icons-react';
+import { Briefcase, Code, Phone, ChartLine } from '@phosphor-icons/react/dist/ssr';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { Reveal } from 'src/components/Reveal';
 
 export function ExperienceSection() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
+  const hoverLift = reduceMotion ? undefined : { y: -3 };
 
   const experiences = [
     {
+      n: '01',
       title: t('Freelance Web kūrėjas / Programuotojas', 'Freelance Web Developer / Programmer'),
       company: t('Individuali veikla', 'Self-Employed'),
       period: t('2025-11 – dabar', 'Nov 2025 – Present'),
-      icon: <IconCode size={24} />,
+      icon: Code,
       tasks: [
         t(
           'Fiksuotos kainos projektai LT/EU klientams — svetainės ir e-parduotuvės nuo briefing’o iki paleidimo',
@@ -30,10 +34,11 @@ export function ExperienceSection() {
       skills: 'React • Next.js • TypeScript • Python • Tailwind • Node.js • AI Tools',
     },
     {
+      n: '02',
       title: t('Web kūrėjas', 'Web Developer'),
       company: 'Bithub.lt',
       period: t('2025-09 – 2025-11', 'Sep 2025 – Nov 2025'),
-      icon: <IconCode size={24} />,
+      icon: Code,
       tasks: [
         t(
           'Kūriau ir prižiūrėjau WordPress / WooCommerce svetaines ir e-parduotuves trumpame, intensyviame cikle',
@@ -51,10 +56,11 @@ export function ExperienceSection() {
       skills: 'WordPress • WooCommerce • PHP • Figma • AI Tools',
     },
     {
+      n: '03',
       title: t('E-komercijos vadovas / IT specialistas', 'E-commerce Manager / IT Specialist'),
       company: 'UAB „Medikatus“',
       period: t('2008 – 2024-02', '2008 – Feb 2024'),
-      icon: <IconBriefcase size={24} />,
+      icon: ChartLine,
       tasks: [
         t(
           '16 metų e-parduotuvės augimas: asortimentas, SEO, analitika ir kasdienės operacijos',
@@ -67,10 +73,11 @@ export function ExperienceSection() {
       ],
     },
     {
+      n: '04',
       title: t('Klientų aptarnavimo konsultantas (IT)', 'IT Customer Support Consultant'),
       company: 'UAB „Lintel“',
       period: t('2006 – 2007', '2006 – 2007'),
-      icon: <IconPhone size={24} />,
+      icon: Phone,
       tasks: [
         t(
           'Techninė pagalba telefonu — greitas problemos išsiaiškinimas ir konkretus sprendimas klientui',
@@ -85,41 +92,45 @@ export function ExperienceSection() {
       <div className="max-w-7xl mx-auto">
         <Reveal>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full">
-            <IconBriefcase size={26} className="text-primary" />
+            <Briefcase size={26} weight="light" />
             {t('Darbo patirtis', 'Work Experience')}
           </h2>
         </Reveal>
 
-        <div className="space-y-12">
-          {experiences.map((exp, i) => (
-            <Reveal key={exp.company} delay={Math.min(i * 0.06, 0.2)}>
-              <article className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-xl text-primary">{exp.icon}</div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold">{exp.title}</h3>
-                    <p className="text-primary font-medium">{exp.company}</p>
-                    <p className="text-sm text-gray-500 mb-4">{exp.period}</p>
-
-                    <ul className="space-y-2 mb-4">
-                      {exp.tasks.map((task) => (
-                        <li key={task} className="flex items-start gap-2 text-gray-600">
-                          <span className="text-primary mt-1">•</span>
-                          <span>{task}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {exp.skills ? (
-                      <p className="text-sm italic text-gray-500">
-                        <strong>{t('Technologijos:', 'Tech:')}</strong> {exp.skills}
-                      </p>
-                    ) : null}
-                  </div>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+          {experiences.map((exp) => {
+            const Icon = exp.icon;
+            return (
+              <motion.article
+                key={`${exp.company}-${exp.n}`}
+                whileHover={hoverLift}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full bg-white border border-black/10 hover:border-black/30 p-7 flex flex-col transition-colors"
+              >
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15">
+                      <Icon size={22} weight="light" />
+                    </span>
+                    <span className="text-[11px] tracking-[0.2em] text-gray-400">{exp.n}</span>
+                  </span>
+                  <p className="text-xs tracking-wide text-gray-500 text-right">{exp.period}</p>
                 </div>
-              </article>
-            </Reveal>
-          ))}
+                <h3 className="text-xl mb-1">{exp.title}</h3>
+                <p className="text-gray-700 mb-4">{exp.company}</p>
+                <ul className="space-y-2 mb-4 flex-1">
+                  {exp.tasks.map((task) => (
+                    <li key={task} className="text-gray-600 text-sm leading-relaxed pl-3 border-l border-black/15">
+                      {task}
+                    </li>
+                  ))}
+                </ul>
+                {exp.skills ? (
+                  <p className="mt-auto text-xs tracking-wide text-gray-500">{exp.skills}</p>
+                ) : null}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

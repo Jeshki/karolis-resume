@@ -1,31 +1,37 @@
 ﻿'use client';
 
 import Link from 'next/link';
-import { IconSchool, IconCode, IconDeviceLaptop, IconArrowRight } from '@tabler/icons-react';
+import { GraduationCap, Code, Laptop, ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { Reveal } from 'src/components/Reveal';
 
 export function EducationSection() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
+  const hoverLift = reduceMotion ? undefined : { y: -3 };
 
   const education = [
     {
+      n: '01',
       degree: 'Front-End Developer',
       school: 'Codecademy',
       year: t('2025 (vykdoma)', '2025 (in progress)'),
-      icon: <IconDeviceLaptop size={24} />,
+      icon: Laptop,
     },
     {
+      n: '02',
       degree: t('Front-End programavimas', 'Front-End Programming'),
       school: t('Baltijos technologijų institutas', 'Baltic Institute of Technology'),
       year: '2021',
-      icon: <IconCode size={24} />,
+      icon: Code,
     },
     {
+      n: '03',
       degree: t('Verslo vadyba ir analitika', 'Business Management and Analytics'),
       school: t('ISM Vadybos ir ekonomikos universitetas', 'ISM University of Management and Economics'),
       year: '2015',
-      icon: <IconSchool size={24} />,
+      icon: GraduationCap,
     },
   ];
 
@@ -34,22 +40,33 @@ export function EducationSection() {
       <div className="max-w-7xl mx-auto">
         <Reveal>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 inline-flex items-center gap-2 justify-center w-full">
-            <IconSchool size={26} className="text-primary" />
+            <GraduationCap size={28} weight="light" />
             {t('Išsilavinimas', 'Education')}
           </h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {education.map((edu, i) => (
-            <Reveal key={edu.school} delay={i * 0.05} className="h-full">
-              <article className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow h-full">
-                <div className="p-3 bg-primary/10 rounded-xl text-primary w-fit mx-auto mb-4">{edu.icon}</div>
-                <h3 className="font-bold text-lg mb-2">{edu.degree}</h3>
-                <p className="text-primary">{edu.school}</p>
-                <p className="text-sm text-gray-500 mt-2">{edu.year}</p>
-              </article>
-            </Reveal>
-          ))}
+        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+          {education.map((edu) => {
+            const Icon = edu.icon;
+            return (
+              <motion.article
+                key={edu.school}
+                whileHover={hoverLift}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full border border-black/10 hover:border-black/30 p-7 flex flex-col transition-colors"
+              >
+                <div className="flex items-center justify-between gap-3 mb-8">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-black/15">
+                    <Icon size={24} weight="light" />
+                  </span>
+                  <span className="text-[11px] tracking-[0.2em] text-gray-400">{edu.n}</span>
+                </div>
+                <p className="text-sm tracking-[0.14em] uppercase text-gray-500 mb-3">{edu.year}</p>
+                <h3 className="text-xl mb-2">{edu.degree}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mt-auto">{edu.school}</p>
+              </motion.article>
+            );
+          })}
         </div>
 
         <Reveal className="mt-14 text-center">
@@ -61,7 +78,7 @@ export function EducationSection() {
             className="inline-flex items-center justify-center gap-2 bg-black text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors"
           >
             {t('Pakalbėkime', "Let's talk")}
-            <IconArrowRight size={18} />
+            <ArrowRight size={18} weight="light" />
           </Link>
         </Reveal>
       </div>
