@@ -34,10 +34,10 @@ export function HeroSection() {
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-36"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-20"
               >
-                <div className="absolute inset-0 backdrop-blur-[8px] [mask-image:linear-gradient(to_bottom,transparent,black_70%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_70%)]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-transparent" />
+                <div className="absolute inset-0 backdrop-blur-[6px] [mask-image:linear-gradient(to_bottom,transparent,black_75%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_75%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/50 to-transparent" />
               </div>
             </div>
           </Reveal>
