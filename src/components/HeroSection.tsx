@@ -2,16 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  IconPhone,
-  IconMail,
-  IconMapPin,
-  IconArrowRight,
-} from '@tabler/icons-react';
+import { IconArrowRight } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { HomeSections } from 'src/components/HomeSections';
 import { Reveal } from 'src/components/Reveal';
-import { SITE } from 'src/lib/site';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -50,29 +44,11 @@ export function HeroSection() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.08} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6 text-white">
-              <a
-                href={`mailto:${SITE.email}`}
-                className="flex items-center gap-2 justify-center md:justify-start hover:underline underline-offset-4"
-              >
-                <IconMail size={18} strokeWidth={1.5} /> {SITE.email}
-              </a>
-              <a
-                href={SITE.phoneHref}
-                className="flex items-center gap-2 justify-center md:justify-start hover:underline underline-offset-4"
-              >
-                <IconPhone size={18} strokeWidth={1.5} /> {SITE.phoneDisplay}
-              </a>
-              <span className="flex items-center gap-2 justify-center md:justify-start">
-                <IconMapPin size={18} strokeWidth={1.5} /> {t('Kaunas', 'Kaunas')}
-              </span>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <p className="text-lg text-white/80 max-w-lg mx-auto md:mx-0 mb-8">
+            <Reveal delay={0.08}>
+              <p className="text-lg text-white/80 max-w-xl mx-auto md:mx-0 mb-8">
                 {t(
-                  'Kurių modernias svetaines ir e-parduotuves fiksuota kaina — React, Next.js, WordPress/WooCommerce ir Shopify. Dirbu iš Kauno su LT ir ES klientais, nuo briefing’o iki paleidimo.',
-                  'I build modern websites and e-commerce stores at a fixed price — React, Next.js, WordPress/WooCommerce, and Shopify. Based in Kaunas, working with LT and EU clients from briefing to launch.'
+                  'Full-stack programuotojas ir dizaineris iš Kauno, Lietuvos. Kuriu modernias, greitas svetaines ir e-parduotuves su React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind ir Figma. 18+ metų reali e-komercijos patirtis — UI/UX, SEO, našumas ir paleidimai. AI įrankius taikau visame procese — švaresniam ir greitesniam darbui. Atviras remote klientams visame pasaulyje.',
+                  'Full-stack developer & designer based in Kaunas, Lithuania. I build modern, fast websites and e-commerce stores with React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind and Figma. 18+ years of real e-commerce experience — UI/UX, SEO, performance and production launches. I apply AI tools end-to-end for cleaner, faster delivery. Open to remote clients worldwide.'
                 )}
               </p>
             </Reveal>
