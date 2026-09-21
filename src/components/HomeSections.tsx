@@ -131,7 +131,7 @@ export function HomeSections() {
 
   return (
     <>
-      <section className="py-20 px-4 bg-gray-50" aria-labelledby="services-heading">
+      <section className="py-20 px-4 bg-gray-50 scroll-mt-24" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="services-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -145,8 +145,8 @@ export function HomeSections() {
             </p>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((service, i) => (
-              <Reveal key={service.title} delay={i * 0.05} className="h-full">
+            {services.map((service) => (
+              <Reveal key={service.title} className="h-full">
                 <article className="h-full bg-black text-white p-7 flex flex-col">
                   <div className="mb-6 text-white" aria-hidden>
                     {service.icon}
@@ -163,7 +163,7 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section className="py-20 px-4" aria-labelledby="process-heading">
+      <section className="py-20 px-4 scroll-mt-24" aria-labelledby="process-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="process-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -177,10 +177,10 @@ export function HomeSections() {
             </p>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {steps.map((step, i) => (
-              <Reveal key={step.n} delay={i * 0.05} className="h-full">
+            {steps.map((step) => (
+              <Reveal key={step.n} className="h-full">
                 <article className="h-full border border-black/15 p-7 flex flex-col">
-                  <p className="text-xs tracking-[0.2em] text-gray-400 mb-5">{step.n}</p>
+                  <p className="text-[11px] tracking-[0.22em] text-gray-400 mb-5">{step.n}</p>
                   <div className="text-black mb-5" aria-hidden>
                     {step.icon}
                   </div>
@@ -207,8 +207,8 @@ export function HomeSections() {
             </p>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-4">
-            {proof.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.05} className="h-full">
+            {proof.map((item) => (
+              <Reveal key={item.title} className="h-full">
                 <article className="h-full bg-white border border-black/10 p-7 flex flex-col">
                   <div className="text-black mb-4" aria-hidden>
                     {item.href ? <IconBrandLinkedin {...iconProps} /> : <IconCheck {...iconProps} />}
@@ -233,7 +233,7 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section className="py-20 px-4" aria-labelledby="featured-heading">
+      <section className="py-20 px-4 scroll-mt-24" aria-labelledby="featured-heading">
         <div className="max-w-7xl mx-auto">
           <Reveal className="text-center mb-12">
             <h2 id="featured-heading" className="text-3xl md:text-4xl font-bold mb-3">
@@ -247,15 +247,15 @@ export function HomeSections() {
             </p>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-5">
-            {featuredProjects.map((project, i) => (
-              <Reveal key={project.slug} delay={i * 0.06} className="h-full">
-                <article className="group h-full bg-white border border-black/15 flex flex-col transition-colors hover:border-black">
+            {featuredProjects.map((project) => (
+              <Reveal key={project.slug} className="h-full">
+                <article className="group h-full bg-white border border-black/15 flex flex-col transition-[border-color,transform] duration-200 hover:border-black hover:-translate-y-0.5">
                   <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                     <Image
                       src={project.image}
                       alt={t(project.title.lt, project.title.en)}
                       fill
-                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>

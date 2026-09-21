@@ -103,7 +103,7 @@ export function HeroSection() {
                 {strengths.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1.5 border border-black/20 text-sm text-gray-800"
+                    className="px-2.5 py-1 border border-black/15 text-xs tracking-wide text-gray-700"
                   >
                     {skill}
                   </span>
