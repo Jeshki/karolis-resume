@@ -16,14 +16,22 @@ import {
   ListChecks,
 } from 'lucide-react';
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
+import emailjs from '@emailjs/browser';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { SITE } from 'src/lib/site';
+import { EMAILJS, deliverViaNoundry, inquiryMailto } from 'src/lib/email';
 import { Reveal } from 'src/components/Reveal';
 
 export function ContactSection() {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '', privacy: false });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error' | 'mailto'>('idle');
+  const [mailtoHref, setMailtoHref] = useState(`mailto:${SITE.email}`);
+
+  const markSent = () => {
+    setStatus('sent');
+    setFormData({ name: '', email: '', message: '', privacy: false });
+  };
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,6 +40,27 @@ export function ContactSection() {
       return;
     }
     setStatus('sending');
+    const href = inquiryMailto(formData.name, formData.email, formData.message);
+    setMailtoHref(href);
+
+    const params = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      reply_to: formData.email,
+      to_email: SITE.email,
+      to_name: SITE.name,
+    };
+
+    try {
+      await emailjs.send(EMAILJS.serviceId, EMAILJS.templateId, params, {
+        publicKey: EMAILJS.publicKey,
+      });
+      markSent();
+      return;
+    } catch {
+      // Gmail in EmailJS may be disconnected; try the server route next.
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -44,14 +73,25 @@ export function ContactSection() {
           privacy: formData.privacy,
         }),
       });
-      if (!response.ok) {
-        throw new Error('send_failed');
+      if (response.ok) {
+        markSent();
+        return;
       }
-      setStatus('sent');
-      setFormData({ name: '', email: '', message: '', privacy: false });
     } catch {
-      setStatus('error');
+      // try Noundry from the browser, then mailto
     }
+
+    try {
+      if (await deliverViaNoundry(formData.name, formData.email, formData.message)) {
+        markSent();
+        return;
+      }
+    } catch {
+      // last resort: the visitor's own mail app
+    }
+
+    setStatus('mailto');
+    window.location.assign(href);
   };
 
   return (
@@ -95,6 +135,37 @@ export function ContactSection() {
                   onClick={() => setStatus('idle')}
                 >
                   {t('Siųsti kitą žinutę', 'Send another message')}
+                </button>
+              </div>
+            ) : status === 'mailto' ? (
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 text-gray-900" role="status">
+                <p className="font-semibold inline-flex items-center gap-2 mb-2">
+                  <Mail size={20} strokeWidth={1.5} />
+                  {t('Žinutė paruošta el. pašte', 'Message ready in your email app')}
+                </p>
+                <p className="text-sm text-gray-700 mb-4">
+                  {t(
+                    'Jei langas neatsidarė, paspauskite mygtuką — laiškas bus užpildytas ir adresuotas ',
+                    'If a window did not open, tap the button — the email is filled in and addressed to '
+                  )}
+                  <a className="underline underline-offset-4 font-medium" href={`mailto:${SITE.email}`}>
+                    {SITE.email}
+                  </a>
+                  .
+                </p>
+                <a
+                  href={mailtoHref}
+                  className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors mb-3"
+                >
+                  {t('Atidaryti el. paštą', 'Open email app')}
+                  <Send size={18} strokeWidth={1.5} />
+                </a>
+                <button
+                  type="button"
+                  className="text-sm font-medium underline underline-offset-4"
+                  onClick={() => setStatus('idle')}
+                >
+                  {t('Grįžti prie formos', 'Back to the form')}
                 </button>
               </div>
             ) : (
