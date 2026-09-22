@@ -24,7 +24,7 @@ export function createMetadata({
     alternates: { canonical: url },
     openGraph: {
       type: 'website',
-      locale: 'lt_LT',
+      locale: 'en_US',
       url,
       siteName: SITE.name,
       title: displayTitle,

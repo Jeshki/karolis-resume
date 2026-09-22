@@ -64,7 +64,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="lt" suppressHydrationWarning className={montserrat.variable}>
+    <html lang="en" suppressHydrationWarning className={montserrat.variable}>
       <body className="font-sans font-light bg-white text-gray-900 antialiased">
         <script
           type="application/ld+json"
