@@ -25,6 +25,7 @@ export function ResumeHeader() {
     t('WordPress + WooCommerce + Elementor', 'WordPress + WooCommerce + Elementor'),
     t('PHP individualūs sprendimai', 'Custom PHP Solutions'),
     t('UI/UX dizainas ir Figma', 'UI/UX Design & Figma'),
+    t('Framer Motion', 'Framer Motion'),
     t('Dirbtinio intelekto įrankiai', 'Artificial Intelligence Tools'),
     t('Headless ir modernus stack’as', 'Headless & Modern Stack'),
     t('SEO bei performanso optimizacija', 'SEO & Performance Optimization'),

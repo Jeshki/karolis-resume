@@ -33,7 +33,7 @@ export function ExperienceSection() {
         t('Aukščiausio lygio UI/UX ir dizaino sistema', 'High-end UI/UX and design systems'),
         t('DI integracija visuose etapuose', 'AI integration at every stage'),
       ],
-      skills: ['React', 'Next.js', 'Expo', 'TypeScript', 'Supabase', 'Neon', 'Tailwind', 'Node.js', 'AI Tools'],
+      skills: ['React', 'Next.js', 'Expo', 'Framer Motion', 'TypeScript', 'Supabase', 'Neon', 'Tailwind', 'Node.js', 'AI Tools'],
     },
     {
       n: '02',

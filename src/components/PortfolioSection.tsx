@@ -16,6 +16,7 @@ import {
   IconTag,
   IconX,
 } from '@tabler/icons-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from 'src/contexts/LanguageContext';
@@ -46,6 +47,7 @@ type Tab = 'web' | 'design' | 'video';
 
 export function PortfolioSection() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
   const bannerSliderRef = useRef<HTMLDivElement | null>(null);
   const [tab, setTab] = useState<Tab>('web');
   const [todoPreviewOpen, setTodoPreviewOpen] = useState(false);
@@ -221,7 +223,11 @@ export function PortfolioSection() {
                   : 'object-cover object-top group-hover:scale-105 transition-transform duration-500';
               return (
               <Reveal key={project.slug} delay={Math.min(i * 0.04, 0.24)} className="h-full">
-                <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow h-full flex flex-col text-left group">
+                <motion.article
+                  whileHover={reduceMotion ? undefined : { y: -4 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow h-full flex flex-col text-left group"
+                >
                   <div className={`relative h-48 overflow-hidden shrink-0 ${project.imageFit === 'contain' ? 'bg-[#111]' : ''}`}>
                     {project.gallery ? (
                       <ProjectImageSlider
@@ -313,7 +319,7 @@ export function PortfolioSection() {
                       ) : null}
                     </div>
                   </div>
-                </article>
+                </motion.article>
               </Reveal>
             );
             })}

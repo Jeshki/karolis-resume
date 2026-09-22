@@ -1,11 +1,14 @@
 'use client';
 
-import { motion, useScroll } from 'framer-motion';
+import { motion, useReducedMotion, useScroll } from 'framer-motion';
 
 export function ScrollProgressBar() {
+  const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     offset: ['start start', 'end end'],
   });
+
+  if (reduceMotion) return null;
 
   return (
     <motion.div className="fixed top-0 left-0 w-full h-0.5 bg-transparent z-[60] origin-left pointer-events-none">
