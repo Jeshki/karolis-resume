@@ -184,8 +184,8 @@ export function PortfolioSection() {
           </h1>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             {t(
-              'Svetainės, e-parduotuvės ir mobilios aplikacijos. Dizainas ir video — atskiruose skirtukuose.',
-              'Websites, stores, and mobile apps. Design and video live in their own tabs.'
+              'Web projektai pirmiausia. Dizainas ir video — atskiruose skirtukuose, kad neužgožtų svetainių.',
+              'Web projects first. Design and video live in their own tabs so they don’t drown the sites.'
             )}
           </p>
         </Reveal>

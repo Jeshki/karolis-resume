@@ -291,8 +291,8 @@ export function HomeSections() {
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               {t(
-                'Gyvi klientų domenai ir Google Play aplikacija. Visa lentyna — darbų puslapyje.',
-                'Live client domains and a Google Play app. The full set is on the work page.'
+                'Trys gyvi klientų domenai. Visa lentyna — darbų puslapyje.',
+                'Three live client domains. The full set is on the work page.'
               )}
             </p>
           </Reveal>

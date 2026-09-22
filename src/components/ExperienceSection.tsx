@@ -30,10 +30,6 @@ export function ExperienceSection() {
           'Supabase ir Neon (Postgres) duomenims; mobilus stack — TypeScript, Expo Router, TanStack Query, React Hook Form, Zod, Zustand, EAS',
           'Supabase and Neon (Postgres) for data; mobile stack — TypeScript, Expo Router, TanStack Query, React Hook Form, Zod, Zustand, EAS'
         ),
-        t(
-          'Google Play aplikacija Jesus Wallpapers (AdMob) ir kuriama Kaukas — bendras dovanų planavimas su Expo ir Supabase',
-          'Google Play app Jesus Wallpapers (AdMob), and Kaukas — a shared gift planner in progress with Expo and Supabase'
-        ),
         t('Aukščiausio lygio UI/UX ir dizaino sistema', 'High-end UI/UX and design systems'),
         t('DI integracija visuose etapuose', 'AI integration at every stage'),
       ],
