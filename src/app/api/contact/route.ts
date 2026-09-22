@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { EMAILJS, inquiryTemplateParams } from 'src/lib/email';
 import { SITE } from 'src/lib/site';
 
-const SERVICE_ID = process.env.EMAILJS_SERVICE_ID ?? 'service_192u0r9';
-const TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID ?? 'template_u2g1ok7';
-const PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY ?? 'ubLfcy2BLMSoiD07t';
-const PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY;
+const PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY || 'LrlZ2MgXGztzWAs9P28pu';
 const GMAIL_USER = process.env.GMAIL_USER ?? SITE.email;
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 
@@ -14,30 +12,19 @@ function isEmail(value: string) {
 }
 
 async function deliverViaEmailJs(name: string, email: string, message: string) {
-  const emailjsBody: Record<string, unknown> = {
-    service_id: SERVICE_ID,
-    template_id: TEMPLATE_ID,
-    user_id: PUBLIC_KEY,
-    template_params: {
-      from_name: name,
-      from_email: email,
-      message,
-      reply_to: email,
-      to_email: SITE.email,
-      to_name: SITE.name,
-    },
-  };
-  if (PRIVATE_KEY) {
-    emailjsBody.accessToken = PRIVATE_KEY;
-  }
-
   const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Origin: SITE.url,
     },
-    body: JSON.stringify(emailjsBody),
+    body: JSON.stringify({
+      service_id: EMAILJS.serviceId,
+      template_id: EMAILJS.templateId,
+      user_id: EMAILJS.publicKey,
+      accessToken: PRIVATE_KEY,
+      template_params: inquiryTemplateParams(name, email, message),
+    }),
     signal: AbortSignal.timeout(10_000),
   });
   return response.ok;
@@ -86,7 +73,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
   } catch {
-    // Gmail OAuth on EmailJS is disconnected until reconnected in the dashboard.
+    // EmailJS rejected the request; try SMTP next.
   }
 
   try {

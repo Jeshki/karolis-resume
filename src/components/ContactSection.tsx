@@ -17,8 +17,9 @@ import {
 } from 'lucide-react';
 import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
+import emailjs from '@emailjs/browser';
 import { SITE } from 'src/lib/site';
-import { inquiryMailto } from 'src/lib/email';
+import { EMAILJS, inquiryMailto, inquiryTemplateParams } from 'src/lib/email';
 import { Reveal } from 'src/components/Reveal';
 
 export function ContactSection() {
@@ -62,7 +63,20 @@ export function ContactSection() {
         return;
       }
     } catch {
-      // EmailJS Gmail is disconnected; open the visitor's mail app instead.
+      // Fall through to EmailJS in the browser, then mailto.
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
+        inquiryTemplateParams(formData.name, formData.email, formData.message),
+        { publicKey: EMAILJS.publicKey }
+      );
+      markSent();
+      return;
+    } catch {
+      // Open the visitor's mail app only if EmailJS also failed.
     }
 
     setStatus('mailto');
