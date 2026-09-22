@@ -24,7 +24,8 @@ export function createMetadata({
     alternates: { canonical: url },
     openGraph: {
       type: 'website',
-      locale: 'lt_LT',
+      locale: 'en_US',
+      alternateLocale: ['lt_LT'],
       url,
       siteName: SITE.name,
       title: displayTitle,
@@ -34,7 +35,7 @@ export function createMetadata({
           url: SITE.ogImage,
           width: 800,
           height: 800,
-          alt: `${SITE.name} — profilio nuotrauka`,
+          alt: `${SITE.name} — profile picture`,
         },
       ],
     },
