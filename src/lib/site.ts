@@ -11,8 +11,8 @@ export const SITE = {
   githubHandle: 'Jeshki',
   linkedin: 'https://www.linkedin.com/in/karolis-cibiras',
   ogImage: '/karolis-studio.jpg',
-  cvPath: '/Karolio-CV-EN.pdf',
-  cvFilename: 'Karolis-Cibiras-CV-EN.pdf',
+  cvPath: '/Karolis-Cibiras-CV.pdf',
+  cvFilename: 'Karolis-Cibiras-CV.pdf',
 } as const;
 
 export const NAV_PATHS = {

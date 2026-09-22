@@ -3,11 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { HomeSections } from 'src/components/HomeSections';
 import { Reveal } from 'src/components/Reveal';
 import { ABOUT_BIO, STRENGTHS } from 'src/lib/copy';
+import { SITE } from 'src/lib/site';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -74,6 +75,16 @@ export function HeroSection() {
                 >
                   {t('Gauti pasiūlymą', 'Get a quote')}
                 </Link>
+              </motion.div>
+              <motion.div whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
+                <a
+                  href={SITE.cvPath}
+                  download={SITE.cvFilename}
+                  className="inline-flex w-full max-w-[260px] sm:w-auto sm:max-w-none items-center justify-center gap-2 border-2 border-white text-white py-3 px-6 rounded-lg font-medium hover:bg-white hover:text-black transition-colors"
+                >
+                  <Download size={18} strokeWidth={1.5} />
+                  {t('Atsisiųsti CV', 'Download CV')}
+                </a>
               </motion.div>
             </Reveal>
 
