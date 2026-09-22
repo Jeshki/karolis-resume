@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { IconMessage, IconBrandWhatsapp, IconPhone, IconMail, IconX } from '@tabler/icons-react';
 import { useLanguage } from 'src/contexts/LanguageContext';
 import { SITE } from 'src/lib/site';
@@ -9,6 +9,7 @@ import { SITE } from 'src/lib/site';
 export function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
 
   const links = [
     { href: SITE.whatsapp, icon: <IconBrandWhatsapp size={24} />, label: 'WhatsApp' },
@@ -27,9 +28,9 @@ export function FloatingContact() {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                animate={{ opacity: 1, y: 0, scale: 1, transition: { delay: i * 0.05 } }}
-                exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: reduceMotion ? 0 : i * 0.04 } }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
                 className="bg-white text-gray-900 p-3 rounded-full shadow-lg hover:scale-110 transition-transform border border-gray-200"
                 aria-label={link.label}
               >
@@ -43,18 +44,18 @@ export function FloatingContact() {
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="bg-black text-white p-4 rounded-full shadow-xl hover:bg-gray-800 transition-colors"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={reduceMotion ? undefined : { scale: 1.04 }}
+        whileTap={reduceMotion ? undefined : { scale: 0.98 }}
         aria-expanded={isOpen}
         aria-label={isOpen ? t('Uždaryti kontaktus', 'Close contact menu') : t('Susisiekti', 'Get in touch')}
       >
         <AnimatePresence mode="wait">
           <motion.div
             key={isOpen ? 'close' : 'open'}
-            initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: 45, scale: 0.5 }}
-            transition={{ duration: 0.2 }}
+            initial={reduceMotion ? false : { opacity: 0, rotate: -45 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={reduceMotion ? undefined : { opacity: 0, rotate: 45 }}
+            transition={{ duration: reduceMotion ? 0 : 0.2 }}
           >
             {isOpen ? <IconX size={28} /> : <IconMessage size={28} />}
           </motion.div>

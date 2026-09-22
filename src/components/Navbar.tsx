@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
@@ -18,6 +18,7 @@ const links = [
 export function Navbar() {
   const { language, toggleLanguage, t } = useLanguage();
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const flagLT = 'https://flagcdn.com/lt.svg';
   const flagGB = 'https://flagcdn.com/gb.svg';
@@ -29,9 +30,9 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+      initial={reduceMotion ? false : { y: -12, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-[70] border-b border-gray-200 bg-white"
     >
       <div className="relative max-w-7xl mx-auto px-4 py-3 flex items-center min-h-14">
@@ -48,16 +49,17 @@ export function Navbar() {
           {links.map((link) => {
             const active = isActive(link.href);
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={active ? 'page' : undefined}
-                className={`hover:text-black transition ${
-                  active ? 'text-black' : 'text-gray-600'
-                }`}
-              >
-                {t(link.lt, link.en)}
-              </Link>
+              <motion.div key={link.href} whileHover={reduceMotion ? undefined : { y: -1 }}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={`hover:text-black transition ${
+                    active ? 'text-black' : 'text-gray-600'
+                  }`}
+                >
+                  {t(link.lt, link.en)}
+                </Link>
+              </motion.div>
             );
           })}
         </div>
@@ -83,7 +85,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeInOut' }}
             className="md:hidden bg-white border-t border-gray-200"
           >
             <div className="px-4 pt-3 pb-5 space-y-1 text-left text-lg tracking-wide">

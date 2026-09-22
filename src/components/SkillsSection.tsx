@@ -24,6 +24,7 @@ export function SkillsSection() {
     { name: 'EAS' },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/javascript.svg' },
     { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/tailwindcss.svg' },
+    { name: 'Framer Motion', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/framer.svg' },
     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/nodedotjs.svg' },
     { name: 'WordPress', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/wordpress.svg' },
     { name: 'WooCommerce', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/woocommerce.svg' },
