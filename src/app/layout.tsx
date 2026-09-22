@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 const homeMeta = createMetadata({
   title: 'Karolis Čibiras — Full-Stack programuotojas ir dizaineris | Kaunas',
   description:
-    'Freelance web kūrėjas Kaune: React, Next.js, WordPress/WooCommerce ir Shopify. Svetainės ir e-parduotuvės fiksuota kaina — LT ir ES klientams.',
+    'Freelance web ir mobiliųjų aplikacijų kūrėjas Kaune: React, Next.js, Expo, Supabase, WordPress/WooCommerce ir Shopify. Svetainės, e-parduotuvės ir aplikacijos — LT ir ES klientams.',
   path: '/',
   absolute: true,
 });
@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     'web programuotojas Kaunas',
     'Next.js',
     'React',
+    'Expo',
+    'React Native',
+    'Supabase',
     'WordPress',
     'Shopify',
     'freelance',

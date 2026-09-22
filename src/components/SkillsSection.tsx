@@ -9,11 +9,19 @@ export function SkillsSection() {
   const { t } = useLanguage();
   const reduceMotion = useReducedMotion();
 
-  const tools = [
+  const tools: { name: string; icon?: string }[] = [
     { name: 'Python', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/python.svg' },
     { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/react.svg' },
     { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/nextdotjs.svg' },
     { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/typescript.svg' },
+    { name: 'Expo', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/expo.svg' },
+    { name: 'React Native', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/react.svg' },
+    { name: 'Expo Router', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/expo.svg' },
+    { name: 'TanStack Query', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/tanstack.svg' },
+    { name: 'React Hook Form', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/reacthookform.svg' },
+    { name: 'Zod', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/zod.svg' },
+    { name: 'Zustand' },
+    { name: 'EAS' },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/javascript.svg' },
     { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/tailwindcss.svg' },
     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/nodedotjs.svg' },
@@ -35,6 +43,7 @@ export function SkillsSection() {
     { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/mongodb.svg' },
     { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/prisma.svg' },
     { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/firebase.svg' },
+    { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/supabase.svg' },
     { name: 'Neon', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/neon.svg' },
     { name: 'Stripe', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/stripe.svg' },
     { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/graphql.svg' },
@@ -62,15 +71,17 @@ export function SkillsSection() {
               whileHover={reduceMotion ? undefined : { y: -2 }}
               className="bg-white border border-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 flex items-center justify-center gap-3"
             >
-              <img
-                src={tool.icon}
-                alt=""
-                className="h-5 w-5 brightness-0 opacity-80"
-                loading="lazy"
-                onError={(event) => {
-                  event.currentTarget.style.display = 'none';
-                }}
-              />
+              {tool.icon ? (
+                <img
+                  src={tool.icon}
+                  alt=""
+                  className="h-5 w-5 brightness-0 opacity-80"
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.style.display = 'none';
+                  }}
+                />
+              ) : null}
               <span>{tool.name}</span>
             </motion.div>
           ))}

@@ -23,8 +23,11 @@ export type PortfolioProject = {
   image: string;
   technologies: string[];
   liveLink?: string;
+  liveLabel?: Localized;
   githubLink?: string;
   featured?: boolean;
+  status?: Localized;
+  imageFit?: 'cover' | 'contain';
   caseStudy?: CaseStudyContent;
   gallery?: ProjectSlideSource[];
   opensGalleryModal?: boolean;
@@ -53,6 +56,25 @@ export const todoTasksSlides: ProjectSlideSource[] = [
   {
     src: '/portfolio/todo-tasks/05-eksportas-excel.png',
     alt: { lt: 'Eksportas į Excel', en: 'Export to Excel' },
+  },
+];
+
+export const jesusWallpapersSlides: ProjectSlideSource[] = [
+  {
+    src: '/portfolio/jesus-wallpapers/01-home.jpg',
+    alt: { lt: 'Pagrindinis tapetų ekranas', en: 'Wallpaper home screen' },
+  },
+  {
+    src: '/portfolio/jesus-wallpapers/02-categories.jpg',
+    alt: { lt: 'Tapetų kategorijos', en: 'Wallpaper categories' },
+  },
+  {
+    src: '/portfolio/jesus-wallpapers/03-detail.jpg',
+    alt: { lt: 'Tapeto peržiūra', en: 'Wallpaper detail' },
+  },
+  {
+    src: '/portfolio/jesus-wallpapers/04-favorites.jpg',
+    alt: { lt: 'Mėgstamiausių sąrašas', en: 'Favorites list' },
   },
 ];
 
@@ -159,6 +181,78 @@ export const projects: PortfolioProject[] = [
         { value: { lt: 'Shopify', en: 'Shopify' }, label: { lt: 'e-komercijos platforma', en: 'commerce platform' } },
         { value: { lt: 'LT', en: 'LT' }, label: { lt: 'kliento domenas', en: 'client domain' } },
         { value: { lt: 'Fiksuota', en: 'Fixed' }, label: { lt: 'projekto kaina', en: 'project price' } },
+      ],
+    },
+  },
+  {
+    slug: 'jesus-wallpapers',
+    featured: true,
+    title: { lt: 'Jesus Wallpapers', en: 'Jesus Wallpapers' },
+    description: {
+      lt: 'Krikščioniškų tapetų aplikacija Google Play — rami kolekcija namų ir užrakinimo ekranui, išsaugojimas ir dalijimasis. Expo, React Native ir AdMob.',
+      en: 'A Christian wallpapers app on Google Play — a calm collection for the home and lock screen, with save and share. Expo, React Native, and AdMob.',
+    },
+    image: '/portfolio/jesus-wallpapers/01-home.jpg',
+    imageFit: 'contain',
+    gallery: jesusWallpapersSlides,
+    technologies: ['Expo', 'React Native', 'TypeScript', 'AdMob'],
+    liveLink: 'https://play.google.com/store/apps/details?id=com.jeshki.jesuswallpapers',
+    liveLabel: { lt: 'Google Play', en: 'Google Play' },
+    caseStudy: {
+      summary: {
+        lt: 'Android aplikacija Google Play: krikščioniški tapetai namų ir užrakinimo ekranui.',
+        en: 'An Android app on Google Play: Christian wallpapers for the home and lock screen.',
+      },
+      problem: {
+        lt: 'Reikėjo paprastos aplikacijos ramiai krikščioniškų tapetų kolekcijai — naršyti, išsaugoti į galeriją ir pasidalinti.',
+        en: 'The job was a simple app for a calm Christian wallpaper collection — browse, save to the gallery, and share.',
+      },
+      solution: {
+        lt: 'Expo ir React Native (TypeScript) aplikacija su kategorijomis, peržiūra ir AdMob. Publikuota Google Play kaip com.jeshki.jesuswallpapers.',
+        en: 'An Expo and React Native (TypeScript) app with categories, a detail view, and AdMob. Published on Google Play as com.jeshki.jesuswallpapers.',
+      },
+      result: {
+        lt: 'Aplikacija vieša Google Play. Galima atidaryti parduotuvės puslapį ir įsidiegti.',
+        en: 'The app is live on Google Play. The store listing is public and the app can be installed.',
+      },
+      metrics: [
+        { value: { lt: 'Google Play', en: 'Google Play' }, label: { lt: 'publikuota', en: 'published' } },
+        { value: { lt: 'AdMob', en: 'AdMob' }, label: { lt: 'aplikacijoje', en: 'in the app' } },
+        { value: { lt: 'Expo', en: 'Expo' }, label: { lt: 'React Native', en: 'React Native' } },
+      ],
+    },
+  },
+  {
+    slug: 'kaukas',
+    title: { lt: 'Kaukas', en: 'Kaukas' },
+    description: {
+      lt: 'Bendro dovanų planavimo aplikacija — progos, kvietimai, idėjos, balsavimas ir įnašai. Expo ir Supabase. Kuriama.',
+      en: 'A shared gift-planning app — occasions, invites, ideas, voting, and contributions. Expo and Supabase. In progress.',
+    },
+    image: '/kaukas.png',
+    status: { lt: 'Kuriama', en: 'In progress' },
+    technologies: ['Expo', 'React Native', 'TypeScript', 'Supabase'],
+    caseStudy: {
+      summary: {
+        lt: 'Kuriama Expo ir Supabase aplikacija bendram dovanos planavimui.',
+        en: 'An Expo and Supabase app in progress for planning a gift together.',
+      },
+      problem: {
+        lt: 'Bendram dovanos planavimui reikia vienos vietos: proga, pakvietimai, idėjos, balsavimas ir įnašai.',
+        en: 'Planning a gift together needs one place: the occasion, invites, ideas, voting, and contributions.',
+      },
+      solution: {
+        lt: 'Kaukas kuriama su Expo (React Native) ir Supabase — bendri grupės duomenys Postgres pagrindu, be atskiro backend’o nuo nulio.',
+        en: 'Kaukas is being built with Expo (React Native) and Supabase — shared group data on Postgres, without a from-scratch backend.',
+      },
+      result: {
+        lt: 'Produktas dar kuriamas. Viešo adreso kol kas nėra.',
+        en: 'The product is still being built. There is no public URL yet.',
+      },
+      metrics: [
+        { value: { lt: 'Kuriama', en: 'In progress' }, label: { lt: 'būsena', en: 'status' } },
+        { value: { lt: 'Expo', en: 'Expo' }, label: { lt: 'React Native', en: 'React Native' } },
+        { value: { lt: 'Supabase', en: 'Supabase' }, label: { lt: 'Postgres', en: 'Postgres' } },
       ],
     },
   },

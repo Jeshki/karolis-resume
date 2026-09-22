@@ -47,17 +47,23 @@ export function CaseStudyView({ slug }: { slug: string }) {
               className="inline-flex items-center gap-2 bg-black text-white py-2 px-5 rounded-lg font-medium hover:bg-gray-800 transition-colors mb-10"
             >
               <IconExternalLink size={16} />
-              {t('Atidaryti svetainę', 'Open live site')}
+              {project.liveLabel
+                ? t(project.liveLabel.lt, project.liveLabel.en)
+                : t('Atidaryti svetainę', 'Open live site')}
             </a>
           ) : null}
         </Reveal>
 
-        <Reveal className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-lg mb-12 bg-gray-100">
+        <Reveal
+          className={`relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-lg mb-12 ${
+            project.imageFit === 'contain' ? 'bg-[#111]' : 'bg-gray-100'
+          }`}
+        >
           <Image
             src={project.image}
             alt={t(project.title.lt, project.title.en)}
             fill
-            className="object-cover"
+            className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}
             sizes="(max-width: 768px) 100vw, 896px"
             priority
           />

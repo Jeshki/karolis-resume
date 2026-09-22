@@ -184,8 +184,8 @@ export function PortfolioSection() {
           </h1>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             {t(
-              'Web projektai pirmiausia. Dizainas ir video — atskiruose skirtukuose, kad neužgožtų svetainių.',
-              'Web projects first. Design and video live in their own tabs so they don’t drown the sites.'
+              'Svetainės, e-parduotuvės ir mobilios aplikacijos. Dizainas ir video — atskiruose skirtukuose.',
+              'Websites, stores, and mobile apps. Design and video live in their own tabs.'
             )}
           </p>
         </Reveal>
@@ -214,10 +214,15 @@ export function PortfolioSection() {
 
         {tab === 'web' ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {projects.map((project, i) => (
+            {projects.map((project, i) => {
+              const mediaClass =
+                project.imageFit === 'contain'
+                  ? 'object-contain bg-[#111]'
+                  : 'object-cover object-top group-hover:scale-105 transition-transform duration-500';
+              return (
               <Reveal key={project.slug} delay={Math.min(i * 0.04, 0.24)} className="h-full">
                 <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow h-full flex flex-col text-left group">
-                  <div className="relative h-48 overflow-hidden shrink-0">
+                  <div className={`relative h-48 overflow-hidden shrink-0 ${project.imageFit === 'contain' ? 'bg-[#111]' : ''}`}>
                     {project.gallery ? (
                       <ProjectImageSlider
                         slides={project.gallery.map((slide) => ({
@@ -225,7 +230,7 @@ export function PortfolioSection() {
                           alt: t(slide.alt.lt, slide.alt.en),
                         }))}
                         className="relative h-48"
-                        imageClassName="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        imageClassName={mediaClass}
                       />
                     ) : (
                       <Image
@@ -233,16 +238,23 @@ export function PortfolioSection() {
                         alt={t(project.title.lt, project.title.en)}
                         fill
                         quality={90}
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className={mediaClass}
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     )}
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <h2 className="font-bold text-xl mb-2 inline-flex items-center gap-2">
-                      <IconSparkles size={16} className="text-primary shrink-0" />
-                      {t(project.title.lt, project.title.en)}
-                    </h2>
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h2 className="font-bold text-xl inline-flex items-center gap-2">
+                        <IconSparkles size={16} className="text-primary shrink-0" />
+                        {t(project.title.lt, project.title.en)}
+                      </h2>
+                      {project.status ? (
+                        <span className="shrink-0 border border-gray-300 px-2 py-0.5 text-[11px] tracking-wide uppercase text-gray-500">
+                          {t(project.status.lt, project.status.en)}
+                        </span>
+                      ) : null}
+                    </div>
                     <p className="text-gray-600 mb-4 text-sm flex-1">{t(project.description.lt, project.description.en)}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
@@ -274,7 +286,10 @@ export function PortfolioSection() {
                           rel="noopener noreferrer"
                           className="flex-1 bg-black text-white py-2 px-4 rounded text-center transition flex items-center justify-center gap-1 hover:bg-gray-800"
                         >
-                          <IconExternalLink size={16} /> {t('Demo', 'Demo')}
+                          <IconExternalLink size={16} />{' '}
+                          {project.liveLabel
+                            ? t(project.liveLabel.lt, project.liveLabel.en)
+                            : t('Demo', 'Demo')}
                         </a>
                       ) : null}
                       {project.caseStudy ? (
@@ -300,7 +315,8 @@ export function PortfolioSection() {
                   </div>
                 </article>
               </Reveal>
-            ))}
+            );
+            })}
           </div>
         ) : null}
 

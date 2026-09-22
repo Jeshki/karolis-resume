@@ -92,8 +92,8 @@ export function HomeSections() {
       icon: Globe,
       title: t('Build', 'Build'),
       body: t(
-        'React/Next, WordPress arba Shopify — parinktas stack’as pagal projekto poreikį, ne mados.',
-        'React/Next, WordPress, or Shopify — the stack that fits the project, not a trend.'
+        'React/Next, WordPress, Shopify arba Expo — parinktas stack’as pagal projekto poreikį, ne mados.',
+        'React/Next, WordPress, Shopify, or Expo — the stack that fits the project, not a trend.'
       ),
     },
     {
@@ -291,8 +291,8 @@ export function HomeSections() {
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               {t(
-                'Trys gyvi klientų domenai. Visa lentyna — darbų puslapyje.',
-                'Three live client domains. The full set is on the work page.'
+                'Gyvi klientų domenai ir Google Play aplikacija. Visa lentyna — darbų puslapyje.',
+                'Live client domains and a Google Play app. The full set is on the work page.'
               )}
             </p>
           </Reveal>
@@ -310,7 +310,9 @@ export function HomeSections() {
                     alt={t(project.title.lt, project.title.en)}
                     fill
                     quality={90}
-                    className="object-cover object-top"
+                    className={
+                      project.imageFit === 'contain' ? 'object-contain bg-[#111]' : 'object-cover object-top'
+                    }
                     sizes="(max-width: 768px) 100vw, 420px"
                   />
                 </div>

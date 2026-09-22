@@ -13,23 +13,31 @@ export function ExperienceSection() {
   const experiences = [
     {
       n: '01',
-      title: t('Freelance Web kūrėjas / Programuotojas', 'Freelance Web Developer / Programmer'),
+      title: t('Freelance web ir mobiliųjų aplikacijų kūrėjas', 'Freelance Web & Mobile Developer'),
       company: t('Individuali veikla', 'Self-Employed'),
       period: t('2025-11 – dabar', 'Nov 2025 – Present'),
       icon: Code,
       tasks: [
         t(
-          'Modernių web svetainių ir e-parduotuvių kūrimas nuo nulio',
-          'Building modern websites and e-commerce stores from scratch'
+          'Modernių svetainių, e-parduotuvių ir mobiliųjų aplikacijų kūrimas nuo nulio',
+          'Building modern websites, e-commerce stores, and mobile apps from scratch'
         ),
         t(
-          'React, Next.js, headless sprendimai, custom WordPress',
-          'React, Next.js, headless, custom WordPress'
+          'React, Next.js, Expo / React Native, headless ir custom WordPress',
+          'React, Next.js, Expo / React Native, headless, and custom WordPress'
+        ),
+        t(
+          'Supabase ir Neon (Postgres) duomenims; mobilus stack — TypeScript, Expo Router, TanStack Query, React Hook Form, Zod, Zustand, EAS',
+          'Supabase and Neon (Postgres) for data; mobile stack — TypeScript, Expo Router, TanStack Query, React Hook Form, Zod, Zustand, EAS'
+        ),
+        t(
+          'Google Play aplikacija Jesus Wallpapers (AdMob) ir kuriama Kaukas — bendras dovanų planavimas su Expo ir Supabase',
+          'Google Play app Jesus Wallpapers (AdMob), and Kaukas — a shared gift planner in progress with Expo and Supabase'
         ),
         t('Aukščiausio lygio UI/UX ir dizaino sistema', 'High-end UI/UX and design systems'),
         t('DI integracija visuose etapuose', 'AI integration at every stage'),
       ],
-      skills: ['React', 'Next.js', 'TypeScript', 'Python', 'Tailwind', 'Node.js', 'AI Tools'],
+      skills: ['React', 'Next.js', 'Expo', 'TypeScript', 'Supabase', 'Neon', 'Tailwind', 'Node.js', 'AI Tools'],
     },
     {
       n: '02',

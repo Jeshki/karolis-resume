@@ -19,6 +19,8 @@ export function ResumeHeader() {
 
   const coreCompetencies = [
     t('React, Next.js, TypeScript', 'React, Next.js, TypeScript'),
+    t('Expo, React Native, EAS', 'Expo, React Native, EAS'),
+    t('Supabase ir Neon (Postgres)', 'Supabase & Neon (Postgres)'),
     t('Python ir Node.js back-end', 'Python & Node.js Back-End'),
     t('WordPress + WooCommerce + Elementor', 'WordPress + WooCommerce + Elementor'),
     t('PHP individualūs sprendimai', 'Custom PHP Solutions'),
@@ -55,7 +57,7 @@ export function ResumeHeader() {
           <div className="text-center md:text-left flex-1">
             <h1 className="text-4xl md:text-5xl tracking-tight mb-2">Karolis Čibiras</h1>
             <h2 className="text-xl md:text-2xl text-gray-700 mb-6">
-              {t('Front-End ir Full-Stack web kūrėjas', 'Front-End & Full-Stack Web Developer')}
+              {t('Full-Stack web ir mobiliųjų aplikacijų kūrėjas', 'Full-Stack Web & Mobile Developer')}
             </h2>
             <div className="flex flex-col sm:flex-wrap sm:flex-row gap-x-5 gap-y-2 justify-center md:justify-start mb-6 text-gray-600 text-sm">
               {contacts.map((item) => {
