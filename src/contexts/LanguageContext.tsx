@@ -4,6 +4,9 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'lt' | 'en';
 
+/** English is the default locale. Lithuanian stays available via the language switcher. */
+const DEFAULT_LANGUAGE: Language = 'en';
+
 interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
@@ -13,7 +16,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('lt');
+  const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE);
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'lt' ? 'en' : 'lt');

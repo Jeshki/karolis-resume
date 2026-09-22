@@ -2,9 +2,9 @@ import { ContactSection } from 'src/components/ContactSection';
 import { createMetadata } from 'src/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Kontaktai',
+  title: 'Contact',
   description:
-    'Parašykite Karoliui Čibirui — atsakau per 24 val. Fiksuotos kainos web ir e-parduotuvių projektai. Kaunas / remote LT+EU. Tel. +370 603 02903.',
+    'Write to Karolis Čibiras — I reply within 24 hours. Fixed-price web and e-commerce projects. Kaunas / remote, Lithuania and the EU. Tel. +370 603 02903.',
   path: '/kontaktai',
 });
 

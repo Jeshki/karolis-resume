@@ -16,15 +16,15 @@ export async function generateMetadata({ params }: Props) {
   const project = getProjectBySlug(slug);
   if (!project?.caseStudy) {
     return createMetadata({
-      title: 'Projektas nerastas',
-      description: 'Šio case study nėra.',
+      title: 'Project not found',
+      description: 'This case study does not exist.',
       path: `/portfolio/${slug}`,
     });
   }
 
   return createMetadata({
-    title: project.title.lt,
-    description: project.caseStudy.summary.lt,
+    title: project.title.en,
+    description: project.caseStudy.summary.en,
     path: `/portfolio/${project.slug}`,
   });
 }

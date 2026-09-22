@@ -2,9 +2,9 @@ import { PrivacyContent } from 'src/components/PrivacyContent';
 import { createMetadata } from 'src/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Privatumo politika',
+  title: 'Privacy policy',
   description:
-    'Kaip Karolis Čibiras tvarko kontaktinės formos asmens duomenis: tikslas, saugojimas, teisės pagal BDAR.',
+    'How Karolis Čibiras handles contact-form personal data: purpose, retention, and rights under the GDPR.',
   path: '/privatumas',
 });
 

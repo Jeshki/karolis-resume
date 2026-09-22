@@ -14,9 +14,9 @@ const montserrat = Montserrat({
 });
 
 const homeMeta = createMetadata({
-  title: 'Karolis Čibiras — Full-Stack programuotojas ir dizaineris | Kaunas',
+  title: 'Karolis Čibiras — Full-Stack Developer & Designer | Kaunas',
   description:
-    'Freelance web ir mobiliųjų aplikacijų kūrėjas Kaune: React, Next.js, Expo, Supabase, WordPress/WooCommerce ir Shopify. Svetainės, e-parduotuvės ir aplikacijos — LT ir ES klientams.',
+    'Freelance web and mobile app developer in Kaunas: React, Next.js, Expo, Supabase, WordPress/WooCommerce and Shopify. Websites, e-commerce stores and apps for clients in Lithuania and the EU.',
   path: '/',
   absolute: true,
 });
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   ...homeMeta,
   title: {
-    default: 'Karolis Čibiras — Full-Stack programuotojas ir dizaineris | Kaunas',
+    default: 'Karolis Čibiras — Full-Stack Developer & Designer | Kaunas',
     template: '%s | Karolis Čibiras',
   },
   robots: { index: true, follow: true },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   creator: SITE.name,
   keywords: [
     'Karolis Čibiras',
-    'web programuotojas Kaunas',
+    'web developer Kaunas',
     'Next.js',
     'React',
     'Expo',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     'WordPress',
     'Shopify',
     'freelance',
-    'e-parduotuvė',
+    'e-commerce',
   ],
 };
 
@@ -53,7 +53,7 @@ const jsonLd = {
   url: SITE.url,
   email: SITE.email,
   telephone: SITE.phoneHref.replace('tel:', ''),
-  jobTitle: 'Full-Stack programuotojas ir dizaineris',
+  jobTitle: 'Full-Stack Developer & Designer',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Kaunas',
@@ -64,7 +64,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="lt" suppressHydrationWarning className={montserrat.variable}>
+    <html lang="en" suppressHydrationWarning className={montserrat.variable}>
       <body className="font-sans font-light bg-white text-gray-900 antialiased">
         <script
           type="application/ld+json"

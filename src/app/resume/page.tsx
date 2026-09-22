@@ -5,9 +5,9 @@ import { SkillsSection } from 'src/components/SkillsSection';
 import { createMetadata } from 'src/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'CV',
+  title: 'Resume',
   description:
-    'Karolio Čibiro CV: Full-Stack programuotojas ir dizaineris. React, Next.js, Expo, Supabase, Neon, WordPress, Shopify, e-komercija. Atsisiųskite PDF.',
+    'Karolis Čibiras resume: Full-Stack Developer & Designer. React, Next.js, Expo, Supabase, Neon, WordPress, Shopify, e-commerce. Download the PDF.',
   path: '/resume',
 });
 
