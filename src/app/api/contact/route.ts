@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { EMAILJS, inquiryTemplateParams } from 'src/lib/email';
+import { EMAILJS, inquiryBody, inquiryTemplateParams } from 'src/lib/email';
 import { SITE } from 'src/lib/site';
 
 const PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY || 'LrlZ2MgXGztzWAs9P28pu';

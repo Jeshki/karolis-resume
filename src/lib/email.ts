@@ -16,19 +16,30 @@ export const EMAILJS = {
   publicKey: pickPublicKey(),
 } as const;
 
+export function inquiryBody(name: string, email: string, message: string) {
+  return `Vardas: ${name}\nEl. paštas: ${email}\n\n${message}`;
+}
+
 export function inquiryMailto(name: string, email: string, message: string) {
   const subject = `Užklausa iš ${name}`;
-  const body = `${message}\n\n— ${name}\n${email}`;
-  return `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(inquiryBody(name, email, message))}`;
 }
 
 export function inquiryTemplateParams(name: string, email: string, message: string) {
+  const subject = `Užklausa iš ${name}`;
+  const body = inquiryBody(name, email, message);
   return {
     from_name: name,
     from_email: email,
-    message,
+    name,
+    email,
+    user_name: name,
+    user_email: email,
     reply_to: email,
     to_email: SITE.email,
     to_name: SITE.name,
+    subject,
+    title: subject,
+    message: body,
   };
 }
