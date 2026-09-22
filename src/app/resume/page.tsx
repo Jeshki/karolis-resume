@@ -7,7 +7,7 @@ import { createMetadata } from 'src/lib/metadata';
 export const metadata = createMetadata({
   title: 'CV',
   description:
-    'Karolio Čibiro CV: Full-Stack programuotojas ir dizaineris, 18+ metų e-komercijos ir web patirtis. React, Next.js, WordPress, Shopify. Atsisiųskite PDF.',
+    'Karolio Čibiro CV: Full-Stack programuotojas ir dizaineris. React, Next.js, WordPress, Shopify, e-komercija. Atsisiųskite PDF.',
   path: '/resume',
 });
 

@@ -1,6 +1,6 @@
 export const ABOUT_BIO = {
-  lt: 'Full-stack programuotojas ir dizaineris iš Kauno, Lietuvos. Kuriu modernias, greitas svetaines ir e-parduotuves su React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind ir Figma. 18+ metų reali e-komercijos patirtis — UI/UX, SEO, našumas ir paleidimai. AI įrankius taikau visame procese — švaresniam ir greitesniam darbui. Atviras remote klientams visame pasaulyje.',
-  en: 'Full-stack developer & designer based in Kaunas, Lithuania. I build modern, fast websites and e-commerce stores with React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind and Figma. 18+ years of real e-commerce experience — UI/UX, SEO, performance and production launches. I apply AI tools end-to-end for cleaner, faster delivery. Open to remote clients worldwide.',
+  lt: 'Full-stack programuotojas ir dizaineris iš Kauno, Lietuvos. Kuriu modernias, greitas svetaines ir e-parduotuves su React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind ir Figma. E-komercijos patirtis iš realių parduotuvių — UI/UX, SEO, našumas ir paleidimai. AI įrankius taikau visame procese — švaresniam ir greitesniam darbui. Atviras remote klientams visame pasaulyje.',
+  en: 'Full-stack developer & designer based in Kaunas, Lithuania. I build modern, fast websites and e-commerce stores with React, Next.js, TypeScript, WordPress/WooCommerce, Shopify, PHP, Node.js, Tailwind and Figma. E-commerce experience from real stores — UI/UX, SEO, performance and production launches. I apply AI tools end-to-end for cleaner, faster delivery. Open to remote clients worldwide.',
 } as const;
 
 export const STRENGTHS = [
